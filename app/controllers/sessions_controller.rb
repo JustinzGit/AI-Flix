@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:user][:username])
-    
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect_to homepage_path
@@ -16,5 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def logout
+    session[:user_id].clear
+    redirect_to login_path
   end
 end
