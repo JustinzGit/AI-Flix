@@ -1,0 +1,12 @@
+<h3>Welcome to AI-Flix!</h3>
+
+<h4>Sign up via E-mail</h4>
+<%= form_for(@user) do |f| %>
+  <p><%= f.label :email, "E-mail" %>
+  <%= f.text_field :email %></p>
+
+  <p><%= f.label :password %>
+  <%= f.password_field :password %></p>
+
+  <%= f.submit "Sign Up" %>
+<% end %>
