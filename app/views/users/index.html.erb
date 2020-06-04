@@ -2,7 +2,8 @@
 
 <% @users.each do |u| %>
   <ul>
-      <li>u.email</li>
-      <li>u.password</li>
+      <li><%= u.email %></li>
   </ul>
 <% end %>
+
+<%= link_to "New User", new_user_path %>
