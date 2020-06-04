@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/homepage', to: 'users#homepage'
 
   # Sessions Controller
-  resoureces :sessions, only: [:create]
+  resources :sessions, only: [:create]
   get '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout'
 end
