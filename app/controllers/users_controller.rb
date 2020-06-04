@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
 
-  def index
-    @users = User.all
+  def homepage
+    @user = User.find(session[:user_id])
   end
 
+  # Sign Up Form
   def new
     @user = User.new
   end
 
+  # Sign Up
   def create
     @user = User.create(user_params)
     redirect_to users_path
