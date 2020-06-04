@@ -14,6 +14,7 @@ the shortest path of movies that link the two provided actors.
 ### attributes
 - email
 - password_digest
+- timestamps
 
 ### associations
 - has many playlists
@@ -41,7 +42,8 @@ the shortest path of movies that link the two provided actors.
 ## Playlist
 ### attributes
 - name
-- date created
+- timestamps
+- category
 
 ### associations
 - belongs to a User, primary key: IMBD_ID
