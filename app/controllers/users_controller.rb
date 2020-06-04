@@ -4,16 +4,16 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
   end
 
-  # Sign Up Form
+  # GET SignUp
   def new
     @user = User.new
   end
 
-  # Sign Up
+  # POST SignUp 
   def create
     @user = User.create(user_params)
     session[:user_id] = @user.id
-    redirect_to users_path
+    redirect_to homepage_path
   end
 
   private
