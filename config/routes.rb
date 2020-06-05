@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # Set login page as root
   root 'sessions#new'
 
   # User Routes
@@ -14,4 +15,6 @@ Rails.application.routes.draw do
 
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
+  # Playlist Routes
+  resources :playlists, only: [:new, :create]
 end
