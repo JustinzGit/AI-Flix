@@ -1,6 +1,6 @@
 <h3>LogIn to AI-Flix</h3>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(:user, url: login_path) do |f| %>
   <p><%= f.label :username %>
   <%= f.text_field :username %></p>
 
