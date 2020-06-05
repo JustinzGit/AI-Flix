@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
-  # User Controller
-  resources :users, only: [:index, :new, :create]
-  get '/homepage', to: 'users#homepage'
+  # User Routes
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
 
-  # Sessions Controller
-  resources :sessions, only: [:new, :create, :destroy]
-  # get '/login', to: 'sessions#login'
-  # get '/logout', to: 'sessions#logout'
+  # Session Routes
+  get '/homepage', to: 'sessions#homepage'
+
+  get '/login', to: 'sessions#new', as: 'login'
+  post '/login', to: 'sessions#create'
+
+  get '/logout', to: 'sessions#destroy', as: 'logout'
+
 end
