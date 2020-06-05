@@ -7,6 +7,9 @@
 # Ignore CSV files
 /small
 
+# Ignore my CHANGELOG.md
+/CHANGELOG.md
+
 # Ignore bundler config.
 /.bundle
 
