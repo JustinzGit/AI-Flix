@@ -2,7 +2,6 @@ module AiUtilities
 
   class Node
     attr_accessor :state, :parent, :action
-
     def initialize(state, parent, action)
       @state = state
       @parent = parent
@@ -33,6 +32,5 @@ module AiUtilities
         return node
       end
     end
-
   end
 end
