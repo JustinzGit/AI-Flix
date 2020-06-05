@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  root 'sessions#new'
+
   # User Routes
-  get '/signup', to: 'users#new'
+  get '/signup', to: 'users#new', as: 'signup'
   post '/signup', to: 'users#create'
 
   get '/homepage', to: 'users#homepage'
