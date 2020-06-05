@@ -2,7 +2,7 @@
 
 <h4>Sign up via E-mail</h4>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, url: signup_path) do |f| %>
   <p><%= f.label :username %>
   <%= f.text_field :username %></p>
 
