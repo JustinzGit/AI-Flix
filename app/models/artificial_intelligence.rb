@@ -1,0 +1,3 @@
+class ArtificialIntelligence < ApplicationRecord
+
+end
