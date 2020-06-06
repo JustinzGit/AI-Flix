@@ -2,19 +2,19 @@ class ArtificialIntelligence < ApplicationRecord
   include AiUtilities
   require 'set'
 
-  def neighbors_for_actor(actor)
+  def self.neighbors_for_actor(actor)
     actor = Actor.find(actor)
     neighbors = Set.new
 
     actor.movies.each do |movie|
       movie.actors.each do |actor|
-        neighbors.add(actor)
+        neighbors.add([movie, actor])
       end
     end
     neighbors
   end
 
-  def shortest_path(source, target)
+  def self.shortest_path(source, target)
 
     # Define the first node
     root_node = Node.new(source, nil, nil)
@@ -43,12 +43,12 @@ class ArtificialIntelligence < ApplicationRecord
       node = fronteir.remove
 
       # Check if node neighbors contain target
-      neighbors = neighbors_for_actor(node.state)
-      neighbors.each do |actor|
+      neighbors = self.neighbors_for_actor(node.state.id)
+      neighbors.each do |movie, actor|
 
         # If actor is not in explored set or fronteir
         if !explored.include?(actor) && !fronteir.contains_state(actor)
-          child = Node.new(actor, node, actor.movie)
+          child = Node.new(actor, node, movie)
 
           # Check if child node is goal
           if child.state == target
@@ -59,8 +59,7 @@ class ArtificialIntelligence < ApplicationRecord
               path.append(movie, actor)
               child = child.parent
             end
-            path.reverse
-            return path
+            return path.reverse
           end
 
           # Add actor to explored set
