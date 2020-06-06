@@ -1,6 +1,11 @@
 class PlaylistsController < ApplicationController
+  
+  def generate
+  end
 
   def new
-    @actor = Actor.all
+  end
+
+  def create
   end
 end
