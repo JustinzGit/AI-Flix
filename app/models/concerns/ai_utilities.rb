@@ -10,25 +10,27 @@ module AiUtilities
   end
 
   class QueueFronteir
-    @@fronteir = []
+    def initialize()
+      @fronteir = []
+    end
 
     def add(node)
-      @@fronteir << node
+      @fronteir << node
     end
 
     def contains_state(state)
-      @@fronteir.any? {|node| node.state == state}
+      @fronteir.any? {|node| node.state == state}
     end
 
     def empty?
-      @@fronteir.empty?
+      @fronteir.empty?
     end
 
     def remove
       if self.empty?
         raise IndexError, "Empty Fronteir"
       else
-        node = @@fronteir.shift
+        node = @fronteir.shift
         return node
       end
     end
