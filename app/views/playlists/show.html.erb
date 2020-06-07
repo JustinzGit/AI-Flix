@@ -1,0 +1,11 @@
+<h3><%= @playlist.name %></h3>
+
+<h3>Movies:</h3>
+<% @playlist.movies.each do |m| %>
+  <p><%= m.title %></p>
+<% end %>
+
+<h3>Actors:</h3>
+<% @playlist.actors.each do |a| %>
+  <p><%= a.name %></p>
+<% end %>
