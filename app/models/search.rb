@@ -70,6 +70,7 @@ class Search < ApplicationRecord
               path[:actors].unshift(child.state)
               child = child.parent
             end
+            path[:actors].unshift(source)
             return path
           end
 
