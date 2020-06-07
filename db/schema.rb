@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 2020_06_07_201545) do
   end
 
   create_table "playlist_actors_tables", force: :cascade do |t|
+    t.integer "playlist_id"
     t.integer "actor_id"
-    t.integer "movie_id"
   end
 
   create_table "playlist_movies_tables", force: :cascade do |t|
-    t.integer "actor_id"
+    t.integer "playlist_id"
     t.integer "movie_id"
   end
 
