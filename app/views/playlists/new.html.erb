@@ -1,0 +1,12 @@
+<h3>Generate Movie Playlist</h3>
+<p>Choose Two Actors</p>
+
+<%= form_tag playlists_path do %>
+  <p><%= label_tag "Actor 1" %>
+  <%= collection_select nil, :actor_1, Actor.all.order(:name), :id, :name %></p>
+
+  <p><%= label_tag "Actor 2" %>
+  <%= collection_select nil, :actor_2, Actor.all.order(:name), :id, :name %></p>
+
+  <%= submit_tag "Generate Playlist" %>
+<% end %>

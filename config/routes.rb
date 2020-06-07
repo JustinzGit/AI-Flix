@@ -17,5 +17,4 @@ Rails.application.routes.draw do
 
   # Playlist Routes
   resources :playlists, only: [:new, :create]
-  get '/generate', to: 'playlists#generate', as: 'generate'
 end
