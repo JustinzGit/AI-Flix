@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_192208) do
+ActiveRecord::Schema.define(version: 2020_06_07_165327) do
 
   create_table "actors", force: :cascade do |t|
     t.integer "IMBD_ID"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_06_04_192208) do
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
