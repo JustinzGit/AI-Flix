@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_165327) do
+ActiveRecord::Schema.define(version: 2020_06_07_201545) do
 
   create_table "actors", force: :cascade do |t|
     t.integer "IMBD_ID"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2020_06_07_165327) do
     t.string "year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "playlist_actors_tables", force: :cascade do |t|
+    t.integer "actor_id"
+    t.integer "movie_id"
+  end
+
+  create_table "playlist_movies_tables", force: :cascade do |t|
+    t.integer "actor_id"
+    t.integer "movie_id"
   end
 
   create_table "playlists", force: :cascade do |t|
