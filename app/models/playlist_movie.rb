@@ -1,4 +1,4 @@
 class PlaylistMovie < ApplicationRecord
-  belongs_to :actor
+  belongs_to :playlist
   belongs_to :movie
 end
