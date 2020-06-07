@@ -1,5 +1,5 @@
 class Search < ApplicationRecord
-  include AiUtilities
+  include SearchUtilities
   require 'set'
 
   def self.neighbors_for_actor(actor)
