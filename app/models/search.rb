@@ -8,7 +8,7 @@ class Search < ApplicationRecord
 
     actor.movies.each do |movie|
       movie.actors.each do |actor|
-        neighbors.add([movie, actor])
+        neighbors.add([actor, movie])
       end
     end
     neighbors
@@ -55,7 +55,7 @@ class Search < ApplicationRecord
 
       # Check if node neighbors contain target
       neighbors = self.neighbors_for_actor(node.state.id)
-      neighbors.each do |movie, actor|
+      neighbors.each do |actor, movie|
 
         # If actor is not in explored set or fronteir
         if !explored.include?(actor) && !fronteir.contains_state(actor)
@@ -63,14 +63,14 @@ class Search < ApplicationRecord
 
           # Check if child node is goal
           if child.state == target
-            path = []
+            path = {movies: [], actors: []}
+
             while child.parent
-              movie = child.action
-              actor = child.state
-              path.append([movie, actor])
+              path[:movies].unshift(child.action)
+              path[:actors].unshift(child.state)
               child = child.parent
             end
-            return self.organize_path(source, path)
+            return path
           end
 
           # Add actor to explored set
