@@ -28,7 +28,7 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    @playlist = Playlist.find(params[:id])
+    @playlist = Playlist.find(params[:id]).where(user_id: session[:user_id])
   end
 
   def destroy
