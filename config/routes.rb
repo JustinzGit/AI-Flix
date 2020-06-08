@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   resources :actors, only: [:index]
 
   # Movie Routes
-  resources :movies, only: [:index]
+  resources :movies, only: [:index, :show]
 end
