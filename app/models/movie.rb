@@ -6,4 +6,11 @@ class Movie < ApplicationRecord
   has_many :playlists, through: :playlist_movies
 
   self.primary_key = "IMBD_ID"
+
+  def self.get_movie_id(movie_title)
+    api_key = ENV['tmdb_api_key']
+    response = Faraday.get "https://api.themoviedb.org/3/search/movie?api_key=#{api_key}&language=en-US&query=#{movie_title}"
+    response = JSON.parse response.body
+    response['results'].empty? ? nil : response['results'][0]['id']
+  end
 end
