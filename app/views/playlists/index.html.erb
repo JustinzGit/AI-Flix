@@ -1,0 +1,4 @@
+<h3>Users Playlists</h3>
+<% @playlists.each do |p| %>
+  <p><%= link_to p.name, playlist_path(p) %></p>
+<% end %>
