@@ -30,4 +30,9 @@ class PlaylistsController < ApplicationController
   def show
     @playlist = Playlist.find(params[:id])
   end
+
+  def destroy
+    Playlist.find(params[:id]).destroy
+    redirect_to playlists_path
+  end
 end
