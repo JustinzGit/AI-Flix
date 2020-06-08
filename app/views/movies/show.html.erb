@@ -1,0 +1,12 @@
+<h3><%= @movie[:title] %></h3>
+<p><%= @movie[:tagline] %></p>
+
+<%= image_tag "https://image.tmdb.org/t/p/w300/#{@movie[:image]}" %>
+
+<p><%= @movie[:overview] %></p>
+
+<p>Movie Facts:</p>
+<p>Released On: <%= @movie[:release_date] %></p>
+<p>Movie Budget: <%= @movie[:budget] %></p>
+<p>Movie Profit: <%= @movie[:revenue] %></p>
+<p><%= link_to "Learn More", "https://imdb.com/title/#{@movie[:imdb_id]}", target: :_blank %></p>
