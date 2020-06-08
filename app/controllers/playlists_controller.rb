@@ -1,6 +1,6 @@
 class PlaylistsController < ApplicationController
   def index
-    @playlists = Playlist.all.where(user_id: session[:user_id])
+    @playlists = current_user.playlists
   end
 
   def new
@@ -28,11 +28,21 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    @playlist = Playlist.find(params[:id]).where(user_id: session[:user_id])
+    @playlist = Playlist.find(params[:id])
+    redirect_if_not_authorized(@playlist)
   end
 
   def destroy
     Playlist.find(params[:id]).destroy
     redirect_to playlists_path
+  end
+
+  private
+
+  def redirect_if_not_authorized(playlist)
+    if !current_user.playlists.include?(playlist)
+      flash[:alert] = "Playlist Not Found"
+      redirect_to playlists_path
+    end
   end
 end
