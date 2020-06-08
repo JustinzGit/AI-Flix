@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
   # Playlist Routes
-  resources :playlists, only: [:new, :create, :show]
+  resources :playlists, only: [:index, :new, :create, :show]
 end

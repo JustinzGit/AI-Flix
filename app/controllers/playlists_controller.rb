@@ -1,4 +1,7 @@
 class PlaylistsController < ApplicationController
+  def index
+    @playlists = Playlist.all.where(user_id: session[:user_id])
+  end
 
   def new
   end
