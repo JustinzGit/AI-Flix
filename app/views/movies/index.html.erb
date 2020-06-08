@@ -1,0 +1,5 @@
+<h3>All Movies in Database!</h3>
+<h3><%= @movies.count %> movies within this database!</h3>
+<% @movies.each do |m| %>
+  <p><%= m.title %></p>
+<% end %>
