@@ -19,6 +19,7 @@ class Movie < ApplicationRecord
     response = Faraday.get "https://api.themoviedb.org/3/movie/#{movie_id}?api_key=#{api_key}"
     response = JSON.parse response.body
     movie_data = {
+      title: response['title'],
       budget: response['budget'],
       revenue: response['revenue'],
       overview: response['overview'],
