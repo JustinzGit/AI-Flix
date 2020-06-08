@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:new]
+  skip_before_action :require_login, only: [:new, :create]
 
   # GET SignUp
   def new
@@ -8,9 +8,15 @@ class UsersController < ApplicationController
 
   # POST SignUp
   def create
-    @user = User.create(user_params)
-    session[:user_id] = @user.id
-    redirect_to homepage_path
+    @user = User.new(user_params)
+
+    if @user.invalid?
+      render :new
+    else
+      @user.save
+      session[:user_id] = @user.id
+      redirect_to homepage_path
+    end
   end
 
   def homepage
