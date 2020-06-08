@@ -14,17 +14,6 @@ class Search < ApplicationRecord
     neighbors
   end
 
-  def self.organize_path(source, path)
-    path.reverse
-    length = path.length
-    path.unshift([nil, source])
-    string = ""
-    length.times do |i|
-      string += "#{path[i][1].name} and #{path[i + 1][1].name} starred in #{path[i + 1][0].title} "
-    end
-    string
-  end
-
   def self.shortest_path(source, target)
 
     # Define the first node
