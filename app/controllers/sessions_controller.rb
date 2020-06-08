@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :redirect_home_if_logged_in
+  skip_before_action :redirect_home_if_logged_in, only: [:destroy]
+
   skip_before_action :require_login
 
   # GET Login
@@ -21,5 +24,11 @@ class SessionsController < ApplicationController
   def destroy
     session.clear
     redirect_to login_path
+  end
+
+  private
+
+  def redirect_home_if_logged_in
+    redirect_to homepage_path if !session[:user_id].nil?
   end
 end
