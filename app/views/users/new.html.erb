@@ -1,6 +1,15 @@
 <h3>Welcome to AI-Flix!</h3>
 
-<h4>Sign up via E-mail</h4>
+<h3>Sign up via E-mail</h3>
+
+<% if @user.errors.any? %>
+  <h2>Error!!</h2>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
 
 <%= form_for(@user, url: signup_path) do |f| %>
   <p><%= f.label :username %>
