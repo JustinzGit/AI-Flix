@@ -14,9 +14,23 @@ class Movie < ApplicationRecord
     response['results'].empty? ? nil : response['results'][0]['id']
   end
 
-  def self.get_movie_details(movie_id)
+  def self.get_movie_data(movie_id)
     api_key = ENV['tmdb_api_key']
     response = Faraday.get "https://api.themoviedb.org/3/movie/#{movie_id}?api_key=#{api_key}"
     response = JSON.parse response.body
+    movie_data = {
+      budget: response['budget'],
+      revenue: response['revenue'],
+      overview: response['overview'],
+      image: response['poster_path'],
+      release_date: response['release_date'],
+      tagline: response['tagline'],
+      imdb_id: response['imdb_id']
+    }
+  end
+
+  def self.get_movie(movie_title)
+    movie_id = self.get_movie_id(movie_title)
+    movie_id.nil? ? nil : self.get_movie_data(movie_id)
   end
 end
