@@ -1,4 +1,5 @@
 <h3><%= @playlist.name %></h3>
 <p><%= organize_path(@playlist) %></p>
+<p><%= button_to "Delete Playlist", playlist_path(@playlist), method: :delete %></p>
 <p><%= link_to "View Playlists", playlists_path %></p>
 <p><%= link_to "Home", homepage_path %></p>
