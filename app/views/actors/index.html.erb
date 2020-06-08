@@ -1,0 +1,5 @@
+<h3>All Actors in Database!</h3>
+<h3><%= @actors.count %> actors within this database!</h3>
+<% @actors.each do |a| %>
+  <p><%= a.name %></p>
+<% end %>
