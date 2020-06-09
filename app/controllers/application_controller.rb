@@ -1,9 +1,7 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
+  
   before_action :require_login
-
-  def current_user
-    User.find(session[:user_id])
-  end
 
   def require_login
     if session[:user_id].nil?
