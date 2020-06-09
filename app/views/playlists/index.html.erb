@@ -1,7 +1,0 @@
-<h3>Your Playlists</h3>
-
-<% @playlists.each.with_index(1) do |p, i| %>
-  <p><%= "#{i}. " %><%= link_to p.name, playlist_path(p) %></p>
-<% end %>
-
-<%= link_to "New Playlist", new_playlist_path %>
