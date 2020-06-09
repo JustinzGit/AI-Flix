@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :playlists, only: [:index, :new, :create, :show, :destroy]
 
   # Actor Routes
-  resources :actors, only: [:index]
+  resources :actors, only: [:index, :show]
 
   # Movie Routes
   resources :movies, only: [:index, :show]
