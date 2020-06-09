@@ -5,8 +5,8 @@
 
 <div class="list">
   <h3 id="list_title"><%= @user.username %>'s Playlists</h3>
-  <p><%= link_to "Create New Playlist", new_playlist_path %></p>
   <% @user.playlists.each.with_index(1) do |p, i| %>
     <p><%= "#{i}. " %><%= link_to p.name, playlist_path(p) %></p>
   <% end %>
+  <p><%= link_to "Create New Playlist", new_playlist_path %></p>
 </div>
