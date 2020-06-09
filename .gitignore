@@ -6,6 +6,7 @@
 
 # Ignore CSV files
 /small
+/large
 
 # Ignore my CHANGELOG.md
 /CHANGELOG.md
