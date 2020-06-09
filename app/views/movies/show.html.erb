@@ -1,19 +1,28 @@
-<h3><%= @movie[:title] %></h3>
-<p><%= @movie[:tagline] %></p>
+<div class="title">
+  <h3><%= @movie[:title] %></h3>
+</div>
 
-<%= image_tag "https://image.tmdb.org/t/p/w300/#{@movie[:image]}" %>
+<p id="tagline"><%= @movie[:tagline] %></p>
 
-<p><%= @movie[:overview] %></p>
+<div class="image">
+  <%= image_tag "https://image.tmdb.org/t/p/w300/#{@movie[:image]}" %>
+</div>
 
-<h3>Movie Facts:</h3>
-<p>Released On: <%= format_date(@movie[:release_date]) %></p>
-<p>Movie Budget: <%= number_to_currency(@movie[:budget]) %></p>
-<p>Movie Profit: <%= number_to_currency(@movie[:revenue]) %></p>
+<div class="data">
+  <h3>Movie Facts</h3>
+  <p><b>Released On:</b> <%= format_date(@movie[:release_date]) %></p>
+  <p><b>Movie Budget:</b> <%= number_to_currency(@movie[:budget]) %></p>
+  <p><b>Movie Profit:</b> <%= number_to_currency(@movie[:revenue]) %></p>
 
-<h3>Actors</h3>
-<ul>
-  <% @actors.each do |a| %>
-    <li><%= link_to a.name, actor_path(a) %></li>
-  <% end %>
-</ul>
-<p><%= link_to "Learn More", "https://imdb.com/title/#{@movie[:imdb_id]}", target: :_blank %></p>
+  <h3>Overview</h3>
+  <p id="main_paragraph"><%= @movie[:overview] %></p>
+</div>
+
+<div class="list">
+  <h3 id="list_title">Actors</h3>
+    <% @actors.each do |a| %>
+      <p><%= link_to a.name, actor_path(a) %></p>
+    <% end %>
+  <h3 id="list_title">Learn More</h3>
+  <p><%= link_to "IMDB Profile", "https://imdb.com/title/#{@movie[:imdb_id]}", target: :_blank %></p>
+</div>

@@ -90,8 +90,14 @@ a {
   font-family: 'PT Sans', sans-serif;
 }
 
-.data p {
+#main_paragraph {
   text-align: justify;
   margin-left: 10%;
   margin-right: 10%;
+}
+
+#tagline {
+  text-align: center;
+  font-style: italic;
+  font-size: 25px;
 }
