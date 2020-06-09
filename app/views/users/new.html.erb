@@ -18,7 +18,7 @@
     <p><%= f.submit "Sign Up" %></p>
   <% end %>
 
-  <p><%= link_to "Log In", login_path %></p>
+  <p>Have an Account? <%= link_to "Log In", login_path %></p>
 
   <% if @user.errors.any? %>
     <h2>Error!!</h2>
