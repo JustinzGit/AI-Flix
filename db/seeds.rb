@@ -3,9 +3,9 @@
 
 require 'csv'
 
-actors = CSV.parse(File.read("small/actors.csv"), headers: true)
-movies = CSV.parse(File.read("small/movies.csv"), headers: true)
-movie_actors = CSV.parse(File.read("small/movie_actors.csv"), headers: true)
+actors = CSV.parse(File.read("large/actors.csv"), headers: true)
+movies = CSV.parse(File.read("large/movies.csv"), headers: true)
+movie_actors = CSV.parse(File.read("large/movie_actors.csv"), headers: true)
 
 actors.each do |a|
   Actor.create(IMBD_ID: a["id"].to_i, name: a["name"], birth: a["birth"])
