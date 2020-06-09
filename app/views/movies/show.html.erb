@@ -22,7 +22,7 @@
   <h3 id="list_title">Actors</h3>
     <% @actors.each do |a| %>
       <p><%= link_to a.name, actor_path(a) %></p>
-    <% end %>
+    <% end %><br>
   <h3 id="list_title">Learn More</h3>
   <p><%= link_to "IMDB Profile", "https://imdb.com/title/#{@movie[:imdb_id]}", target: :_blank %></p>
 </div>
