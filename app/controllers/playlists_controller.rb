@@ -15,7 +15,7 @@ class PlaylistsController < ApplicationController
     path = Search.shortest_path(actor_1, actor_2)
 
     if path.nil?
-      flash[:alert] = "Actors Can Not Be Connected"
+      flash[:alert] = "{ Actors Can Not Be Connected }"
       redirect_to new_playlist_path
     else
       @playlist = Playlist.new(name: name, user_id: session[:user_id])
