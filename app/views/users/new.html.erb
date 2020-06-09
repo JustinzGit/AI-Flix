@@ -1,28 +1,30 @@
-<h3>Welcome to AI-Flix!</h3>
+<div class="data">
+  <h3>Welcome to AI-Flix!</h3>
+  <h3>Sign up via E-mail</h3>
 
-<h3>Sign up via E-mail</h3>
+  <%= form_for(@user, url: signup_path) do |f| %>
+    <p><%= f.label :username %><br>
+    <%= f.text_field :username %></p>
 
-<% if @user.errors.any? %>
-  <h2>Error!!</h2>
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+    <p><%= f.label :email, "E-mail" %><br>
+    <%= f.text_field :email %></p>
+
+    <p><%= f.label :password %><br>
+    <%= f.password_field :password %></p>
+
+    <p><%= f.label :password_confirmation, "Confirm Password" %><br>
+    <%= f.password_field :password_confirmation %></p>
+
+    <p><%= f.submit "Sign Up" %></p>
   <% end %>
 
-<%= form_for(@user, url: signup_path) do |f| %>
-  <p><%= f.label :username %>
-  <%= f.text_field :username %></p>
+  <p><%= link_to "Log In", login_path %></p>
 
-  <p><%= f.label :email, "E-mail" %>
-  <%= f.text_field :email %></p>
+  <% if @user.errors.any? %>
+    <h2>Error!!</h2>
+      <% @user.errors.full_messages.each do |message| %>
+        <p><b><%= message %></b></p>
+      <% end %>
+    <% end %>
 
-  <p><%= f.label :password %>
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation, "Confirm Password" %>
-  <%= f.password_field :password_confirmation %></p>
-
-  <%= f.submit "Sign Up" %>
-<% end %>
+</div>

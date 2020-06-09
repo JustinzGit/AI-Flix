@@ -1,14 +1,16 @@
-<h3>LogIn to AI-Flix</h3>
+<div class="data">
+  <h3>LogIn to AI-Flix</h3>
 
-<%= form_for(:user, url: login_path) do |f| %>
-  <p><%= f.label :username %>
-  <%= f.text_field :username %></p>
+  <%= form_for(:user, url: login_path) do |f| %>
+    <p><%= f.label :username %><br>
+    <%= f.text_field :username %></p>
 
-  <p><%= f.label :password %>
-  <%= f.password_field :password %></p>
+    <p><%= f.label :password %><br>
+    <%= f.password_field :password %></p>
 
-  <%= f.submit "Log In" %>
-<% end %>
+    <%= f.submit "Log In" %>
+  <% end %>
 
-<p>Don't have an account?</p>
-<%= link_to "Sign Up", signup_path %>
+  <p>Don't have an account?
+  <%= link_to "Sign Up", signup_path %></p>
+</div>
