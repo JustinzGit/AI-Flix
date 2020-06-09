@@ -1,0 +1,74 @@
+body {
+    /* Red background */
+    background-color: #e50914;
+
+    /* Browser defines the margins */
+    margin: auto;
+
+    /* So content doesn't touch browser edges */
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+    /* Defines dimensions of content */
+    width: 70%;
+    height: 70%;
+}
+
+/* Refers to division created around content */
+div.content {
+
+    /* Creates a border around content */
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+
+    /* White background */
+    background-color: white;
+
+}
+
+div.navbar {
+  text-align: center;
+}
+
+div.navbar a {
+  color: black;
+  font-family: impact;
+  font-size: 20px;
+}
+
+#main_title {
+  text-align: center;
+  font-family: impact;
+  color: White;
+  font-size: 50px;
+}
+
+a {
+  color: maroon;
+  font-size: 18px;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+}
+
+.header {
+  color: maroon;
+  font-family: 'PT Sans', sans-serif;
+  text-align: center;
+}
+
+#list_title {
+  color: black;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+.list {
+  margin-top: 50px;
+  text-align: center;
+
+  color: maroon;
+  font-size: 18px;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+}

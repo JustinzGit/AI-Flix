@@ -1,5 +1,10 @@
-<h3>All Movies in Database!</h3>
-<h3><%= @movies.count %> movies within this database!</h3>
-<% @movies.each do |m| %>
-  <p><%= link_to m.title, movie_path(m) %></p>
-<% end %>
+<div class="header">
+  <h3>Movies in Database: <%= @movies.count %></h3>
+</div>
+
+<div class="list">
+  <h3 id="list_title">Movies</h3>
+  <% @movies.each do |m| %>
+    <p><%= link_to m.title, movie_path(m) %></p>
+  <% end %>
+</div>

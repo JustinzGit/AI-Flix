@@ -4,23 +4,28 @@
     <title>AI-Flix</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'stylesheet.css', media: 'all' %>
   </head>
 
   <body>
-    <% if logged_in? %>
-      <div class="navbar">
-        <%= link_to "Home", homepage_path %>
-        <%= link_to "Actors", actors_path %>
-        <%= link_to "Movies", movies_path %>
-        <%= link_to "Log Out", logout_path %>
-      </div>
-    <% end %>
+    <h1 id="main_title">AI-FLIX</h1>
 
     <% if flash[:alert] %>
       <div class="alert"><%= flash[:alert] %></div>
     <% end %>
 
-    <%= yield %>
+    <div class="content">
+      <% if logged_in? %>
+        <div class="navbar">
+          <%= link_to "Home", homepage_path %>
+          <%= link_to "Actors", actors_path %>
+          <%= link_to "Movies", movies_path %>
+          <%= link_to "Log Out", logout_path %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+
+    </div>
   </body>
 </html>

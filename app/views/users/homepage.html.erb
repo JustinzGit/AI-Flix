@@ -1,9 +1,12 @@
-<h3>Welcome, <%= @user.username %></h3>
-<p>E-mail: <%= @user.email %></p>
+<div class="header">
+  <h3>Welcome, <%= @user.username %></h3>
+  <h3>E-mail: <%= @user.email %></h3>
+</div>
 
-<h3>Your Playlists</h3>
-<% @user.playlists.each.with_index(1) do |p, i| %>
-  <p><%= "#{i}. " %><%= link_to p.name, playlist_path(p) %></p>
-<% end %>
-
-<%= link_to "New Playlist", new_playlist_path %>
+<div class="list">
+  <h3 id="list_title"><%= @user.username %>'s Playlists</h3>
+  <p><%= link_to "Create New Playlist", new_playlist_path %></p>
+  <% @user.playlists.each.with_index(1) do |p, i| %>
+    <p><%= "#{i}. " %><%= link_to p.name, playlist_path(p) %></p>
+  <% end %>
+</div>

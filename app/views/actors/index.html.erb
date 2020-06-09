@@ -1,5 +1,10 @@
-<h3>All Actors in Database!</h3>
-<h3><%= @actors.count %> actors within this database!</h3>
-<% @actors.each do |a| %>
-  <p><%= link_to a.name, actor_path(a) %></p>
-<% end %>
+<div class="header">
+  <h3>Actors in Database: <%= @actors.count %></h3>
+</div>
+
+<div class="list">
+  <h3 id="list_title">Actors</h3>
+  <% @actors.each do |a| %>
+    <p><%= link_to a.name, actor_path(a) %></p>
+  <% end %>
+</div>
