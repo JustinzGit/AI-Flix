@@ -14,14 +14,19 @@ class PlaylistsController < ApplicationController
     # Generate playlist of movies that link the two actors
     path = Search.shortest_path(actor_1, actor_2)
 
-    @playlist = Playlist.new(name: name, user_id: session[:user_id])
+    if path.nil?
+      flash[:alert] = "Actors Can Not Be Connected"
+      redirect_to new_playlist_path
+    else
+      @playlist = Playlist.new(name: name, user_id: session[:user_id])
 
-    # Store results from algorithm to playlist
-    @playlist.movies << path[:movies]
-    @playlist.actors << path[:actors]
-    @playlist.save
+      # Store results from algorithm to playlist
+      @playlist.movies << path[:movies]
+      @playlist.actors << path[:actors]
+      @playlist.save
 
-    redirect_to playlist_path(@playlist)
+      redirect_to playlist_path(@playlist)
+    end
   end
 
   def show
