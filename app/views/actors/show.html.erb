@@ -9,4 +9,11 @@
 
 <h3>Biography</h3>
 <p><%= @actor[:biography] %></p>
+
+<h3>Movies</h3>
+<ul>
+  <% @movies.each do |m| %>
+    <li><%= link_to m.title, movie_path(m) %></li>
+  <% end %>
+</ul>
 <p><%= link_to "Learn More", "https://imdb.com/name/#{@actor[:imdb_id]}", target: :_blank %></p>
