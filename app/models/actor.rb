@@ -9,7 +9,7 @@ class Actor < ApplicationRecord
 
   def self.get_actor_id(actor)
     api_key = ENV['tmdb_api_key']
-    response = Faraday.get "https://api.themoviedb.org/3/search/person?api_key=#{api_key}&language=en-US&query=#{actor.name}"
+    response = Faraday.get "https://api.themoviedb.org/3/search/person?api_key=#{api_key}&language=en-US&query=#{actor}"
     response = JSON.parse response.body
     response['results'].empty? ? nil : response['results'][0]['id']
   end
@@ -19,10 +19,11 @@ class Actor < ApplicationRecord
     response = Faraday.get "https://api.themoviedb.org/3/person/#{actor_id}?api_key=#{api_key}&language=en-US"
     response = JSON.parse response.body
     actor_data = {
+      name: response['name'],
       birthday: response['birthday'],
       deathday: response['deathday'],
       biography: response['biography'],
-      brithplace: response['place_of_birth'],
+      birthplace: response['place_of_birth'],
       image: response['profile_path'],
       imdb_id: response['imdb_id']
     }
