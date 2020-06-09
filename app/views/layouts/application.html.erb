@@ -10,10 +10,6 @@
   <body>
     <h1 id="main_title">AI-FLIX</h1>
 
-    <% if flash[:alert] %>
-      <div class="alert"><%= flash[:alert] %></div>
-    <% end %>
-
     <div class="content">
       <% if logged_in? %>
         <div class="navbar">
@@ -22,6 +18,11 @@
           <%= link_to "Movies", movies_path %>
           <%= link_to "Log Out", logout_path %>
         </div>
+
+        <% if flash[:alert] %>
+          <div class="alert"><%= flash[:alert] %></div>
+        <% end %>
+        
       <% end %>
 
       <%= yield %>
