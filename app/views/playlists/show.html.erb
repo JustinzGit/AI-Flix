@@ -1,5 +1,23 @@
 <h3><%= @playlist.name %></h3>
+
+<h4>AI-Flix Found This Path</h4>
 <p><%= organize_path(@playlist) %></p>
+
+<h4>Movies To Watch</h4>
+<ul>
+  <% @playlist.movies.each do |m| %>
+    <li><%= link_to m.title, movie_path(m), target: :_blank %></li>
+  <% end %>
+</ul>
+
+<h4>Actors in Path</h4>
+<ul>
+  <% @playlist.actors.each do |a| %>
+    <li><%= link_to a.name, actor_path(a), target: :_blank %></li>
+  <% end %>
+</ul>
+
+
 <p><%= button_to "Delete Playlist", playlist_path(@playlist), method: :delete %></p>
-<p><%= link_to "View Playlists", playlists_path %></p>
+<p><%= link_to "My Playlists", playlists_path %></p>
 <p><%= link_to "Home", homepage_path %></p>
