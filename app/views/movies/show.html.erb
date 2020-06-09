@@ -6,7 +6,7 @@
 <p><%= @movie[:overview] %></p>
 
 <p>Movie Facts:</p>
-<p>Released On: <%= @movie[:release_date] %></p>
-<p>Movie Budget: <%= @movie[:budget] %></p>
-<p>Movie Profit: <%= @movie[:revenue] %></p>
+<p>Released On: <%= format_date(@movie[:release_date]) %></p>
+<p>Movie Budget: <%= number_to_currency(@movie[:budget]) %></p>
+<p>Movie Profit: <%= number_to_currency(@movie[:revenue]) %></p>
 <p><%= link_to "Learn More", "https://imdb.com/title/#{@movie[:imdb_id]}", target: :_blank %></p>
