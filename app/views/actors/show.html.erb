@@ -2,7 +2,7 @@
 
 <%= image_tag "https://image.tmdb.org/t/p/w300/#{@actor[:image]}" %>
 
-<p>Birth Date: <%= @actor[:birthday] %></p>
+<p>Birth Date: <%= format_date(@actor[:birthday]) %></p>
 <p>Birth Place: <%= @actor[:birthplace] %></p>
 <p>Death Date: <%= @actor[:deathday].nil? ? "Still Living" : @actor[:deathday] %></p>
 
