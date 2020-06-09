@@ -5,8 +5,15 @@
 
 <p><%= @movie[:overview] %></p>
 
-<p>Movie Facts:</p>
+<h3>Movie Facts:</h3>
 <p>Released On: <%= format_date(@movie[:release_date]) %></p>
 <p>Movie Budget: <%= number_to_currency(@movie[:budget]) %></p>
 <p>Movie Profit: <%= number_to_currency(@movie[:revenue]) %></p>
+
+<h3>Actors</h3>
+<ul>
+  <% @actors.each do |a| %>
+    <li><%= link_to a.name, actor_path(a) %></li>
+  <% end %>
+</ul>
 <p><%= link_to "Learn More", "https://imdb.com/title/#{@movie[:imdb_id]}", target: :_blank %></p>
