@@ -72,3 +72,26 @@ a {
   font-family: 'PT Sans', sans-serif;
   font-weight: bold;
 }
+
+.title {
+  text-align: center;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.image {
+  text-align: center;
+}
+
+.data {
+  text-align: center;
+  font-size: 20px;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.data p {
+  text-align: justify;
+  margin-left: 10%;
+  margin-right: 10%;
+}
