@@ -16,6 +16,7 @@
 
 <div class="list">
   <% if @movies %>
+    <h3 id="list_title">We found <%= @movies.count %> Movies</h3>
     <% @movies.each do |m| %>
       <p><%= link_to "#{m.title} - #{m.year}", movie_path(m) %></p>
     <% end %>
