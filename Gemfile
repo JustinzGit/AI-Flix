@@ -9,6 +9,7 @@ gem 'figaro'
 gem 'faraday'
 gem 'activerecord-import'
 gem 'will_paginate', '~> 3.1.0'
+gem 'pry'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
