@@ -34,4 +34,8 @@ class Movie < ApplicationRecord
     movie_id = self.get_movie_id(movie_title)
     movie_id.nil? ? nil : self.get_movie_data(movie_id)
   end
+
+  def self.begins_with(char)
+    where("title LIKE 'a%'")
+  end
 end
