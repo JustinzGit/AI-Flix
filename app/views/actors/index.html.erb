@@ -1,10 +1,26 @@
-<div class="header">
-  <h3>Actors in Database: <%= @actors.count %></h3>
+<!-- Search Form -->
+<div class="data">
+  <h3>AI-Flix contains 1,044,499 Actors</h3>
+  <h3>Search Actor by Name or Birth Year</h3>
+  <%= form_tag actors_path, :method => "GET" do %>
+
+    <p><%= label_tag :search, "Actor Name" %><br>
+    <%= text_field_tag :search, params[:search] %></p>
+
+    <p><%= label_tag :year, "Birth Year" %><br>
+    <%= select_year 0, start_year: 1970, end_year: 2115, prompt: "Select Year" %></p>
+
+    <p><%= submit_tag "Search" %></p>
+  <% end %>
 </div>
 
 <div class="list">
-  <h3 id="list_title">Actors</h3>
-  <% @actors.each do |a| %>
-    <p><%= link_to a.name, actor_path(a) %></p>
+  <% if @actors %>
+    <h3 id="list_title">We found <%= @actors.count %> Actors</h3>
+    <% @actors.each do |a| %>
+      <p><%= link_to "#{a.name} - Born: #{a.birth}", actor_path(a) %></p>
+    <% end %>
+
+    <%= will_paginate @actors %>
   <% end %>
 </div>
