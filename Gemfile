@@ -7,6 +7,7 @@ gem 'sassc', '~> 2.1.0'
 gem 'bcrypt'
 gem 'figaro'
 gem 'faraday'
+gem 'activerecord-import'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
