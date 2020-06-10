@@ -33,4 +33,12 @@ class Actor < ApplicationRecord
     actor_id = self.get_actor_id(actor)
     self.get_actor_data(actor_id)
   end
+
+  def self.find_by_name(name)
+    where("name LIKE (?)", "%#{name}%")
+  end
+
+  def self.find_by_birth_year(year)
+    where("year == (?)", year)
+  end
 end
