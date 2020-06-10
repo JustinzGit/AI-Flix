@@ -3,18 +3,21 @@
 
 require 'csv'
 
-actors = CSV.parse(File.read("large/actors.csv"), headers: true)
-movies = CSV.parse(File.read("large/movies.csv"), headers: true)
-movie_actors = CSV.parse(File.read("large/movie_actors.csv"), headers: true)
+actors = CSV.parse(File.read("large/actors.csv"))
+columns = actors.shift
+columns[0] = "IMBD_ID"
+columns.map! &:to_sym
+Actor.import columns, actors
 
-actors.each do |a|
-  Actor.create(IMBD_ID: a["id"].to_i, name: a["name"], birth: a["birth"])
-end
+movies = CSV.parse(File.read("large/movies.csv"))
+columns = movies.shift
+columns[0] = "IMBD_ID"
+columns.map! &:to_sym
+Movie.import columns, movies
 
-movies.each do |m|
-  Movie.create(IMBD_ID: m["id"].to_i, title: m["title"], year: m["title"])
-end
-
-movie_actors.each do |ma|
-  MovieActor.create(actor_id: ma["person_id"].to_i, movie_id: ma["movie_id"].to_i)
-end
+movie_actors = CSV.parse(File.read("large/movie_actors.csv"))
+columns = movie_actors.shift
+columns[0] = "actor_id"
+columns[1] = "movie_id"
+columns.map! &:to_sym
+MovieActor.import columns, movie_actors
