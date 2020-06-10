@@ -36,6 +36,6 @@ class Movie < ApplicationRecord
   end
 
   def self.begins_with(char)
-    where("title LIKE 'a%'")
+    where("title LIKE (?)", "#{char}%")
   end
 end
