@@ -1,10 +1,25 @@
-<div class="header">
-  <h3>Movies in Database: <%= @movies.count %></h3>
+<!-- Search Form -->
+<div class="data">
+  <h3>AI-Flix contains 344,276 Movies</h3>
+  <h3>Search Movie by Name or Year Released</h3>
+  <%= form_tag movies_path, :method => "GET" do %>
+
+    <p><%= label_tag :search, "Movie Begins With" %><br>
+    <%= text_field_tag :search, params[:search] %></p>
+
+    <p><%= label_tag :year, "Year Released" %><br>
+    <%= select_year 0, start_year: 1970, end_year: 2115, prompt: "Select Year" %></p>
+
+    <p><%= submit_tag "Search" %></p>
+  <% end %>
 </div>
 
 <div class="list">
-  <h3 id="list_title">Movies</h3>
-  <% @movies.each do |m| %>
-    <p><%= link_to m.title, movie_path(m) %></p>
+  <% if @movies %>
+    <% @movies.each do |m| %>
+      <p><%= link_to "#{m.title} - #{m.year}", movie_path(m) %></p>
+    <% end %>
+
+    <%= will_paginate @movies %>
   <% end %>
 </div>
