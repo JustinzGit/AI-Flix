@@ -38,4 +38,8 @@ class Movie < ApplicationRecord
   def self.begins_with(char)
     where("title LIKE (?)", "#{char}%")
   end
+
+  def self.released_in(year)
+    where("year == (?)", year)
+  end 
 end
