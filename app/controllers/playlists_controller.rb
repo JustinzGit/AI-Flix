@@ -35,8 +35,8 @@ class PlaylistsController < ApplicationController
 
   def create
     # Acquire actor names from playlist form
-    actor_1 = Actor.find(session[:actor_1])
-    actor_2 = Actor.find(session[:actor_2])
+    actor_1 = Actor.find(session[:actor_1]['id'])
+    actor_2 = Actor.find(session[:actor_2]['id'])
 
     # Name playlist using actor names
     name = "#{actor_1.name} and #{actor_2.name} Playlist"
