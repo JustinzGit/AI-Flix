@@ -39,11 +39,11 @@ class Actor < ApplicationRecord
   end
 
   def self.find_by_birth_year(year)
-    where("year == (?)", year)
+    where("birth == (?)", year)
   end
 
   def self.find_actors(name, birth_year)
     actors = self.find_by_name(name)
-    actors = actors.where("year == (?)", birth_year)
+    actors = actors.where("birth == (?)", birth_year)
   end
 end
