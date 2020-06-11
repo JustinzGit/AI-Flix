@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   # Playlist Routes
   resources :playlists, only: [:new, :create, :show, :destroy]
 
+  get '/playlist/actor_1/:actor_1', to: 'playlists#actor_1', as: 'playlist_actor_1'
+  get '/playlist/actor_2/:actor_2', to: 'playlists#actor_2', as: 'playlist_actor_2'
+  get '/playlist/clear_actors', to: 'playlists#clear_actors', as: 'clear_actors'
+
   # Actor Routes
   resources :actors, only: [:index, :show]
 
