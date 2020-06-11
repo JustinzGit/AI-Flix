@@ -4,13 +4,33 @@
 
 <div class="data">
   <p>AI-Flix generates a movie playlist by finding the shortest path of movies that connect two actors.</p>
-  <%= form_tag playlists_path do %>
-    <p><b><%= label_tag "Actor 1:" %></b>
-    <%= collection_select nil, :actor_1, Actor.all.order(:name), :id, :name %></p>
+  <p><b>Actor 1: </b><%= actor_1_name%></p>
+  <p><b>Actor 2: </b><%= actor_2_name %></p>
+  <p><%= link_to "Clear Actors", clear_actors_path %></p>
 
-    <p><b><%= label_tag "Actor 2:" %></b>
-    <%= collection_select nil, :actor_2, Actor.all.order(:name), :id, :name %></p>
+  <% if actor_1_name && actor_2_name %>
+    <p><%= link_to "Generate Playlist", playlists_path %></p>
 
-    <p><%= submit_tag "Generate Playlist" %></p>
-  <% end %>
-</div>
+  <% else %>
+    <%= form_tag new_playlist_path, :method => "GET" do %>
+      <p><%= label_tag :search, "Actor Name" %><br>
+      <%= text_field_tag :search, params[:search] %></p>
+
+      <p><%= label_tag :year, "Year Born" %><br>
+      <%= select_year 0, start_year: 1970, end_year: 2115, prompt: "Select Year" %></p>
+
+      <p><%= submit_tag "Search" %></p>
+
+    <% end %>
+  </div>
+
+  <div class="list">
+    <% if @actors %>
+      <%  %>
+      <h3 id="list_title">We found <%= @actors.count %> Actors</h3>
+        <% @actors.each do |a| %>
+            <%= link_to "#{a.name} - Born: #{a.birth}", playlist_actor_link(a) %>
+        <% end %>
+    <% end %>
+  </div>
+<% end %>
