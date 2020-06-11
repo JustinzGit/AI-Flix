@@ -9,7 +9,7 @@
   <p><%= link_to "Clear Actors", clear_actors_path %></p>
 
   <% if actor_1_name && actor_2_name %>
-    <p><%= link_to "Generate Playlist", playlists_path %></p>
+    <p><%= button_to "Generate Playlist", playlists_path, method: :POST %></p>
 
   <% else %>
     <%= form_tag new_playlist_path, :method => "GET" do %>
