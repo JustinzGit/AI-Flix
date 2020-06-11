@@ -30,7 +30,7 @@ class Movie < ApplicationRecord
     }
   end
 
-  def self.get_movie(movie_title)
+  def self.get_tmdb_data(movie_title)
     movie_id = self.get_movie_id(movie_title)
     movie_id.nil? ? nil : self.get_movie_data(movie_id)
   end
@@ -41,5 +41,10 @@ class Movie < ApplicationRecord
 
   def self.released_in(year)
     where("year == (?)", year)
-  end 
+  end
+
+  def self.find_movie(title, year)
+    movies = self.begins_with(title)
+    movies = movies.where("year == (?)", year)
+  end
 end
