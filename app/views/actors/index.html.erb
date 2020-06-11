@@ -8,7 +8,7 @@
     <%= text_field_tag :search, params[:search] %></p>
 
     <p><%= label_tag :year, "Birth Year" %><br>
-    <%= select_year 0, start_year: 1970, end_year: 2115, prompt: "Select Year" %></p>
+    <%= select_year 0, start_year: 1800, end_year: 2020, prompt: "Select Year" %></p>
 
     <p><%= submit_tag "Search" %></p>
   <% end %>
