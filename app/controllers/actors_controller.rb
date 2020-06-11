@@ -1,13 +1,17 @@
 class ActorsController < ApplicationController
 
   def index
-    if params[:search] && !params[:search].empty?
-      @actors = Actor.find_by_name(params[:search]).paginate(page: params[:page], per_page: 20)
+    name = params[:search] if params[:search] && !params[:search].blank?
+    birth_year = params[:date][:year] if params[:date] && !params[:date][:year].blank?
+
+    if name
+      @actors = Actor.find_by_name(params[:search])
+
+    elsif birth_year
+      @actors = Actor.find_by_birth_year(params[:date][:year])
     end
 
-    if params[:date] && !params[:date][:year].empty?
-      @actors = Actor.find_by_birth_year(params[:date][:year]).paginate(page: params[:page], per_page: 20)
-    end
+    @actors = @actors.paginate(page: params[:page], per_page: 20) if @actors
   end
 
   def show
