@@ -41,4 +41,9 @@ class Actor < ApplicationRecord
   def self.find_by_birth_year(year)
     where("year == (?)", year)
   end
+
+  def self.find_actors(name, birth_year)
+    actors = self.find_by_name(name)
+    actors = actors.where("year == (?)", birth_year)
+  end
 end
