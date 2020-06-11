@@ -1,19 +1,25 @@
 class MoviesController < ApplicationController
 
   def index
-    if params[:search] && !params[:search].empty?
-      @movies = Movie.begins_with(params[:search]).paginate(page: params[:page], per_page: 20)
+    title = params[:search] if params[:search] && !params[:search].blank?
+    year = params[:date][:year] if params[:date] && !params[:date][:year].blank?
+
+    if title && year
+      @movies = Movie.find_movie(title, year)
+
+    elsif title
+      @movies = Movie.begins_with(title)
+
+    elsif year
+      @movies = Movie.released_in(year)
     end
 
-    if params[:date] && !params[:date][:year].empty?
-      @movies = Movie.released_in(params[:date][:year]).paginate(page: params[:page], per_page: 20)
-    end
-
+    @movies = @movies.paginate(page: params[:page], per_page: 20) if @movies
   end
 
   def show
     @movie = Movie.find(params[:id])
     @actors = @movie.actors
-    @movie = Movie.get_movie(@movie.title)
+    @movie = Movie.get_tmdb_data(@movie.title)
   end
 end
