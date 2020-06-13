@@ -2,18 +2,6 @@ class Search < ApplicationRecord
   include SearchUtilities
   require 'set'
 
-  def self.neighbors_for_actor(actor)
-    actor = Actor.find(actor)
-    neighbors = Set.new
-
-    actor.movies.each do |movie|
-      movie.actors.each do |actor|
-        neighbors.add([actor, movie])
-      end
-    end
-    neighbors
-  end
-
   def self.shortest_path(source, target)
 
     # Define the first node
@@ -43,11 +31,26 @@ class Search < ApplicationRecord
       node = fronteir.remove
 
       # Check if node neighbors contain target
-      neighbors = self.neighbors_for_actor(node.state.id)
+      # neighbors = self.neighbors_for_actor(node.state)
+
+      movies = Actor.find(node.state).movies.pluck(:IMBD_ID)
+      neighbors = Set.new
+
+      movies.each do |movie|
+        actors = MovieActor.where("movie_id == #{movie}").pluck(:actor_id)
+
+        actors.each do |actor|
+          if !explored.include?(actor) && !fronteir.contains_state(actor)
+            neighbors.add([actor, movie])
+          end
+        end
+      end
+
       neighbors.each do |actor, movie|
 
         # If actor is not in explored set or fronteir
         if !explored.include?(actor) && !fronteir.contains_state(actor)
+
           child = Node.new(actor, node, movie)
 
           # Check if child node is goal
@@ -55,11 +58,11 @@ class Search < ApplicationRecord
             path = {movies: [], actors: []}
 
             while child.parent
-              path[:movies].unshift(child.action)
-              path[:actors].unshift(child.state)
+              path[:movies].unshift(Movie.find(child.action))
+              path[:actors].unshift(Actor.find(child.state))
               child = child.parent
             end
-            path[:actors].unshift(source)
+            path[:actors].unshift(Actor.find(source))
             return path
           end
 
