@@ -46,16 +46,16 @@ class PathsController < ApplicationController
     name = "#{actor_1.name} and #{actor_2.name} Path"
 
     # Generate path of movies that link the two actors
-    path = Search.shortest_path(actor_1.id, actor_2.id)
+    shortest_path = Search.shortest_path(actor_1.id, actor_2.id)
 
-    if path.nil?
+    if shortest_path.nil?
       flash[:alert] = "{ Actors Can Not Be Connected }"
       redirect_to new_path_path
     else
       @path = Path.new(name: name, user_id: session[:user_id])
 
-      @path.movies << path[:movies]
-      @path.actors << path[:actors]
+      @path.movies << shortest_path[:movies]
+      @path.actors << shortest_path[:actors]
 
       @path.save
 
