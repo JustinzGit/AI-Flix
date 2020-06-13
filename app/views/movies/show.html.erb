@@ -49,5 +49,8 @@
     <%= hidden_field_tag "review[movie_id]", @movie.id %>
 
     <p><%= submit_tag "Submit Review" %></p>
-  <% end %>
+  <% end %><br>
+
+  <p>Add Movie to Playlist</p>
+  <p><%= link_to "Add to Playlist", select_movie_path(@movie) %></p>
 </div>
