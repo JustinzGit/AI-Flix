@@ -1,4 +1,8 @@
 class PlaylistsController < ApplicationController
+  def index
+    @playlists = current_user.playlists
+  end
+
   def new
     @playlist = Playlist.new
   end
