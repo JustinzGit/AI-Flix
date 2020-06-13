@@ -1,0 +1,9 @@
+<div class="data">
+  <h3>Create A New Playlist</h3>
+  <%= form_for(@playlist) do |f| %>
+    <p><%= f.label :name, "Playlist Name" %></p>
+    <p><%= f.text_field :name %></p>
+
+    <p><%= f.submit "Create Playlist" %></p>
+  <% end %>
+</div>
