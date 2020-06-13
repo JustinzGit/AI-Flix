@@ -6,7 +6,7 @@ module PathsHelper
     string = ""
 
     movies.length.times do |i|
-      string += "#{actors[i].name} and #{actors[i + 1].name} starred in #{movies[i].title}<br>"
+      string += "<p>#{actors[i].name} and #{actors[i + 1].name} starred in #{movies[i].title}</p>"
     end
     string.html_safe
   end
