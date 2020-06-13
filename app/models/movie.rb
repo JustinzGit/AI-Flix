@@ -5,6 +5,9 @@ class Movie < ApplicationRecord
   has_many :playlist_movies
   has_many :playlists, through: :playlist_movies
 
+  has_many :reviews
+  has_many :users, through: :reviews
+
   self.primary_key = "IMBD_ID"
 
   def self.get_movie_id(movie_title)
