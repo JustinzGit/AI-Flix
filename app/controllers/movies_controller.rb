@@ -20,6 +20,6 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @actors = @movie.actors
-    @movie = Movie.get_tmdb_data(@movie.title)
+    @movie_data = Movie.get_tmdb_data(@movie.title)
   end
 end
