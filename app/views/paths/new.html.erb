@@ -1,18 +1,18 @@
 <div class="title">
-  <h3>Generate a Movie Playlist</h3>
+  <h3>Generate a Movie Path</h3>
 </div>
 
 <div class="data">
-  <p>AI-Flix generates a movie playlist by finding the shortest path of movies that connect two actors.</p>
+  <p>AI-Flix generates a movie path by finding the shortest path of movies that connect two actors.</p>
   <p><b>Actor 1: </b><%= actor_1_name%></p>
   <p><b>Actor 2: </b><%= actor_2_name %></p>
   <p><%= link_to "Clear Actors", clear_actors_path %></p>
 
   <% if actor_1_name && actor_2_name %>
-    <p><%= button_to "Generate Playlist", playlists_path, method: :POST %></p>
+    <p><%= button_to "Generate Path", paths_path, method: :POST %></p>
 
   <% else %>
-    <%= form_tag new_playlist_path, :method => "GET" do %>
+    <%= form_tag new_path_path, :method => "GET" do %>
       <p><%= label_tag :search, "Actor Name" %><br>
       <%= text_field_tag :search, params[:search] %></p>
 
@@ -28,7 +28,7 @@
     <% if @actors %>
       <h3 id="list_title">We found <%= @actors.count %> Actors</h3>
         <% @actors.each do |a| %>
-            <p><%= link_to "#{a.name} - Born: #{a.birth}", playlist_actor_link(a) %></p>
+            <p><%= link_to "#{a.name} - Born: #{a.birth}", path_actor_link(a) %></p>
         <% end %>
     <% end %>
   </div>

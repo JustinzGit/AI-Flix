@@ -1,2 +1,0 @@
-class PlaylistActorsController < ApplicationController
-end

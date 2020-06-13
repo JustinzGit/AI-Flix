@@ -1,4 +1,4 @@
-class PlaylistsController < ApplicationController
+class PathController < ApplicationController
 
   def new
     actor_name = params[:search] if params[:search] && !params[:search].blank?
@@ -19,61 +19,61 @@ class PlaylistsController < ApplicationController
 
   def actor_1
     session[:actor_1] ||= Actor.find(params[:actor_1])
-    redirect_to new_playlist_path
+    redirect_to new_path_path
   end
 
   def actor_2
     session[:actor_2] ||= Actor.find(params[:actor_2])
-    redirect_to new_playlist_path
+    redirect_to new_path_path
   end
 
   def clear_actors
     session[:actor_1] = nil
     session[:actor_2] = nil
-    redirect_to new_playlist_path
+    redirect_to new_path_path
   end
 
   def create
-    # Acquire actor names from playlist form
+    # Acquire actor names from path form
     actor_1 = Actor.find(session[:actor_1]['id'])
     actor_2 = Actor.find(session[:actor_2]['id'])
 
-    # Name playlist using actor names
-    name = "#{actor_1.name} and #{actor_2.name} Playlist"
+    # Name path using actor names
+    name = "#{actor_1.name} and #{actor_2.name} Path"
 
-    # Generate playlist of movies that link the two actors
+    # Generate path of movies that link the two actors
     path = Search.shortest_path(actor_1.id, actor_2.id)
 
     if path.nil?
       flash[:alert] = "{ Actors Can Not Be Connected }"
-      redirect_to new_playlist_path
+      redirect_to new_path_path
     else
-      @playlist = Playlist.new(name: name, user_id: session[:user_id])
+      @path = Path.new(name: name, user_id: session[:user_id])
 
-      @playlist.movies << path[:movies]
-      @playlist.actors << path[:actors]
+      @path.movies << path[:movies]
+      @path.actors << path[:actors]
 
-      @playlist.save
+      @path.save
 
-      redirect_to playlist_path(@playlist)
+      redirect_to path_path(@path)
     end
   end
 
   def show
-    @playlist = Playlist.find(params[:id])
-    redirect_if_not_authorized(@playlist)
+    @path = Path.find(params[:id])
+    redirect_if_not_authorized(@path)
   end
 
   def destroy
-    Playlist.find(params[:id]).destroy
+    Path.find(params[:id]).destroy
     redirect_to homepage_path
   end
 
   private
 
-  def redirect_if_not_authorized(playlist)
-    if !current_user.playlists.include?(playlist)
-      flash[:alert] = "Playlist Not Found"
+  def redirect_if_not_authorized(path)
+    if !current_user.paths.include?(path)
+      flash[:alert] = "Path Not Found"
       redirect_to homepage_path
     end
   end

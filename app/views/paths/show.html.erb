@@ -1,23 +1,23 @@
 <div class="title">
-  <h3><%= @playlist.name %></h3>
+  <h3><%= @path.name %></h3>
 </div>
 
 <div class="data">
   <h4>AI-Flix Found This Path</h4>
-  <p><%= organize_path(@playlist) %></p>
+  <p><%= organize_path(@path) %></p>
 </div>
 
 <div class="list">
   <h4 id="list_title">Movies To Watch</h4>
-    <% @playlist.movies.each do |m| %>
+    <% @path.movies.each do |m| %>
       <p><%= link_to m.title, movie_path(m), target: :_blank %></p>
     <% end %>
 </div>
 
 <div class="list">
   <h4 id="list_title">Actors in Path</h4>
-    <% @playlist.actors.each do |a| %>
+    <% @path.actors.each do |a| %>
       <p><%= link_to a.name, actor_path(a), target: :_blank %></p>
     <% end %>
-  <p><%= button_to "Delete Playlist", playlist_path(@playlist), method: :delete %></p>
+  <p><%= button_to "Delete Path", path_path(@path), method: :delete %></p>
 </div>

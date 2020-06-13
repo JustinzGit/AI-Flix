@@ -1,4 +1,4 @@
-class PlaylistMovie < ApplicationRecord
+class PathMovie < ApplicationRecord
   belongs_to :movie
-  belongs_to :playlist
+  belongs_to :path
 end

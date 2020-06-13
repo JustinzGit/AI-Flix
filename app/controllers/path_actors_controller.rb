@@ -1,0 +1,2 @@
+class PathActorsController < ApplicationController
+end

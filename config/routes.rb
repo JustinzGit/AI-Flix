@@ -15,12 +15,12 @@ Rails.application.routes.draw do
 
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
-  # Playlist Routes
-  resources :playlists, only: [:new, :create, :show, :destroy]
+  # Path Routes
+  resources :paths, only: [:new, :create, :show, :destroy]
 
-  get '/playlist/actor_1/:actor_1', to: 'playlists#actor_1', as: 'playlist_actor_1'
-  get '/playlist/actor_2/:actor_2', to: 'playlists#actor_2', as: 'playlist_actor_2'
-  get '/playlist/clear_actors', to: 'playlists#clear_actors', as: 'clear_actors'
+  get '/path/actor_1/:actor_1', to: 'paths#actor_1', as: 'path_actor_1'
+  get '/path/actor_2/:actor_2', to: 'paths#actor_2', as: 'path_actor_2'
+  get '/path/clear_actors', to: 'paths#clear_actors', as: 'clear_actors'
 
   # Actor Routes
   resources :actors, only: [:index, :show]
