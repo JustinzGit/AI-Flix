@@ -17,6 +17,18 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
   end
 
+  def select
+    @movie = Movie.find(params[:movie_id])
+    @playlists = current_user.playlists
+  end
+
+  def add
+    movie = Movie.find(params[:movie_id])
+    playlist = Playlist.find(params[:playlist_id])
+    playlist.movies << movie
+    redirect_to playlist_path(playlist)
+  end
+
   private
 
   def playlist_params
