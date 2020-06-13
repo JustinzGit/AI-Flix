@@ -1,0 +1,15 @@
+<div class="title">
+  <h3><%= @playlist.name %></h3>
+</div>
+
+<div class="list">
+  <% if !@playlist.movies.empty? %>
+    <h4 id="list_title">Movies To Watch</h4>
+      <% @playlist.movies.each do |m| %>
+        <p><%= link_to m.title, movie_path(m), target: :_blank %></p>
+      <% end %>
+  <% else %>
+    <p>No Movies Have Been Added</p>
+    <p><%= link_to "Search Movies", movies_path %></p>
+  <% end %>
+</div>
