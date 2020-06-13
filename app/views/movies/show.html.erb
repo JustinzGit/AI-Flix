@@ -1,21 +1,21 @@
 <div class="title">
-  <h3><%= @movie[:title] %></h3>
+  <h3><%= @movie_data[:title] %></h3>
 </div>
 
-<p id="tagline"><%= @movie[:tagline] %></p>
+<p id="tagline"><%= @movie_data[:tagline] %></p>
 
 <div class="image">
-  <%= image_tag "https://image.tmdb.org/t/p/w300/#{@movie[:image]}" %>
+  <%= image_tag "https://image.tmdb.org/t/p/w300/#{@movie_data[:image]}" %>
 </div>
 
 <div class="data">
   <h3>Movie Facts</h3>
-  <p><b>Released On:</b> <%= format_date(@movie[:release_date]) %></p>
-  <p><b>Movie Budget:</b> <%= number_to_currency(@movie[:budget]) %></p>
-  <p><b>Movie Profit:</b> <%= number_to_currency(@movie[:revenue]) %></p>
+  <p><b>Released On:</b> <%= format_date(@movie_data[:release_date]) %></p>
+  <p><b>Movie Budget:</b> <%= number_to_currency(@movie_data[:budget]) %></p>
+  <p><b>Movie Profit:</b> <%= number_to_currency(@movie_data[:revenue]) %></p>
 
   <h3>Overview</h3>
-  <p id="main_paragraph"><%= @movie[:overview] %></p>
+  <p id="main_paragraph"><%= @movie_data[:overview] %></p>
 </div>
 
 <div class="list">
@@ -24,5 +24,17 @@
       <p><%= link_to a.name, actor_path(a) %></p>
     <% end %><br>
   <h3 id="list_title">Learn More</h3>
-  <p><%= link_to "IMDB Profile", "https://imdb.com/title/#{@movie[:imdb_id]}", target: :_blank %></p>
+  <p><%= link_to "IMDB Profile", "https://imdb.com/title/#{@movie_data[:imdb_id]}", target: :_blank %></p>
+</div>
+
+<div class="data">
+  <p>Leave A Movie Review</p>
+  <%= form_tag reviews_path, :method => "POST" do %>
+    <p><%= text_area_tag "review[user_review]" %></p>
+
+    <%= hidden_field_tag "review[user_id]", current_user.id %>
+    <%= hidden_field_tag "review[movie_id]", @movie.id %>
+
+    <p><%= submit_tag "Submit Review" %></p>
+  <% end %>
 </div>
