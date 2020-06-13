@@ -33,6 +33,9 @@
     <p id="list_title">Movie Reviews</p>
     <% @movie.reviews.each do |r| %>
         <p><%= r.user.username %> Says: "<%= r.user_review %>"</p>
+        <% if r.user_id == current_user.id %>
+          <%= button_to "Remove Review", review_path(r.id), method: :delete %>
+        <% end %>
     <% end %>
   <% end %>
 </div>
