@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :playlists
   # Set login page as root
   root 'sessions#new'
 
@@ -31,4 +30,10 @@ Rails.application.routes.draw do
 
   # Review Routes
   resources :reviews, only: [:create, :destroy]
+
+  # Playlist Routes
+  resources :playlists
+
+  get '/select/movie/:movie_id', to: 'playlists#select', as: 'select_movie'
+  get '/playlist/:playlist_id/movie/:movie_id', to: 'playlists#add', as: 'add_movie'
 end
