@@ -1,4 +1,6 @@
 class Playlist < ApplicationRecord
   belongs_to :user
-  has_many :movies
+
+  has_many :playlist_movies
+  has_many :movies, through: :playlist_movies
 end
