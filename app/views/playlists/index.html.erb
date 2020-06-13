@@ -1,10 +1,9 @@
 <div class="title">
   <h3><%= current_user.username %>'s Playlists</h3>
+  <p><%= link_to "Create New Playlist", new_playlist_path %></p>
 </div>
 
 <div class="list">
-  <p><%= link_to "Create Playlist", new_playlist_path %></p>
-  
   <% @playlists.each do |p| %>
     <p><%= link_to p.name, playlist_path(p) %></p>
   <% end %>

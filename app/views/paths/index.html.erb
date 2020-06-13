@@ -1,6 +1,9 @@
-<div class="list">
-  <p><%= link_to "Create A New Path", new_path_path %></p>
+<div class="title">
+  <h3><%= current_user.username %>'s Paths</h3>
+  <p><%= link_to "Create New Path", new_path_path %></p>
+</div>
 
+<div class="list">
   <% @paths.each.with_index(1) do |p, i| %>
     <p><%= "#{i}. " %><%= link_to p.name, path_path(p) %></p>
   <% end %>
