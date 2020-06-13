@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
   # Path Routes
-  resources :paths, only: [:new, :create, :show, :destroy]
+  resources :paths, only: [:index, :new, :create, :show, :destroy]
 
   get '/path/actor_1/:actor_1', to: 'paths#actor_1', as: 'path_actor_1'
   get '/path/actor_2/:actor_2', to: 'paths#actor_2', as: 'path_actor_2'
