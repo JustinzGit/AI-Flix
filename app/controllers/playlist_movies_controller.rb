@@ -1,0 +1,2 @@
+class PlaylistMoviesController < ApplicationRecord
+end
