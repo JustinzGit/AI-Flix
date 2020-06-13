@@ -27,4 +27,7 @@ Rails.application.routes.draw do
 
   # Movie Routes
   resources :movies, only: [:index, :show]
+
+  # Review Routes
+  resources :reviews, only: [:new, :create, :destroy]
 end
