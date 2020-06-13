@@ -1,8 +1,8 @@
 module PathsHelper
 
-  def organize_path(playlist)
-    movies = playlist.movies
-    actors = playlist.actors
+  def organize_path(path)
+    movies = path.movies
+    actors = path.actors
     string = ""
 
     movies.length.times do |i|
@@ -19,11 +19,11 @@ module PathsHelper
     session[:actor_2]['name'] if session[:actor_2]
   end
 
-  def playlist_actor_link(actor)
+  def path_actor_link(actor)
     if actor_1_name.nil?
-      playlist_actor_1_path(actor)
+      path_actor_1_path(actor)
     else
-      playlist_actor_2_path(actor)
+      path_actor_2_path(actor)
     end
   end
 end
