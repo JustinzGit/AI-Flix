@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :playlists
   # Set login page as root
   root 'sessions#new'
 
