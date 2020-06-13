@@ -1,0 +1,7 @@
+<div class="list">
+  <p>Select a Playlist to Add Movie</p>
+
+  <% @playlists.each do |p| %>
+    <p><%= link_to p.name, add_movie_path(p.id, @movie) %></p>
+  <% end %>
+</div>
