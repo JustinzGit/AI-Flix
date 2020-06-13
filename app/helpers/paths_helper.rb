@@ -1,4 +1,4 @@
-module PlaylistsHelper
+module PathsHelper
 
   def organize_path(playlist)
     movies = playlist.movies
