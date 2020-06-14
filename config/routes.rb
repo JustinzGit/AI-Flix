@@ -36,4 +36,7 @@ Rails.application.routes.draw do
 
   get '/select/movie/:movie_id', to: 'playlists#select', as: 'select_movie'
   get '/playlist/:playlist_id/movie/:movie_id', to: 'playlists#add', as: 'add_movie'
+
+  # Provider Callback
+  get '/auth/github/callback', to: 'sessions#create'
 end
