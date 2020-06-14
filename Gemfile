@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.1'
 
 gem 'omniauth'
-gem 'omniauth-netflix'
+gem 'omniauth-github'
 gem 'sassc', '~> 2.1.0'
 gem 'bcrypt'
 gem 'figaro'
