@@ -11,11 +11,14 @@ class SessionsController < ApplicationController
 
   # POST Login
   def create
-    if !auth_hash[:uid].nil?
-      @user = User.find_or_create_by(uid: auth_hash[:uid]) do |u|
-        u.username = auth_hash[:info][:nickname]
-        u.email = auth_hash[:info][:email]
+    if auth_hash["uid"]
+      @user = User.find_or_create_by(uid: auth_hash["uid"]) do |u|
+        u.username = auth_hash["info"]["nickname"]
+        u.email = auth_hash["info"]["email"]
+        u.password = auth_hash[:credentials][:token]
       end
+      session[:user_id] = @user.id
+      redirect_to homepage_path
     else
       @user = User.find_by(username: params[:user][:username])
       if @user && @user.authenticate(params[:user][:password])
