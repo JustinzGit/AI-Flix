@@ -2,7 +2,7 @@
   <h3>Welcome to AI-Flix!</h3>
   <h3>Sign up via E-mail</h3>
 
-  <%= form_for(@user, url: signup_path) do |f| %>
+  <%= form_for @user do |f| %>
     <p><%= f.label :username %><br>
     <%= f.text_field :username %></p>
 
@@ -19,12 +19,13 @@
   <% end %>
 
   <p>Have an Account? <%= link_to "Log In", login_path %></p>
+  <p>Have a GitHub? <%= link_to "Sign in with Github", "/auth/github" %></p>
 
+  <%# Display Form Error Messages %>
   <% if @user.errors.any? %>
     <h2>Error!!</h2>
       <% @user.errors.full_messages.each do |message| %>
         <p><b><%= message %></b></p>
       <% end %>
     <% end %>
-
 </div>
