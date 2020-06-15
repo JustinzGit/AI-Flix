@@ -3,15 +3,30 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
+# For github authentication purposes
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'sassc', '~> 2.1.0'
+
+# Password hashing function
 gem 'bcrypt'
+
+# Use figaro to store sensitive information
 gem 'figaro'
+
+# Use faraday to process API requests
 gem 'faraday'
+
+# Used to enhace data insertion
 gem 'activerecord-import'
+
+# Allows objects returned to be displayed in pages
 gem 'will_paginate', '~> 3.1.0'
+
+# Devlepor console
 gem 'pry'
+
+# Required by rails
+gem 'sassc', '~> 2.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
