@@ -22,10 +22,4 @@ class SessionsController < ApplicationController
     session.clear
     redirect_to login_path
   end
-
-  private
-
-  def redirect_home_if_logged_in
-    redirect_to homepage_path if !session[:user_id].nil?
-  end
 end
