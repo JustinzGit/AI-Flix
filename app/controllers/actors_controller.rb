@@ -6,7 +6,6 @@ class ActorsController < ApplicationController
 
     if name
       @actors = Actor.find_by_name(params[:search])
-
     elsif birth_year
       @actors = Actor.find_by_birth_year(params[:date][:year])
     end
@@ -17,6 +16,6 @@ class ActorsController < ApplicationController
   def show
     @actor = Actor.find(params[:id])
     @movies = @actor.movies
-    @actor = Actor.get_actor(@actor.name)
+    @actor = Actor.get_tmbd_data(@actor.name)
   end
 end
