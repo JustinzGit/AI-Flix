@@ -18,6 +18,7 @@
 <div class="list">
   <% if @actors %>
     <h3 id="list_title">We found <%= @actors.count %> Actors</h3>
+    
     <% @actors.each do |a| %>
       <p><%= link_to "#{a.name} - Born: #{a.birth}", actor_path(a) %></p>
     <% end %>
