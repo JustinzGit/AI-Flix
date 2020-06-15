@@ -29,7 +29,7 @@ class Actor < ApplicationRecord
     }
   end
 
-  def self.get_actor(actor)
+  def self.get_tmdb_data(actor)
     actor_id = self.get_actor_id(actor)
     self.get_actor_data(actor_id)
   end
