@@ -23,6 +23,7 @@
     <% @actors.each do |a| %>
       <p><%= link_to a.name, actor_path(a) %></p>
     <% end %><br>
+
   <h3 id="list_title">Learn More</h3>
   <p><%= link_to "IMDB Profile", "https://imdb.com/title/#{@movie_data[:imdb_id]}", target: :_blank %></p>
 </div>
@@ -30,6 +31,7 @@
 
 <div class="list">
   <% if !@movie.reviews.empty? %>
+
     <p id="list_title">Movie Reviews</p>
     <% @movie.reviews.each do |r| %>
         <p><%= r.user.username %> Says: "<%= r.user_review %>"</p>
