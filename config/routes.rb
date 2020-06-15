@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   root 'sessions#new'
 
   # User Routes
+  resources :users, only: [:show] do
+    resources :playlists, only: [:index, :show]
+  end
+
   get '/signup', to: 'users#new', as: 'signup'
   post '/signup', to: 'users#create'
 
