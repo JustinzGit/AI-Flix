@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
-  # GET SignUp
   def new
     @user = User.new
   end
 
-  # POST SignUp
   def create
     @user = User.new(user_params)
 
