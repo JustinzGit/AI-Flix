@@ -7,6 +7,7 @@ class Actor < ApplicationRecord
 
   self.primary_key = "IMBD_ID"
 
+  # Search TMDB for actor ID
   def self.get_actor_id(actor)
     api_key = ENV['tmdb_api_key']
     response = Faraday.get "https://api.themoviedb.org/3/search/person?api_key=#{api_key}&language=en-US&query=#{actor}"
@@ -14,6 +15,7 @@ class Actor < ApplicationRecord
     response['results'].empty? ? nil : response['results'][0]['id']
   end
 
+  # Use actor ID to obtain actor data from TMDB
   def self.get_actor_data(actor_id)
     api_key = ENV['tmdb_api_key']
     response = Faraday.get "https://api.themoviedb.org/3/person/#{actor_id}?api_key=#{api_key}&language=en-US"
@@ -29,6 +31,7 @@ class Actor < ApplicationRecord
     }
   end
 
+  # Obtain TMDB data on provided actor 
   def self.get_tmdb_data(actor)
     actor_id = self.get_actor_id(actor)
     self.get_actor_data(actor_id)
