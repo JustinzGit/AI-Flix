@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
 
-  # Set login page as root
+  # login page as root
   root 'sessions#new'
 
   # User Routes
-  resources :users, only: [:show] do
+  get '/homepage', to: 'users#homepage'
+
+  resources :users, only: [:new, :create] do
     resources :playlists, only: [:index, :show]
   end
 
-  get '/signup', to: 'users#new', as: 'signup'
-  post '/signup', to: 'users#create'
+  # get '/signup', to: 'users#new', as: 'signup'
+  # post '/signup', to: 'users#create'
 
-  get '/homepage', to: 'users#homepage'
 
   # Session Routes
   get '/login', to: 'sessions#new', as: 'login'
