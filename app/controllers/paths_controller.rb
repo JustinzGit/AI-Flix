@@ -1,7 +1,7 @@
 class PathsController < ApplicationController
 
   def index
-    @paths = current_use.paths
+    @paths = current_user.paths
   end
 
   def new
