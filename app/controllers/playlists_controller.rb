@@ -1,6 +1,10 @@
 class PlaylistsController < ApplicationController
   def index
-    @playlists = current_user.playlists
+    if session[:user_id] != params[:user_id]
+      redirect_home_if_not_authorized
+    else
+      @playlists = User.find(params[:user_id]).playlists
+    end 
   end
 
   def new
@@ -14,6 +18,7 @@ class PlaylistsController < ApplicationController
   end
 
   def show
+    # Ensure other users can't access other users playlists
     @playlist = Playlist.find(params[:id])
   end
 
