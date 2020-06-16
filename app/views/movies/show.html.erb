@@ -31,7 +31,6 @@
 
 <div class="list">
   <% if !@movie.reviews.empty? %>
-
     <p id="list_title">Movie Reviews</p>
     <% @movie.reviews.each do |r| %>
         <p><%= r.user.username %> Says: "<%= r.user_review %>"</p>
