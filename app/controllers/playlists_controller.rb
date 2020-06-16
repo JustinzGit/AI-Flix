@@ -22,7 +22,7 @@ class PlaylistsController < ApplicationController
       redirect_home_if_not_authorized
     else
       @playlist = Playlist.find(params[:id])
-    end 
+    end
   end
 
   def select
@@ -33,8 +33,13 @@ class PlaylistsController < ApplicationController
   def add
     movie = Movie.find(params[:movie_id])
     playlist = Playlist.find(params[:playlist_id])
-    playlist.movies << movie
-    redirect_to playlist_path(playlist)
+
+    if current_user.playlists.include?(playlist)
+      playlist.movies << movie
+      redirect_to playlist_path(playlist)
+    else
+      redirect_home_if_not_authorized
+    end 
   end
 
   private
