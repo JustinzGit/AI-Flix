@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_143424) do
+ActiveRecord::Schema.define(version: 2020_06_16_143653) do
 
   create_table "actors", force: :cascade do |t|
     t.integer "IMBD_ID"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_143424) do
   create_table "movies", force: :cascade do |t|
     t.integer "IMBD_ID"
     t.string "title"
-    t.string "year"
+    t.integer "year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
