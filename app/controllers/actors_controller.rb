@@ -18,5 +18,4 @@ class ActorsController < ApplicationController
     @movies = @actor.movies
     @actor = Actor.get_tmdb_data(@actor.name)
   end
-
 end
