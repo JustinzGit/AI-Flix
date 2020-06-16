@@ -7,8 +7,8 @@
 </div>
 
 <div class="data">
-  <p><b>Birthday:</b> <%= format_date(@actor[:birthday]) %></p>
-  <p><b>Hometown:</b> <%= @actor[:birthplace] %></p>
+  <p><b>Birthday:</b> <%= @actor[:birthday].nil? ? "No Data" : format_date(@actor[:birthday]) %></p>
+  <p><b>Hometown:</b> <%= @actor[:birthplace].nil? ? "No Data" : @actor[:birthplace] %></p>
   <p><b>Deathday</b> <%= @actor[:deathday].nil? ? "Still Living" : format_date(@actor[:deathday]) %></p>
 
   <h3>Biography </h3>
