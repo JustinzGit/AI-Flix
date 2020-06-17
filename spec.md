@@ -23,10 +23,15 @@ Specs:
 - [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user
 * Review Join Table, user_review attribute
 
+- [x] Include nested resource show or index
+* users/2/playlists
+
+- [x] Include form display of validation errors
+* new users view reveals validation errors if any
+
 - [x] Include signup
 - [x] Include login
 - [x] Include logout
-
 
 # TO-DO
 
@@ -34,11 +39,7 @@ Specs:
 
 - [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
 
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
-
 - [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
-
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
 - [ ] The application is pretty DRY
