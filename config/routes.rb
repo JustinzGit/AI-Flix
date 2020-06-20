@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
   # Actor Routes
-  get '/actors/search', to: 'actors#search', as: 'search'
+  get '/actors/search', to: 'actors#search', as: 'search_actors'
   resources :actors, only: [:show]
   
 
