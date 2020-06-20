@@ -31,7 +31,7 @@ class PathsController < ApplicationController
     redirect_to new_path_path
   end
 
-  def clear_actors
+  def clear_actor_names
     session[:actor_1] = nil
     session[:actor_2] = nil
     redirect_to new_path_path

@@ -6,7 +6,7 @@
   <p>AI-Flix generates a movie path by finding the shortest path of movies that connect two actors.</p>
   <p><b>Actor 1: </b><%= actor_1_name%></p>
   <p><b>Actor 2: </b><%= actor_2_name %></p>
-  <p><%= link_to "Clear Actors", clear_actors_path %></p>
+  <p><%= link_to "Clear Actors", clear_actor_names_path %></p>
 
   <% if actor_1_name && actor_2_name %>
     <p><%= button_to "Generate Path", paths_path, method: :POST %></p>
