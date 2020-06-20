@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
     year = params[:date][:year] if params[:date] && !params[:date][:year].blank?
 
     if title && year
-      @movies = Movie.find_movie(title, year)
+      @movies = Movie.find_movies(title, year)
     elsif title
       @movies = Movie.begins_with(title)
     elsif year

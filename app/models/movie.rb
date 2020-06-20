@@ -55,7 +55,7 @@ class Movie < ApplicationRecord
   end
 
   # Find movies with provided title released in a provided year
-  def self.find_movie(title, year)
+  def self.find_movies(title, year)
     movies = self.begins_with(title)
     movies = movies.where("year == (?)", year)
   end
