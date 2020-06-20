@@ -37,14 +37,17 @@ class Actor < ApplicationRecord
     self.get_actor_data(actor_id)
   end
 
+  # Find actors with name that contains input
   def self.find_by_name(name)
     where("name LIKE (?)", "%#{name}%")
   end
 
+  # Find actors born in a provided year
   def self.find_by_birth_year(year)
     where("birth == (?)", year)
   end
 
+  # Find actors with the provided name born in a provided year 
   def self.find_actors(name, birth_year)
     actors = self.find_by_name(name)
     actors = actors.where("birth == (?)", birth_year)
