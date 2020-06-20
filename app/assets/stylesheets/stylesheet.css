@@ -60,7 +60,7 @@ a {
   font-weight: bold;
 }
 
-.header {
+#header {
   color: black;
   font-family: 'PT Sans', sans-serif;
   text-align: center;
