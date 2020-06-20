@@ -31,6 +31,8 @@ class PathsController < ApplicationController
     redirect_to new_path_path
   end
 
+  # This action clears actors names from session
+  # Should use JavaScript in future
   def clear_actor_names
     session[:actor_1] = nil
     session[:actor_2] = nil
