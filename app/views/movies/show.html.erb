@@ -8,7 +8,7 @@
   <%= image_tag "https://image.tmdb.org/t/p/w300/#{@movie_data[:image]}" %>
 </div>
 
-<div class="data">
+<div class="form">
   <h3>Movie Facts</h3>
   <p><b>Released On:</b> <%= format_date(@movie_data[:release_date]) %></p>
   <p><b>Movie Budget:</b> <%= number_to_currency(@movie_data[:budget]) %></p>
@@ -41,7 +41,7 @@
   <% end %>
 </div>
 
-<div class="data">
+<div class="form">
   <p>Leave A Movie Review</p>
   <%= form_tag reviews_path, :method => "POST" do %>
     <p><%= text_area_tag "review[user_review]" %></p>
