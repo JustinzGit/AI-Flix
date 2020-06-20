@@ -101,7 +101,7 @@ a {
   font-family: 'PT Sans', sans-serif;
 }
 
-#main_paragraph {
+.main-paragraph {
   text-align: justify;
   margin-left: 10%;
   margin-right: 10%;
