@@ -27,8 +27,8 @@ Rails.application.routes.draw do
   # Path Routes
   resources :paths
 
-  get '/path/actor_1/:actor_1', to: 'paths#actor_1', as: 'path_actor_1'
-  get '/path/actor_2/:actor_2', to: 'paths#actor_2', as: 'path_actor_2'
+  get '/path/actor_1/:actor_1', to: 'paths#actor_1', as: 'actor_1'
+  get '/path/actor_2/:actor_2', to: 'paths#actor_2', as: 'actor_2'
   get '/path/clear_actor_names', to: 'paths#clear_actor_names', as: 'clear_actor_names'
 
   # Playlist Routes
