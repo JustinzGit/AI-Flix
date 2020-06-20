@@ -3,13 +3,14 @@
 </div>
 
 <div class="list">
-  <% if !@playlist.movies.empty? %>
-    <h4 class="list-title">Movies To Watch</h4>
+  <% if @playlist.movies.empty? %>
+    <p>No Movies Have Been Added</p>
+  <% else %>
+      <h4 class="list-title">Movies To Watch</h4>
       <% @playlist.movies.each do |m| %>
         <p><%= link_to m.title, movie_path(m), target: :_blank %></p>
       <% end %>
-  <% else %>
-    <p>No Movies Have Been Added</p>
   <% end %>
-  <p><%= link_to "Search Movies to Add", movies_path %></p>
+
+  <p><%= link_to "Search Movies to Add", search_movies_path %></p>
 </div>
