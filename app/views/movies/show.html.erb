@@ -1,21 +1,21 @@
 <div class="title">
-  <h3><%= @movie_data[:title] %></h3>
+  <h3><%= @movie[:title] %></h3>
 </div>
 
-<p id="tagline"><%= @movie_data[:tagline] %></p>
+<p id="tagline"><%= @movie[:tagline] %></p>
 
 <div class="image">
-  <%= image_tag "https://image.tmdb.org/t/p/w300/#{@movie_data[:image]}" %>
+  <%= image_tag "https://image.tmdb.org/t/p/w300/#{@movie[:image]}" %>
 </div>
 
 <div class="center">
   <h3>Movie Facts</h3>
-  <p><b>Released On:</b> <%= format_date(@movie_data[:release_date]) %></p>
-  <p><b>Movie Budget:</b> <%= number_to_currency(@movie_data[:budget]) %></p>
-  <p><b>Movie Profit:</b> <%= number_to_currency(@movie_data[:revenue]) %></p>
+  <p><b>Released On:</b> <%=  %></p>
+  <p><b>Movie Budget:</b> <%= number_to_currency(@movie[:budget]) %></p>
+  <p><b>Movie Profit:</b> <%= number_to_currency(@movie[:revenue]) %></p>
 
   <h3>Overview</h3>
-  <p class="main-paragraph"><%= @movie_data[:overview] %></p>
+  <p class="main-paragraph"><%= @movie[:overview] %></p>
 </div>
 
 <div class="list">
@@ -25,7 +25,7 @@
     <% end %><br>
 
   <h3 class="list-title">Learn More</h3>
-  <p><%= link_to "IMDB Profile", "https://imdb.com/title/#{@movie_data[:imdb_id]}", target: :_blank %></p>
+  <p><%= link_to "IMDB Profile", "https://imdb.com/title/#{@movie[:imdb_id]}", target: :_blank %></p>
 </div>
 
 
