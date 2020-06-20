@@ -34,6 +34,7 @@
     <p class="list-title">Movie Reviews</p>
     <% @movie.reviews.each do |r| %>
         <p><%= r.user.username %> Says: "<%= r.user_review %>"</p>
+      
         <% if r.user_id == current_user.id %>
           <%= button_to "Remove Review", review_path(r.id), method: :delete %>
         <% end %>
@@ -43,7 +44,7 @@
 
 <div class="center">
   <p>Leave A Movie Review</p>
-  <%= form_tag reviews_path, :method => "POST" do %>
+  <%= form_tag reviews_path, method: :post do %>
     <p><%= text_area_tag "review[user_review]" %></p>
 
     <%= hidden_field_tag "review[user_id]", current_user.id %>
