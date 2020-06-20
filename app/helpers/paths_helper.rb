@@ -21,9 +21,9 @@ module PathsHelper
 
   def actor_action(actor)
     if actor_1_name.nil?
-      path_actor_1_path(actor)
+      actor_1_path(actor)
     else
-      path_actor_2_path(actor)
+      actor_2_path(actor)
     end
   end
 end
