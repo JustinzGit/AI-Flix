@@ -70,11 +70,18 @@ class PathsController < ApplicationController
 
   def destroy
     path = Path.find(params[:id])
-    if current_user.paths.include?(path)
-      path.destroy
+    redirect_if_not_authorized(path)
+    
+    path.destroy
+    redirect_to homepage_path
+  end
+
+  private
+
+  def redirect_if_not_authorized(path)
+    if !current_user.paths.include?(path)
+      flash[:alert] = "Path Not Found"
       redirect_to homepage_path
-    else
-      redirect_home_if_not_authorized
-    end 
+    end
   end
 end
