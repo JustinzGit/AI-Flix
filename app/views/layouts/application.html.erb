@@ -14,8 +14,8 @@
       <% if logged_in? %>
         <div class="navbar">
           <%= link_to "Home", homepage_path %>
-          <%= link_to "Actors", search_path %>
-          <%= link_to "Movies", movies_path %>
+          <%= link_to "Actors", search_actors_path %>
+          <%= link_to "Movies", search_movies_path %>
           <%= link_to "Playlists", playlists_path %>
           <%= link_to "AI-Path", paths_path %>
           <%= link_to "Log Out", logout_path %>
