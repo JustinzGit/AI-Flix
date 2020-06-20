@@ -10,10 +10,8 @@ class PathsController < ApplicationController
 
     if actor_name && birth_year
       @actors = Actor.find_actors(actor_name, birth_year)
-
     elsif actor_name
       @actors = Actor.find_by_name(actor_name)
-
     elsif birth_year
       @actors = Actor.find_by_birth_year(params[:date][:year])
     end
@@ -71,16 +69,12 @@ class PathsController < ApplicationController
   end
 
   def destroy
-    Path.find(params[:id]).destroy
-    redirect_to homepage_path
-  end
-
-  private
-
-  def redirect_if_not_authorized(path)
-    if !current_user.paths.include?(path)
-      flash[:alert] = "Path Not Found"
+    path = Path.find(params[:id])
+    if current_user.paths.include?(path)
+      path.destroy
       redirect_to homepage_path
-    end
+    else
+      redirect_home_if_not_authorized
+    end 
   end
 end
