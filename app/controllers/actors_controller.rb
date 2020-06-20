@@ -1,6 +1,6 @@
 class ActorsController < ApplicationController
 
-  def index
+  def search
     name = params[:search] if params[:search] && !params[:search].blank?
     birth_year = params[:date][:year] if params[:date] && !params[:date][:year].blank?
 
