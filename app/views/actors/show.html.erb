@@ -7,7 +7,7 @@
 </div>
 
 <div class="center">
-  <p><b>Birthday:</b> <%= actor_birthday(@actor)  %></p>
+  <p><b>Birthday:</b> <%= actor_birthday(@actor) %></p>
   <p><b>Hometown:</b> <%= actor_birthplace(@actor) %></p>
   <p><b>Deathday</b> <%= actor_deathday(@actor) %></p>
 
@@ -20,6 +20,7 @@
     <% @movies.each do |m| %>
       <p><%= link_to m.title, movie_path(m) %></p>
     <% end %><br>
+
   <h3 class="list-title">Learn More</h3>
   <p><%= link_to "IMDB Profile", "https://imdb.com/name/#{@actor[:imdb_id]}", target: :_blank %></p>
 </div>
