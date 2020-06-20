@@ -1,6 +1,6 @@
 module PathsHelper
 
-  def organize_path(path)
+  def reveal_path(path)
     movies = path.movies
     actors = path.actors
     string = ""
