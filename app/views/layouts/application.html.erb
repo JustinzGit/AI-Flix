@@ -10,9 +10,9 @@
   <body>
     <h1 id="main_title">AI-FLIX</h1>
 
-    <div class="content">
+    <div id="content">
       <% if logged_in? %>
-        <div class="navbar">
+        <div id="navbar">
           <%= link_to "Home", homepage_path %>
           <%= link_to "Actors", search_actors_path %>
           <%= link_to "Movies", search_movies_path %>
@@ -22,7 +22,7 @@
         </div>
 
         <% if flash[:alert] %>
-          <div class="alert"><%= flash[:alert] %></div>
+          <div id="alert"><%= flash[:alert] %></div>
         <% end %>
 
       <% end %>
