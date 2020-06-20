@@ -6,10 +6,8 @@ class MoviesController < ApplicationController
 
     if title && year
       @movies = Movie.find_movie(title, year)
-
     elsif title
       @movies = Movie.begins_with(title)
-
     elsif year
       @movies = Movie.released_in(year)
     end
