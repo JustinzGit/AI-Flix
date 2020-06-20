@@ -16,10 +16,10 @@
 </div>
 
 <div class="list">
-  <h3 id="list_title">Movies</h3>
+  <h3 class="list-title">Movies</h3>
     <% @movies.each do |m| %>
       <p><%= link_to m.title, movie_path(m) %></p>
     <% end %><br>
-  <h3 id="list_title">Learn More</h3>
+  <h3 class="list-title">Learn More</h3>
   <p><%= link_to "IMDB Profile", "https://imdb.com/name/#{@actor[:imdb_id]}", target: :_blank %></p>
 </div>

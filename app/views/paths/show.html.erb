@@ -8,14 +8,14 @@
 </div>
 
 <div class="list">
-  <h4 id="list_title">Movies To Watch</h4>
+  <h4 class="list-title">Movies To Watch</h4>
     <% @path.movies.each do |m| %>
       <p><%= link_to m.title, movie_path(m), target: :_blank %></p>
     <% end %>
 </div>
 
 <div class="list">
-  <h4 id="list_title">Actors in Path</h4>
+  <h4 class="list-title">Actors in Path</h4>
     <% @path.actors.each do |a| %>
       <p><%= link_to a.name, actor_path(a), target: :_blank %></p>
     <% end %>
