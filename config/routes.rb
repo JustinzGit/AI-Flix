@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   get '/actors/search', to: 'actors#search', as: 'search_actors'
   resources :actors, only: [:show]
   
-
   # Movie Routes
   get '/movies/search', to: 'movies#search', as: 'search_movies'
   resources :movies, only: [:show]
@@ -34,7 +33,7 @@ Rails.application.routes.draw do
   # Playlist Routes
   resources :playlists, only: [:new, :create]
 
-  get '/select_movie/:movie_id', to: 'playlists#select', as: 'select_movie'
+  get '/select_movie/:movie_id', to: 'playlists#select_movie', as: 'select_movie'
   get '/playlist/:playlist_id/add_movie/:movie_id', to: 'playlists#add', as: 'add_movie'
 
   # Review Routes

@@ -25,7 +25,7 @@ class PlaylistsController < ApplicationController
     end
   end
 
-  def select
+  def select_movie
     @movie = Movie.find(params[:movie_id])
     @playlists = current_user.playlists
   end
