@@ -6,4 +6,8 @@ module MoviesHelper
     def movie_budget(movie)
         number_to_currency(movie[:budget])
     end 
+
+    def movie_profit(movie)
+        number_to_currency(movie[:revenue])
+    end 
 end

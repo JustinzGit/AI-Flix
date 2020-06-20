@@ -12,7 +12,7 @@
   <h3>Movie Facts</h3>
   <p><b>Released On:</b> <%= movie_date(@movie) %></p>
   <p><b>Movie Budget:</b> <%= movie_budget(@movie) %></p>
-  <p><b>Movie Profit:</b> <%= number_to_currency(@movie[:revenue]) %></p>
+  <p><b>Movie Profit:</b> <%= movie_profit(@movie) %></p>
 
   <h3>Overview</h3>
   <p class="main-paragraph"><%= @movie[:overview] %></p>
