@@ -5,7 +5,7 @@ class PathsController < ApplicationController
   end
 
   def new
-    actor_name = params[:search] if params[:search] && !params[:search].blank?
+    actor_name = params[:name] if params[:name] && !params[:name].blank?
     birth_year = params[:date][:year] if params[:date] && !params[:date][:year].blank?
 
     if actor_name && birth_year
