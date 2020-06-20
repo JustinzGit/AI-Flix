@@ -30,7 +30,7 @@ class PlaylistsController < ApplicationController
     @playlists = current_user.playlists
   end
 
-  def add
+  def add_movie
     movie = Movie.find(params[:movie_id])
     playlist = Playlist.find(params[:playlist_id])
 
