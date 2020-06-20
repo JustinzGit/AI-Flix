@@ -13,6 +13,7 @@ class Movie < ApplicationRecord
 
   self.primary_key = "IMBD_ID"
 
+  # Search TMDB for movie ID
   def self.get_movie_id(movie_title)
     api_key = ENV['tmdb_api_key']
     response = Faraday.get "https://api.themoviedb.org/3/search/movie?api_key=#{api_key}&language=en-US&query=#{movie_title}"
@@ -20,6 +21,7 @@ class Movie < ApplicationRecord
     response['results'].empty? ? nil : response['results'][0]['id']
   end
 
+  # Use movie ID to obtain movie data from TMDB
   def self.get_movie_data(movie_id)
     api_key = ENV['tmdb_api_key']
     response = Faraday.get "https://api.themoviedb.org/3/movie/#{movie_id}?api_key=#{api_key}"
@@ -36,19 +38,23 @@ class Movie < ApplicationRecord
     }
   end
 
+  # Obtain TMDB data on provided movie
   def self.get_tmdb_data(movie_title)
     movie_id = self.get_movie_id(movie_title)
     movie_id.nil? ? nil : self.get_movie_data(movie_id)
   end
 
+  # Find movie titles that begin with provided input
   def self.begins_with(char)
     where("title LIKE (?)", "#{char}%")
   end
 
+  # Find movies released in a provided year 
   def self.released_in(year)
     where("year == (?)", year)
   end
 
+  # Find movies with provided title released in a provided year
   def self.find_movie(title, year)
     movies = self.begins_with(title)
     movies = movies.where("year == (?)", year)
