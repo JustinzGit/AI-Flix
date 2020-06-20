@@ -19,7 +19,7 @@ module PathsHelper
     session[:actor_2]['name'] if session[:actor_2]
   end
 
-  def path_actor_link(actor)
+  def actor_action(actor)
     if actor_1_name.nil?
       path_actor_1_path(actor)
     else
