@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
   def search
-    title = params[:search] if params[:search] && !params[:search].blank?
+    title = params[:title] if params[:title] && !params[:title].blank?
     year = params[:date][:year] if params[:date] && !params[:date][:year].blank?
 
     if title && year
