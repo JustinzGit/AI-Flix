@@ -23,19 +23,23 @@ class Movie < ApplicationRecord
 
   # Use movie ID to obtain movie data from TMDB
   def self.get_movie_data(movie_id)
-    api_key = ENV['tmdb_api_key']
-    response = Faraday.get "https://api.themoviedb.org/3/movie/#{movie_id}?api_key=#{api_key}"
-    response = JSON.parse response.body
-    movie_data = {
-      title: response['title'],
-      budget: response['budget'],
-      revenue: response['revenue'],
-      overview: response['overview'],
-      image: response['poster_path'],
-      release_date: response['release_date'],
-      tagline: response['tagline'],
-      imdb_id: response['imdb_id']
-    }
+    if movie_id.nil?
+      return nil 
+    else
+      api_key = ENV['tmdb_api_key']
+      response = Faraday.get "https://api.themoviedb.org/3/movie/#{movie_id}?api_key=#{api_key}"
+      response = JSON.parse response.body
+      movie_data = {
+        title: response['title'],
+        budget: response['budget'],
+        revenue: response['revenue'],
+        overview: response['overview'],
+        image: response['poster_path'],
+        release_date: response['release_date'],
+        tagline: response['tagline'],
+        imdb_id: response['imdb_id']
+      }
+    end 
   end
 
   # Obtain TMDB data on provided movie
