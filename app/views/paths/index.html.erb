@@ -5,6 +5,6 @@
 
 <div class="list">
   <% @paths.each.with_index(1) do |p, i| %>
-    <p><%= "#{i}. " %><%= link_to p.name, path_path(p) %></p>
+    <p><%= "#{i}. " %><%= link_to p.name, user_path_path(current_user, p) %></p>
   <% end %>
 </div>
