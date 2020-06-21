@@ -5,15 +5,15 @@ Inspiration was drawn from "Bacon's Law" or the Six Degrees of Kevin Bacon, a ga
 
 Kevin has even started his own charity called [Six Degrees](https://www.sixdegrees.org/about) that has used the popularity of the Bacon's law phenomena to raise money for empowering charities.
 
-All data obtain and displayed in AI-Flix was obtained with permission from [The Movie Database](https://themoviedatabase.org)
+All data obtain and displayed in AI-Flix was obtained with permission from [The Movie Database](https://themoviedb.org)
 
 # Installation
 - Fork and clone this repository
 - Be sure to have RubyGems installed (Ruby version 1.9+ comes with RubyGems by default)
-- Be sure to have Rails installed (Rails 6.0.3.1+)[Rails Guide](https://guides.rubyonrails.org/v5.0/getting_started.html)
+- Be sure to have Rails installed (Rails 6.0.3.1+) [Rails Guide](https://guides.rubyonrails.org/v5.0/getting_started.html)
 - Install the ruby gem `bundler` by running `gem install bundler` from the command line
 - Install application dependencies by running `bundle install` from the applications main directory
-- Run `rails s` from the terminal to start a Rack supporter server
+- Run `rails s` from the terminal to start a Rack supported server
 - By typing `localhost:3000` into your browser you will access the root page of the application
 
 ## Contributing
