@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create] do
     resources :playlists, only: [:new, :index, :show]
-    resources :paths, only: [:index, :show]
+    resources :paths, only: [:new, :index, :show]
   end
 
   # Session Routes
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :movies, only: [:show]
 
   # Path Routes
-  resources :paths, only: [:new, :create, :destroy]
+  resources :paths, only: [:create, :destroy]
 
   get '/path/actor_1/:actor_1', to: 'paths#actor_1', as: 'actor_1'
   get '/path/actor_2/:actor_2', to: 'paths#actor_2', as: 'actor_2'
