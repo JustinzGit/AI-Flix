@@ -25,12 +25,12 @@ class PathsController < ApplicationController
 
   def actor_1
     session[:actor_1] ||= Actor.find(params[:actor_1])
-    redirect_to new_path_path
+    redirect_to new_user_path_path(current_user)
   end
 
   def actor_2
     session[:actor_2] ||= Actor.find(params[:actor_2])
-    redirect_to new_path_path
+    redirect_to new_user_path_path(current_user)
   end
 
   # This action clears actors names from session
@@ -38,7 +38,7 @@ class PathsController < ApplicationController
   def clear_actor_names
     session[:actor_1] = nil
     session[:actor_2] = nil
-    redirect_to new_path_path
+    redirect_to new_user_path_path(current_user)
   end
 
   def create
@@ -54,7 +54,7 @@ class PathsController < ApplicationController
 
     if shortest_path.nil?
       flash[:alert] = "{ Actors Can Not Be Connected }"
-      redirect_to new_path_path
+      redirect_to new_user_path_path(current_user)
     else
       @path = Path.new(name: name, user_id: session[:user_id])
 
