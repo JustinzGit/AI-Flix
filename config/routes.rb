@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   # Playlist Routes
   resources :playlists, only: [:new, :create]
 
-  get '/select_movie/:movie_id', to: 'playlists#select_movie', as: 'select_movie'
+  get '/playlist_select/:movie_id', to: 'playlists#select_playlist', as: 'select_playlist'
   get '/playlist/:playlist_id/movie/:movie_id', to: 'playlists#add_movie', as: 'add_movie'
 
   # Review Routes
