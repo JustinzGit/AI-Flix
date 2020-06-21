@@ -63,7 +63,7 @@ class PathsController < ApplicationController
 
       @path.save
 
-      redirect_to user_path(current_user, @path)
+      redirect_to user_path_path(current_user, @path)
     end
   end
 
