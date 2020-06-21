@@ -1,5 +1,5 @@
 # AI-Flix
-AI-Flix at its core is a repository of movies (total of 344,276) and the actors (total of 1,044,499) who have starred in those movies. A function of AI-Flix is to generate the shortest path of movies that connect two provided actors within the database. To accomplish this, AI-Flix uses the Breadth-First Search (BFS) algorithm to traverse a tree of actors and movies until a path is found. 
+AI-Flix at its core is a repository of movies (total of 344,276) and the actors (total of 1,044,499) who have starred in those movies. A function of AI-Flix is to generate the shortest path of movies that connect two provided actors within the database. To accomplish this, AI-Flix uses the Breadth-First Search (BFS) algorithm to traverse a tree of actors and movies until a path is found. Users also have the ability to create movie playlists that can be based upon the alogirthm's output.
 
 Inspiration was drawn from "Bacon's Law" or the Six Degrees of Kevin Bacon, a game based on the concept that any two actors can be linked to Kevin Bacon through their film roles within six degrees of separation. [Bacon's Law](https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon#:~:text=Six%20Degrees%20of%20Kevin%20Bacon%20or%20%22Bacon's%20Law%22%20is%20a,and%20prolific%20actor%20Kevin%20Bacon.)
 
