@@ -42,9 +42,24 @@ class PlaylistsController < ApplicationController
     end 
   end
 
+  def destroy
+    playlist = Playlist.find(params[:id])
+    redirect_if_not_authorized(playlist)
+
+    playlist.destroy
+    redirect_to user_playlists_path(current_user)
+  end 
+
   private
 
   def playlist_params
     params.require(:playlist).permit(:name, :user_id)
+  end
+
+  def redirect_if_not_authorized(playlist)
+    if !current_user.playlists.include?(playlist)
+      flash[:alert] = "Playlist Doesn't Belong to You!"
+      redirect_to homepage_path
+    end
   end
 end

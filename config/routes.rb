@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get '/path/clear_actor_names', to: 'paths#clear_actor_names', as: 'clear_actor_names'
 
   # Playlist Routes
-  resources :playlists, only: [:new, :create]
+  resources :playlists, only: [:new, :create, :destroy]
 
   get '/playlist_select/:movie_id', to: 'playlists#select_playlist', as: 'select_playlist'
   get '/playlist/:playlist_id/movie/:movie_id', to: 'playlists#add_movie', as: 'add_movie'
