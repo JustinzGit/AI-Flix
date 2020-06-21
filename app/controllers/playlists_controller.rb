@@ -1,6 +1,6 @@
 class PlaylistsController < ApplicationController
   def index
-    if session[:user_id] != params[:user_id]
+    if session[:user_id] != params[:user_id].to_i
       redirect_home_if_not_authorized
     else
       @playlists = User.find(params[:user_id]).playlists
@@ -18,7 +18,7 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    if session[:user_id] != params[:user_id]
+    if session[:user_id] != params[:user_id].to_i
       redirect_home_if_not_authorized
     else
       @playlist = Playlist.find(params[:id])
