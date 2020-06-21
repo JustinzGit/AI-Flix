@@ -13,6 +13,9 @@ class Movie < ApplicationRecord
 
   self.primary_key = "IMBD_ID"
 
+  # Requirement, to be deleted
+  scope :oldest, -> { order('year ASC').where("year != 'nil'").second }
+
   # Search TMDB for movie ID
   def self.get_movie_id(movie_title)
     api_key = ENV['tmdb_api_key']
