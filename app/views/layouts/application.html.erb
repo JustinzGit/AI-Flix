@@ -16,7 +16,7 @@
           <%= link_to "Home", homepage_path %>
           <%= link_to "Actors", search_actors_path %>
           <%= link_to "Movies", search_movies_path %>
-          <%= link_to "Playlists", playlists_path %>
+          <%= link_to "Playlists", user_playlists_path(session[:user_id]) %>
           <%= link_to "AI-Path", paths_path %>
           <%= link_to "Log Out", logout_path %>
         </div>
