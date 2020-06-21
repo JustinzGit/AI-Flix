@@ -9,17 +9,31 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:user][:username])
-    if @user && @user.authenticate(params[:user][:password])
+    if auth_hash
+      @user = User.find_or_initialize_by(uid: auth_hash[:uid])
+      @user.username = auth_hash[:info][:nickname]
+      @user.save(validate: false)
       session[:user_id] = @user.id
       redirect_to homepage_path
+    
+    elsif @user = User.find_by(username: params[:user][:username])
+      if @user && @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.id
+        redirect_to homepage_path
+      end 
     else
       redirect_to login_path
-    end
+    end 
   end
 
   def destroy
     session.clear
     redirect_to login_path
   end
+
+  private
+
+  def auth_hash
+    request.env['omniauth.auth']
+  end 
 end
