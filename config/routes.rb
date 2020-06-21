@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/homepage', to: 'users#homepage'
 
   resources :users, only: [:new, :create] do
-    resources :playlists, only: [:index, :show]
+    resources :playlists, only: [:new, :index, :show]
     resources :paths, only: [:index, :show]
   end
 
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get '/path/clear_actor_names', to: 'paths#clear_actor_names', as: 'clear_actor_names'
 
   # Playlist Routes
-  resources :playlists, only: [:new, :create, :destroy]
+  resources :playlists, only: [:create, :destroy]
 
   get '/playlist_select/:movie_id', to: 'playlists#select_playlist', as: 'select_playlist'
   get '/playlist/:playlist_id/movie/:movie_id', to: 'playlists#add_movie', as: 'add_movie'
