@@ -4,7 +4,7 @@ class ActorsController < ApplicationController
     name = params[:name] if params[:name] && !params[:name].blank?
     birth_year = params[:date][:year] if params[:date] && !params[:date][:year].blank?
 
-    if name && year 
+    if name && birth_year 
       @actors = Actor.find_actors(name, year)
     elsif name
       @actors = Actor.find_by_name(params[:name])
