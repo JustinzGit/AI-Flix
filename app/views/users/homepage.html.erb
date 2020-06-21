@@ -1,5 +1,5 @@
 <div id="header">
   <h3>Welcome, <%= @user.username %></h3>
-  <p><%= link_to "My Movie Paths", paths_path %></p>
+  <p><%= link_to "My Movie Paths", user_paths_path(current_user) %></p>
   <p><%= link_to "My Playlists", user_playlists_path(current_user) %></p>
 </div>
