@@ -36,7 +36,7 @@ class PlaylistsController < ApplicationController
 
     if current_user.playlists.include?(playlist)
       playlist.movies << movie
-      redirect_to playlist_path(playlist)
+      redirect_to user_playlist_path(current_user, playlist)
     else
       redirect_home_if_not_authorized
     end 
