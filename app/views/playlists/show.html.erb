@@ -11,7 +11,7 @@
         <p><%= link_to m.title, movie_path(m), target: :_blank %></p>
       <% end %>
   <% end %>
-
+  <br>
   <p><%= link_to "Search Movies to Add", search_movies_path %></p>
   <p><%= button_to "Delete Playlist", playlist_path(@playlist), method: :delete %></p>
 </div>
