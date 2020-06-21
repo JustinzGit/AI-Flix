@@ -3,7 +3,7 @@ class PlaylistsController < ApplicationController
     if session[:user_id] != params[:user_id].to_i
       redirect_home_if_not_authorized
     else
-      @playlists = User.find(params[:user_id]).playlists
+      @playlists = current_user.playlists
     end
   end
 
