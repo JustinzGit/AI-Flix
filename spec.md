@@ -29,17 +29,21 @@ Specs:
 - [x] Include form display of validation errors
 * new users view reveals validation errors if any
 
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+* users can signin via github using OmniAuth
+
+- [x] Include a class level ActiveRecord scope method
+* Movie.oldest scope added to fetch oldest movie in database 
+
+- [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
+* users/1/playlists/new
+* users/1/path/new
+
 - [x] Include signup
 - [x] Include login
 - [x] Include logout
 
 # TO-DO
-
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
-
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
 
 Confirm:
 - [ ] The application is pretty DRY
