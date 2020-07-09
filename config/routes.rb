@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  # login page as root
+  # Session Routes
   root 'sessions#new'
+  get '/login', to: 'sessions#new', as: 'login'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
 
   # User Routes
   get '/homepage', to: 'users#homepage'
@@ -11,10 +14,11 @@ Rails.application.routes.draw do
     resources :paths, only: [:new, :index, :show]
   end
 
-  # Session Routes
-  get '/login', to: 'sessions#new', as: 'login'
-  post '/login', to: 'sessions#create'
-  get '/logout', to: 'sessions#destroy', as: 'logout'
+  # Playlist Routes
+  resources :playlists, only: [:create, :edit, :update, :destroy]
+  get '/playlist_select/:movie_id', to: 'playlists#select_playlist', as: 'select_playlist'
+  get '/playlist/:playlist_id/add_movie/:movie_id', to: 'playlists#add_movie', as: 'add_movie'
+  get '/playlist/:playlist_id/remove_movie/:movie_id', to: 'playlists#remove_movie', as: 'remove_movie'
 
   # Actor Routes
   get '/actors/search', to: 'actors#search', as: 'search_actors'
@@ -26,19 +30,9 @@ Rails.application.routes.draw do
 
   # Path Routes
   resources :paths, only: [:create, :destroy]
-
   get '/path/actor_1/:actor_1', to: 'paths#actor_1', as: 'actor_1'
   get '/path/actor_2/:actor_2', to: 'paths#actor_2', as: 'actor_2'
   get '/path/clear_actor_names', to: 'paths#clear_actor_names', as: 'clear_actor_names'
-
-  # Playlist Routes
-  resources :playlists, only: [:create, :edit, :update, :destroy]
-
-  get '/playlist_select/:movie_id', to: 'playlists#select_playlist', as: 'select_playlist'
-
-  get '/playlist/:playlist_id/add_movie/:movie_id', to: 'playlists#add_movie', as: 'add_movie'
-  
-  get '/playlist/:playlist_id/remove_movie/:movie_id', to: 'playlists#remove_movie', as: 'remove_movie'
 
   # Review Routes
   resources :reviews, only: [:create, :destroy]
