@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Disable ActionDispact Middleware due to security issue 
+  config.middleware.delete ActionDispatch::ActionableExceptions
+  
   # Code is not reloaded between requests.
   config.cache_classes = true
 
