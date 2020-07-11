@@ -17,7 +17,7 @@
     <h3 class="list-title">We found <%= @actors.count %> Actors</h3>
     
     <% @actors.each do |a| %>
-      <p><%= link_to actor_link(a.name, a.birth), actor_path(a) %></p>
+      <p><%= link_to "#{a.name}", actor_path(a) %></p>
     <% end %>
 
     <%= will_paginate @actors %>
