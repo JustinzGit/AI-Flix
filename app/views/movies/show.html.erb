@@ -1,68 +1,63 @@
-<% if @movie_data %>
-  <div class="title">
-    <h3><%= @movie_data[:title] %></h3>
-  </div>
+<div class="title">
+  <h3><%= @movie_data[:title] %></h3>
+</div>
 
-  <p id="tagline"><%= @movie_data[:tagline] %></p>
+<p id="tagline"><%= @movie_data[:tagline] %></p>
 
-  <div class="image">
-    <%= image_tag "https://image.tmdb.org/t/p/w300/#{@movie_data[:image]}" %>
-  </div>
+<div class="image">
+  <%= image_tag "https://image.tmdb.org/t/p/w300/#{@movie_data[:image]}" %>
+</div>
 
-  <div >
-    <h3>Movie Facts</h3>
+<div>
+  <h3>Movie Facts</h3>
     <p><b>Released On:</b> <%= movie_date(@movie_data) %></p>
     <p><b>Movie Budget:</b> <%= movie_budget(@movie_data) %></p>
     <p><b>Movie Profit:</b> <%= movie_profit(@movie_data) %></p>
 
-    <h3>Overview</h3>
+  <h3>Overview</h3>
     <p class="main-paragraph"><%= @movie_data[:overview] %></p>
-  </div>
+</div>
 
-  <div class="list">
-    <h3 class="list-title">Actors</h3>
-      <% @actors.each do |a| %>
-        <p><%= link_to a.name, actor_path(a) %></p>
-      <% end %><br>
-
-    <h3 class="list-title">Learn More</h3>
-    <p><%= link_to "IMDB Profile", "https://imdb.com/title/#{@movie_data[:imdb_id]}", target: :_blank %></p>
-  </div>
-
-
-  <div class="list">
-    <% if !@movie.reviews.empty? %>
-      <p class="list-title">Movie Reviews</p>
-      <% @movie.reviews.each do |r| %>
-          <p><%= r.user.username %> Says: "<%= r.user_review %>"</p>
-        
-          <% if r.user_id == current_user.id %>
-            <%= button_to "Remove Review", review_path(r.id), method: :delete %>
-          <% end %>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div >
-    <p>Leave A Movie Review</p>
-    <%= form_tag reviews_path, method: :post do %>
-      <p><%= text_area_tag "review[user_review]" %></p>
-
-      <%= hidden_field_tag "review[user_id]", current_user.id %>
-      <%= hidden_field_tag "review[movie_id]", @movie.id %>
-
-      <p><%= submit_tag "Submit Review" %></p>
+<div class="list">
+  <h3 class="list-title">Actors</h3>
+    <% @actors.each do |a| %>
+      <p><%= link_to a.name, actor_path(a) %></p>
     <% end %><br>
 
-    <p>Add Movie to Playlist</p>
-    <p><%= link_to "Add to Playlist", select_playlist_path(@movie) %></p>
-    <br>
-    <p>This data was provided by <%= link_to 'TMDB', 'https://themoviedb.org', target: :blank %></p>
-    <p><%= image_tag 'tmdb.png', style: 'width: 50%;' %></p>
-  </div>
-<% else %>
-  <div >
-    <p>Movie Data Doesn't Exist</p>
-    <p><%= link_to "Search Movies", search_movies_path %></p>
-  </div>
-<% end %>
+  <h3 class="list-title">Learn More</h3>
+  <p><%= link_to "IMDB Profile", "https://imdb.com/title/#{@movie_data[:imdb_id]}", target: :_blank %></p>
+</div>
+
+
+<div class="list">
+  <% if !@movie.reviews.empty? %>
+    <p class="list-title">Movie Reviews</p>
+    <% @movie.reviews.each do |r| %>
+        <p><%= r.user.username %> Says: "<%= r.user_review %>"</p>
+
+        <%# If review belongs to user, allow them to remove %>
+        <% if r.user_id == current_user.id %>
+          <%= button_to "Remove Review", review_path(r.id), method: :delete %>
+        <% end %>
+
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <p>Leave A Movie Review</p>
+  <%= form_tag reviews_path, method: :post do %>
+    <p><%= text_area_tag "review[user_review]" %></p>
+
+    <%= hidden_field_tag "review[user_id]", current_user.id %>
+    <%= hidden_field_tag "review[movie_id]", @movie.id %>
+
+    <p><%= submit_tag "Submit Review" %></p>
+  <% end %><br>
+
+  <p>Add Movie to Playlist</p>
+  <p><%= link_to "Add to Playlist", select_playlist_path(@movie) %></p>
+  <br>
+  <p>This data was provided by <%= link_to 'TMDB', 'https://themoviedb.org', target: :blank %></p>
+  <p><%= image_tag 'tmdb.png', style: 'width: 50%;' %></p>
+</div>
