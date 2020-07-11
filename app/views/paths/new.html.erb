@@ -16,9 +16,6 @@
       <p><%= label_tag :name, "Actor Name" %><br>
       <%= text_field_tag :name, params[:name] %></p>
 
-      <p><%= label_tag :year, "Year Born" %><br>
-      <%= select_year 0, start_year: 1970, end_year: 2115, prompt: "Select Year" %></p>
-
       <p><%= submit_tag "Search" %></p>
     <% end %>
   </div>
