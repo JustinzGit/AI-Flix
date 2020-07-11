@@ -39,7 +39,7 @@
 ### attributes
 - name
 - birth
-- IMBD_ID
+- tmdb_id
 - timestamps (created_at, updated_at)
 
 ### associations
@@ -53,7 +53,7 @@
 ### attributes
 - year
 - title
-- IMBD_ID
+- tmdb_id
 - timestamps (created_at, updated_at)
 
 ### associations
@@ -92,8 +92,8 @@
 
 ## Movie_Actors (Join)
 ### attributes
-- actor_id, primary key: IMBD_ID
-- movie_id, primary key: IMBD_ID
+- actor_id, primary key: tmdb_id
+- movie_id, primary key: tmdb_id
 - timestamps (created_at, updated_at)
 
 ### associations

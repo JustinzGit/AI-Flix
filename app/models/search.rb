@@ -33,7 +33,7 @@ class Search < ApplicationRecord
       # Check if node neighbors contain target
       # neighbors = self.neighbors_for_actor(node.state)
 
-      movies = Actor.find(node.state).movies.pluck(:IMBD_ID)
+      movies = Actor.find(node.state).movies.pluck(:tmdb_id)
       neighbors = Set.new
 
       movies.each do |movie|
