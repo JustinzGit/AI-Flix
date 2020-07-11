@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
     title = params[:title] if params[:title] && !params[:title].blank?
 
     if title
-      @movies = Movie.begins_with(title)
+      @movies = Movie.search(title)
     end
   end
 

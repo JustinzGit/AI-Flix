@@ -52,7 +52,7 @@ class Movie < ApplicationRecord
   end
 
   # Find movie titles that begin with provided input
-  def self.begins_with(char)
+  def self.search(char)
     where("title LIKE (?)", "#{char}%")
   end
 
