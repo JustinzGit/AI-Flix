@@ -11,7 +11,7 @@ class Movie < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
 
-  self.primary_key = "IMBD_ID"
+  self.primary_key = "tmdb_id"
 
   # Requirement, to be deleted
   scope :oldest, -> { order('year ASC').where("year != 'nil'").second }

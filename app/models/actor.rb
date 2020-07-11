@@ -5,7 +5,7 @@ class Actor < ApplicationRecord
   has_many :path_actors
   has_many :paths, through: :path_actors
 
-  self.primary_key = "IMBD_ID"
+  self.primary_key = "tmdb_id"
 
   # Search TMDB for actor ID
   def self.get_actor_id(actor)
