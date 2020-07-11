@@ -6,8 +6,6 @@ class MoviesController < ApplicationController
     if title
       @movies = Movie.begins_with(title)
     end
-
-    @movies = @movies.paginate(page: params[:page], per_page: 20) if @movies
   end
 
   def show
