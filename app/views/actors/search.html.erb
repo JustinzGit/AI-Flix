@@ -19,7 +19,6 @@
     <% @actors.each do |a| %>
       <p><%= link_to "#{a.name}", actor_path(a) %></p>
     <% end %>
-
-    <%= will_paginate @actors %>
+    
   <% end %>
 </div>
