@@ -42,7 +42,7 @@ class Actor < ApplicationRecord
   end
 
   # Find actors with name that contains input
-  def self.find_by_name(name)
+  def self.search(name)
     where("name LIKE (?)", "%#{name}%")
   end
 

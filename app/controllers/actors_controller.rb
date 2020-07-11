@@ -4,7 +4,7 @@ class ActorsController < ApplicationController
     name = params[:name] if params[:name] && !params[:name].blank?
     
     if name
-      @actors = Actor.find_by_name(params[:name])
+      @actors = Actor.search(params[:name])
     end
 
     @actors = @actors.paginate(page: params[:page], per_page: 20) if @actors
