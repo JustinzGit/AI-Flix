@@ -1,10 +1,8 @@
 class MoviesController < ApplicationController
 
   def search
-    title = params[:title] if params[:title] && !params[:title].blank?
-
-    if title
-      @movies = Movie.search(title)
+    if params[:title] && !params[:title].blank?
+      @movies = Movie.search(params[:title])
     end
   end
 
