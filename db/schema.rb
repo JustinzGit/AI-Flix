@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_20_214840) do
+ActiveRecord::Schema.define(version: 2020_07_11_152615) do
 
   create_table "actors", force: :cascade do |t|
-    t.integer "IMBD_ID"
+    t.integer "tmdb_id"
     t.string "name"
-    t.integer "birth"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -28,9 +27,8 @@ ActiveRecord::Schema.define(version: 2020_06_20_214840) do
   end
 
   create_table "movies", force: :cascade do |t|
-    t.integer "IMBD_ID"
+    t.integer "tmdb_id"
     t.string "title"
-    t.integer "year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -47,7 +45,6 @@ ActiveRecord::Schema.define(version: 2020_06_20_214840) do
 
   create_table "paths", force: :cascade do |t|
     t.string "name"
-    t.string "category"
     t.integer "user_id"
   end
 
