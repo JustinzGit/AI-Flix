@@ -9,7 +9,7 @@
     <%= image_tag "https://image.tmdb.org/t/p/w300/#{@movie_data[:image]}" %>
   </div>
 
-  <div class="center">
+  <div >
     <h3>Movie Facts</h3>
     <p><b>Released On:</b> <%= movie_date(@movie_data) %></p>
     <p><b>Movie Budget:</b> <%= movie_budget(@movie_data) %></p>
@@ -43,7 +43,7 @@
     <% end %>
   </div>
 
-  <div class="center">
+  <div >
     <p>Leave A Movie Review</p>
     <%= form_tag reviews_path, method: :post do %>
       <p><%= text_area_tag "review[user_review]" %></p>
@@ -61,7 +61,7 @@
     <p><%= image_tag 'tmdb.png', style: 'width: 50%;' %></p>
   </div>
 <% else %>
-  <div class="center">
+  <div >
     <p>Movie Data Doesn't Exist</p>
     <p><%= link_to "Search Movies", search_movies_path %></p>
   </div>
