@@ -5,18 +5,9 @@ class PathsController < ApplicationController
   end
 
   def new
-    actor_name = params[:name] if params[:name] && !params[:name].blank?
-    birth_year = params[:date][:year] if params[:date] && !params[:date][:year].blank?
-
-    if actor_name && birth_year
-      @actors = Actor.find_actors(actor_name, birth_year)
-    elsif actor_name
-      @actors = Actor.find_by_name(actor_name)
-    elsif birth_year
-      @actors = Actor.find_by_birth_year(params[:date][:year])
+    if params[:name] && !params[:name].blank?
+      @actors = Actor.find_by_name(params[:name])
     end
-
-    @actors = @actors.paginate(page: params[:page], per_page: 20) if @actors
   end
 
   def actor_1
