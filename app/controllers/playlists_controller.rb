@@ -1,5 +1,7 @@
 class PlaylistsController < ApplicationController
 
+  # Before action - require login applied to all 
+
   def index
     @playlists = current_user.playlists
   end
@@ -16,10 +18,7 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find_by(id: params[:id])
-
-    if !current_user.playlists.include?(@playlist)
-      redirect_home_if_not_authorized
-    end
+    redirect_if_not_authorized(current_user.playlists, @playlist)
   end
 
   def select_playlist
@@ -29,16 +28,12 @@ class PlaylistsController < ApplicationController
 
   def add_movie
     playlist = Playlist.find(params[:playlist_id])
+    movie = Movie.find(params[:movie_id])
 
-    if current_user.playlists.include?(playlist)
-      movie = Movie.find(params[:movie_id])
-      playlist.movies << movie
-      redirect_to user_playlist_path(current_user, playlist)
-      
-    else
-      flash[:alert] = "Playlist Doesn't Belong to You!"
-      redirect_to homepage_path
-    end 
+    redirect_if_not_authorized(current_user.playlists, playlist)
+    
+    playlist.movies << movie
+    redirect_to user_playlist_path(current_user, playlist)
   end
 
   def edit
