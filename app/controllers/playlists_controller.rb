@@ -1,4 +1,5 @@
 class PlaylistsController < ApplicationController
+
   def index
     if session[:user_id] != params[:user_id].to_i
       redirect_home_if_not_authorized
@@ -18,10 +19,14 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    if session[:user_id] != params[:user_id].to_i
+    @playlist = Playlist.find_by(id: params[:id])
+
+    if !current_user.playlists.include?(@playlist)
       redirect_home_if_not_authorized
-    else
-      @playlist = Playlist.find(params[:id])
+
+    elsif @playlist.nil?
+      flash[:alert] = "Playlist Not Found"
+      redirect_to user_playlists_path(current_user)
     end
   end
 
@@ -31,14 +36,16 @@ class PlaylistsController < ApplicationController
   end
 
   def add_movie
-    movie = Movie.find(params[:movie_id])
     playlist = Playlist.find(params[:playlist_id])
 
     if current_user.playlists.include?(playlist)
+      movie = Movie.find(params[:movie_id])
       playlist.movies << movie
       redirect_to user_playlist_path(current_user, playlist)
+      
     else
-      redirect_home_if_not_authorized
+      flash[:alert] = "Playlist Doesn't Belong to You!"
+      redirect_to homepage_path
     end 
   end
 
@@ -73,12 +80,5 @@ class PlaylistsController < ApplicationController
 
   def playlist_params
     params.require(:playlist).permit(:name, :user_id)
-  end
-
-  def redirect_if_not_authorized(playlist)
-    if !current_user.playlists.include?(playlist)
-      flash[:alert] = "Playlist Doesn't Belong to You!"
-      redirect_to homepage_path
-    end
   end
 end
