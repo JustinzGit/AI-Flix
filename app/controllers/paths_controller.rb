@@ -6,7 +6,7 @@ class PathsController < ApplicationController
 
   def new
     if params[:name] && !params[:name].blank?
-      @actors = Actor.find_by_name(params[:name])
+      @actors = Actor.search(params[:name])
     end
   end
 
