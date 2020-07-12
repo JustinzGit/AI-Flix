@@ -23,10 +23,6 @@ class PlaylistsController < ApplicationController
 
     if !current_user.playlists.include?(@playlist)
       redirect_home_if_not_authorized
-
-    elsif @playlist.nil?
-      flash[:alert] = "Playlist Not Found"
-      redirect_to user_playlists_path(current_user)
     end
   end
 
@@ -49,17 +45,21 @@ class PlaylistsController < ApplicationController
     end 
   end
 
+  def edit
+    @playlist = Playlist.find(params[:id])
+
+    if !current_user.playlists.include?(@playlist)
+      flash[:alert] = "Playlist Doesn't Belong to You!"
+      redirect_to homepage_path
+    end 
+  end 
+
   def remove_movie
     movie = Movie.find(params[:movie_id])
     playlist = Playlist.find(params[:playlist_id])
 
     PlaylistMovie.find_by(playlist_id: playlist.id, movie_id: movie.id).destroy 
-    
-    redirect_to user_playlist_path(current_user, playlist)
-  end 
-
-  def edit
-    @playlist = Playlist.find(params[:id])
+    redirect_to user_playlist_path(current_user, playlist) 
   end 
 
   def update
