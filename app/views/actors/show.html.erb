@@ -6,7 +6,7 @@
   <p><%= image_tag "https://image.tmdb.org/t/p/w300/#{@actor_data[:image]}" %></p>
 </div>
 
-<div >
+<div>
   <p><b>Birthday:</b> <%= actor_birthday(@actor_data) %></p>
   <p><b>Hometown:</b> <%= actor_birthplace(@actor_data) %></p>
   <p><b>Deathday</b> <%= actor_deathday(@actor_data) %></p>
@@ -25,7 +25,7 @@
   <p><%= link_to "IMDB Profile", "https://imdb.com/name/#{@actor_data[:imdb_id]}", target: :_blank %></p>
 </div>
 
-<div >
+<div>
   <br>
   <p>This data was provided by <%= link_to 'TMDB', 'https://themoviedb.org', target: :blank %></p>
   <p><%= image_tag 'tmdb.png', style: 'width: 50%;' %></p>

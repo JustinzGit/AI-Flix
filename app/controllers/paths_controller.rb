@@ -27,7 +27,7 @@ class PathsController < ApplicationController
   end
 
   def create
-    # Acquire actor names from path form
+    # Acquire actor names from session hash
     actor_1 = Actor.find(session[:actor_1]['id'])
     actor_2 = Actor.find(session[:actor_2]['id'])
 
