@@ -31,18 +31,14 @@ class PlaylistsController < ApplicationController
     movie = Movie.find(params[:movie_id])
 
     redirect_if_not_authorized(current_user.playlists, playlist)
-    
+
     playlist.movies << movie
     redirect_to user_playlist_path(current_user, playlist)
   end
 
   def edit
     @playlist = Playlist.find(params[:id])
-
-    if !current_user.playlists.include?(@playlist)
-      flash[:alert] = "Playlist Doesn't Belong to You!"
-      redirect_to homepage_path
-    end 
+    redirect_if_not_authorized(current_user.playlists, @playlist)
   end 
 
   def remove_movie
