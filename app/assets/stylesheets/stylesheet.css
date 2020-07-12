@@ -2,10 +2,7 @@ body {
     /* Red background */
     background-color: #e50914;
 
-    /* Browser defines the margins */
     margin: auto;
-
-    /* So content doesn't touch browser edges */
     margin-top: 5%;
     margin-bottom: 5%;
 
@@ -16,7 +13,6 @@ body {
 
 /* Refers to division created around content */
 #content {
-
     /* Creates a border around content */
     border-style: solid;
     border-width: 5px;
@@ -24,7 +20,6 @@ body {
 
     /* White background */
     background-color: white;
-
 }
 
 #navbar {
@@ -58,14 +53,6 @@ a {
   font-size: 18px;
   font-family: 'PT Sans', sans-serif;
   font-weight: bold;
-}
-
-#header {
-  color: black;
-  font-family: 'PT Sans', sans-serif;
-  text-align: center;
-  font-size: 15px;
-  margin-top: 50px;
 }
 
 .list-title {
