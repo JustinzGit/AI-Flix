@@ -1,11 +1,7 @@
 class PlaylistsController < ApplicationController
 
   def index
-    if session[:user_id] != params[:user_id].to_i
-      redirect_home_if_not_authorized
-    else
-      @playlists = current_user.playlists
-    end
+    @playlists = current_user.playlists
   end
 
   def new
