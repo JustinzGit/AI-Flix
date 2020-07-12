@@ -1,11 +1,7 @@
 class PathsController < ApplicationController
 
   def index
-    if session[:user_id] != params[:user_id].to_i
-      redirect_home_if_not_authorized
-    else 
-      @paths = current_user.paths
-    end 
+    @paths = current_user.paths
   end
 
   def new
@@ -68,12 +64,8 @@ class PathsController < ApplicationController
   end
 
   def show
-    if session[:user_id] != params[:user_id].to_i
-      redirect_home_if_not_authorized
-    else 
-      @path = Path.find(params[:id])
-      redirect_if_not_authorized(@path)
-    end 
+    @path = Path.find(params[:id])
+    redirect_if_not_authorized(@path)
   end
 
   def destroy
