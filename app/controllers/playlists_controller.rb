@@ -1,7 +1,5 @@
 class PlaylistsController < ApplicationController
 
-  # Before action - require login applied to all 
-
   def index
     @playlists = current_user.playlists
   end
@@ -44,6 +42,7 @@ class PlaylistsController < ApplicationController
   def remove_movie
     movie = Movie.find(params[:movie_id])
     playlist = Playlist.find(params[:playlist_id])
+    redirect_if_not_authorized(current_user.playlists, playlist)
 
     PlaylistMovie.find_by(playlist_id: playlist.id, movie_id: movie.id).destroy 
     redirect_to user_playlist_path(current_user, playlist) 
@@ -51,13 +50,15 @@ class PlaylistsController < ApplicationController
 
   def update
     @playlist = Playlist.find(params[:id])
+    redirect_if_not_authorized(current_user.playlists, @playlist)
+
     @playlist.update(playlist_params)
     redirect_to user_playlist_path(current_user, @playlist)
   end 
 
   def destroy
     playlist = Playlist.find(params[:id])
-    redirect_if_not_authorized(playlist)
+    redirect_if_not_authorized(current_user.playlists, playlist)
 
     playlist.destroy
     redirect_to user_playlists_path(current_user)
