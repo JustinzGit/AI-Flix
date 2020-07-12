@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   # Playlist Routes
   resources :playlists, only: [:create, :edit, :update, :destroy]
-  get '/playlist_select/:movie_id', to: 'playlists#select_playlist', as: 'select_playlist'
+  get '/select_playlist/movie/:movie_id', to: 'playlists#select_playlist', as: 'select_playlist'
   get '/playlist/:playlist_id/add_movie/:movie_id', to: 'playlists#add_movie', as: 'add_movie'
   get '/playlist/:playlist_id/remove_movie/:movie_id', to: 'playlists#remove_movie', as: 'remove_movie'
 
