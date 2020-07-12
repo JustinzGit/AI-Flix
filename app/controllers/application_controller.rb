@@ -8,14 +8,14 @@ class ApplicationController < ActionController::Base
   end 
 
   def require_login
-    if session[:user_id].nil?
+    if !logged_in?
       flash[:alert] = "You must be logged in."
       redirect_to login_path
     end
   end
 
   def redirect_home_if_logged_in
-    if !session[:user_id].nil?
+    if logged_in?
       flash[:alert] = "You're already logged in."
       redirect_to homepage_path
     end
