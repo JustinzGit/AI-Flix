@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
 
+  def logged_in?
+    !!current_user
+  end 
+
   def require_login
     if session[:user_id].nil?
       flash[:alert] = "You must be logged in."
@@ -17,8 +21,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def redirect_home_if_not_authorized
-    flash[:alert] = "You're not authorized to access this page"
-    redirect_to homepage_path
+  def redirect_if_not_authorized(collection, instance)
+    if !logged_in? || !collection.include?(instance)
+      flash[:alert] = "You're not authorized to access this page"
+      redirect_to homepage_path
+    end 
   end
 end
