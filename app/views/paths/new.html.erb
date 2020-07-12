@@ -2,7 +2,7 @@
   <h3>Generate a Movie Path</h3>
 </div>
 
-<div >
+<div>
   <p>AI-Flix generates a movie path by finding the shortest path of movies that connect two actors.</p>
   <p><b>Actor 1: </b><%= actor_1_name%></p>
   <p><b>Actor 2: </b><%= actor_2_name %></p>
@@ -18,14 +18,14 @@
 
       <p><%= submit_tag "Search" %></p>
     <% end %>
-  </div>
+  <% end %>
+</div>
 
-  <div class="list">
-    <% if @actors %>
-      <h3 class="list-title">We found <%= @actors.count %> Actors</h3>
-        <% @actors.each do |a| %>
-            <p><%= link_to "#{a.name}", actor_action(a) %> - <%= link_to "Actor Page", actor_path(a) %></p>
-        <% end %>
-    <% end %>
-  </div>
-<% end %>
+<div class="list">
+  <% if @actors %>
+    <h3 class="list-title">We found <%= @actors.count %> Actors</h3>
+      <% @actors.each do |a| %>
+          <p><%= link_to "#{a.name}", actor_action(a) %> - <%= link_to "Actor Page", actor_path(a) %></p>
+      <% end %>
+  <% end %>
+</div>
