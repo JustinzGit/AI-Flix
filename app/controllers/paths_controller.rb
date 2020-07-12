@@ -20,8 +20,6 @@ class PathsController < ApplicationController
     redirect_to new_user_path_path(current_user)
   end
 
-  # This action clears actors names from session
-  # Should use JavaScript in future
   def clear_actor_names
     session[:actor_1] = nil
     session[:actor_2] = nil
@@ -56,23 +54,14 @@ class PathsController < ApplicationController
 
   def show
     @path = Path.find(params[:id])
-    redirect_if_not_authorized(@path)
+    redirect_if_not_authorized(current_user.paths, @path)
   end
 
   def destroy
     path = Path.find(params[:id])
-    redirect_if_not_authorized(path)
+    redirect_if_not_authorized(current_user.paths, path)
     
     path.destroy
     redirect_to homepage_path
-  end
-
-  private
-
-  def redirect_if_not_authorized(path)
-    if !current_user.paths.include?(path)
-      flash[:alert] = "Path Not Found"
-      redirect_to homepage_path
-    end
   end
 end
