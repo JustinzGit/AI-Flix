@@ -1,5 +1,5 @@
 # AI-Flix
-AI-Flix at its core is a repository of movies and actos who have starred in those movies. Users can browse this repository to obtain detailed information, leave movie reviews, and create movie playlists. 
+AI-Flix at its core is a repository of movies and actors who have starred in those movies. Users can browse this repository to obtain detailed information, leave movie reviews, and create movie playlists. 
 
 A function of AI-Flix is to generate the shortest path of movies that connect two provided actors within the database. To accomplish this, AI-Flix uses the Breadth-First Search (BFS) algorithm to traverse a tree of actors and movies until a path is found. Users can leverage these paths to create playlists based upon the alogirthm's output.
 
