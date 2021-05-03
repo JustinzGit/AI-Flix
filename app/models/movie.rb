@@ -16,39 +16,32 @@ class Movie < ApplicationRecord
   # Requirement, to be deleted
   scope :oldest, -> { order('year ASC').where("year != 'nil'").second }
 
-  # Search TMDB for movie ID
-  def self.get_movie_id(movie_title)
-    api_key = ENV['tmdb_api_key']
-    response = Faraday.get "https://api.themoviedb.org/3/search/movie?api_key=#{api_key}&language=en-US&query=#{movie_title}"
-    response = JSON.parse response.body
-    response['results'].empty? ? nil : response['results'][0]['id']
-  end
+  # # Search TMDB for movie ID
+  # def self.get_movie_id(movie_title)
+  #   api_key = ENV['tmdb_api_key']
+  #   response = Faraday.get "https://api.themoviedb.org/3/search/movie?api_key=#{api_key}&language=en-US&query=#{movie_title}"
+  #   response = JSON.parse response.body
+  #   response['results'].empty? ? nil : response['results'][0]['id']
+  # end
 
-  # Use movie ID to obtain movie data from TMDB
-  def self.get_movie_data(movie_id)
-    if movie_id.nil?
-      return nil 
-    else
+  # fetch data from TMDB
+  # if data has not been collected
+  def fetch_tmdb_data
+    if !self.data_collected
       api_key = ENV['tmdb_api_key']
-      response = Faraday.get "https://api.themoviedb.org/3/movie/#{movie_id}?api_key=#{api_key}"
+      response = Faraday.get "https://api.themoviedb.org/3/movie/#{self.id}?api_key=#{api_key}"
       response = JSON.parse response.body
-      movie_data = {
-        title: response['title'],
-        budget: response['budget'],
-        revenue: response['revenue'],
-        overview: response['overview'],
-        image: response['poster_path'],
-        release_date: response['release_date'],
-        tagline: response['tagline'],
-        imdb_id: response['imdb_id']
-      }
+      self.title = response['title']
+      self.budget = response['budget']
+      self.revenue = response['revenue']
+      self.overview = response['overview']
+      self.image = response['poster_path']
+      self.release_date = response['release_date']
+      self.tagline = response['tagline']
+      self.imdb_id = response['imdb_id']
+      self.data_collected = true
+      self.save
     end 
-  end
-
-  # Obtain TMDB data on provided movie
-  def self.get_tmdb_data(movie_title)
-    movie_id = self.get_movie_id(movie_title)
-    movie_id.nil? ? nil : self.get_movie_data(movie_id)
   end
 
   # find movie titles that begin with provided input
