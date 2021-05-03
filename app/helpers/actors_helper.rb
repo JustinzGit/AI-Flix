@@ -1,14 +1,14 @@
 module ActorsHelper
     def actor_birthday(actor)
-        actor[:birthday].nil? ? "No Data" : format_date(actor[:birthday])
+        actor.birthday.nil? ? "No Data" : format_date(actor.birthday)
     end 
 
     def actor_birthplace(actor)
-        actor[:birthplace].nil? ? "No Data" : actor[:birthplace]
+        actor.birthplace.nil? ? "No Data" : actor.birthplace
     end 
 
     def actor_deathday(actor)
-        actor[:deathday].nil? ? "Still Living" : format_date(actor[:deathday])
+        actor.deathday.nil? ? "Still Living" : format_date(actor.deathday)
     end 
 
     def display_actors_search_results(results)
