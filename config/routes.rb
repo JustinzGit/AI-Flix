@@ -26,8 +26,9 @@ Rails.application.routes.draw do
   end 
   
   # Movie Routes
-  get '/movies/search', to: 'movies#search', as: 'search_movies'
-  resources :movies, only: [:show]
+  resources :movies, only: [:show] do 
+    get 'search', on: :collection
+  end 
 
   # Path Routes
   resources :paths, only: [:create, :destroy]
