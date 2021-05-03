@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_03_154943) do
+ActiveRecord::Schema.define(version: 2021_05_03_210615) do
 
   create_table "actors", force: :cascade do |t|
     t.integer "tmdb_id"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 2021_05_03_154943) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "budget"
+    t.string "revenue"
+    t.string "overview"
+    t.string "image"
+    t.string "release_date"
+    t.string "tagline"
+    t.string "imdb_id"
+    t.boolean "data_collected", default: false
   end
 
   create_table "path_actors", force: :cascade do |t|
