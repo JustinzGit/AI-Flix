@@ -1,7 +1,7 @@
 <div id="login">
   <h3>Login</h3>
 
-  <%= form_with @user, url: login_path do |f| %>
+  <%= form_with model: @user, url: login_path do |f| %>
     <p><%= f.label :username %><br>
     <%= f.text_field :username %></p>
 
