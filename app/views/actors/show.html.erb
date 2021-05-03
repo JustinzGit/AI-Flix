@@ -1,28 +1,28 @@
 <div class="title">
-  <h3><%= @actor_data[:name] %></h3>
+  <h3><%= @actor.name %></h3>
 </div>
 
 <div class="image">
-  <p><%= image_tag "https://image.tmdb.org/t/p/w300/#{@actor_data[:image]}" %></p>
+  <p><%= image_tag "https://image.tmdb.org/t/p/w300/#{@actor.image}" %></p>
 </div>
 
 <div>
-  <p><b>Birthday:</b> <%= actor_birthday(@actor_data) %></p>
-  <p><b>Hometown:</b> <%= actor_birthplace(@actor_data) %></p>
-  <p><b>Deathday</b> <%= actor_deathday(@actor_data) %></p>
+  <p><b>Birthday:</b> <%= actor_birthday(@actor) %></p>
+  <p><b>Hometown:</b> <%= actor_birthplace(@actor) %></p>
+  <p><b>Deathday</b> <%= actor_deathday(@actor) %></p>
 
   <h3>Biography </h3>
-  <p class="main-paragraph"><%= @actor_data[:biography] %></p>
+  <p class="main-paragraph"><%= @actor.biography %></p>
 </div>
 
 <div class="list">
   <h3 class="list-title">Movies</h3>
-    <% @movies.each do |m| %>
+    <% @actor.movies.each do |m| %>
       <p><%= link_to m.title, movie_path(m) %></p>
     <% end %><br>
 
   <h3 class="list-title">Learn More</h3>
-  <p><%= link_to "IMDB Profile", "https://imdb.com/name/#{@actor_data[:imdb_id]}", target: :_blank %></p>
+  <p><%= link_to "IMDB Profile", "https://imdb.com/name/#{@actor.imdb_id}", target: :_blank %></p>
 </div>
 
 <div>
