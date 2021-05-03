@@ -1,9 +1,8 @@
 class ActorsController < ApplicationController
 
+  # GET /actors/search
   def search
-    if params[:name] && !params[:name].blank?
-      @actors = Actor.search(params[:name])
-    end
+    @actors = Actor.search_by_name(params[:name])
   end
 
   def show
