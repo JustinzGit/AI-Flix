@@ -21,8 +21,9 @@ Rails.application.routes.draw do
   get '/playlist/:playlist_id/remove_movie/:movie_id', to: 'playlists#remove_movie', as: 'remove_movie'
 
   # Actor Routes
-  get '/actors/search', to: 'actors#search', as: 'search_actors'
-  resources :actors, only: [:show]
+  resources :actors, only: [:show] do
+    get 'search', on: :collection
+  end 
   
   # Movie Routes
   get '/movies/search', to: 'movies#search', as: 'search_movies'
