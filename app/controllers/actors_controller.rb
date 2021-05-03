@@ -5,9 +5,9 @@ class ActorsController < ApplicationController
     @actors = Actor.search_by_name(params[:name])
   end
 
+  # GET /actors/:id
   def show
     @actor = Actor.find(params[:id])
-    @movies = @actor.movies
-    @actor_data = Actor.get_tmdb_data(@actor.name)
+    @actor.fetch_tmdb_data
   end
 end
