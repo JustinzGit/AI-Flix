@@ -51,9 +51,9 @@ class Movie < ApplicationRecord
     movie_id.nil? ? nil : self.get_movie_data(movie_id)
   end
 
-  # Find movie titles that begin with provided input
-  def self.search(char)
-    where("title LIKE (?)", "#{char}%")
+  # find movie titles that begin with provided input
+  def self.search_by_title(title)
+    where("title LIKE (?)", "#{title}%") if title
   end
 
   # Find movies released in a provided year 
