@@ -5,11 +5,10 @@
   <%= form_with url: '/actors/search', method: :get do |f| %>
     <p><%= f.label :name, "Actor Name" %><br>
     <%= f.text_field :name %>
-
     <p><%= f.submit "Search" %></p>
   <% end %>
 
-  <div class="list">
+  <div class="actors_list">
     <%= display_actors_search_results(@actors) %>
   </div>
 </div>
