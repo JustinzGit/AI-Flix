@@ -36,7 +36,4 @@ Rails.application.routes.draw do
 
   # Review Routes
   resources :reviews, only: [:create, :destroy]
-
-  # Provider Callback
-  get '/auth/github/callback', to: 'sessions#create'
 end
