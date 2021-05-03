@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_152615) do
+ActiveRecord::Schema.define(version: 2021_05_03_154943) do
 
   create_table "actors", force: :cascade do |t|
     t.integer "tmdb_id"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "birthday"
+    t.string "deathday"
+    t.string "biography"
+    t.string "birthplace"
+    t.string "image"
+    t.string "imdb_id"
+    t.boolean "data_collected", default: false
   end
 
   create_table "movie_actors", force: :cascade do |t|
