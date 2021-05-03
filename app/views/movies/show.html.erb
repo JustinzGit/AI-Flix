@@ -36,14 +36,12 @@
 
 <div>
   <p>Leave A Movie Review</p>
-  <%= form_tag reviews_path, method: :post do %>
-    <p><%= text_area_tag "review[user_review]" %></p>
-
-    <%= hidden_field_tag "review[user_id]", current_user.id %>
-    <%= hidden_field_tag "review[movie_id]", @movie.id %>
-
-    <p><%= submit_tag "Submit Review" %></p>
-  <% end %><br>
+  <%= form_with url: reviews_path do |f| %>
+    <p><%= f.text_field :user_review %></p>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :movie_id, value: @movie.id %>
+    <%= f.submit "Submit Review" %>
+  <% end %> <br>
 
   <p>Add Movie to Playlist</p>
   <p><%= link_to "Add to Playlist", select_playlist_path(@movie) %></p>
