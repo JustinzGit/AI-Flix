@@ -1,24 +1,15 @@
-<div>
+<div id="actors_search">
   <h3>AI-Flix Contains 206,172 Actors</h3>
   <h3>Search Actor By Name</h3>
 
-  <!-- Search Form -->
-  <%= form_tag search_actors_path, method: :get do %>
+  <%= form_with url: '/actors/search', method: :get do |f| %>
+    <p><%= f.label :name, "Actor Name" %><br>
+    <%= f.text_field :name %>
 
-    <p><%= label_tag :name, "Actor Name" %><br>
-    <%= text_field_tag :name, params[:name] %></p>
-
-    <p><%= submit_tag "Search" %></p>
+    <p><%= f.submit "Search" %></p>
   <% end %>
-</div>
 
-<div class="list">
-  <% if @actors %>
-    <h3 class="list-title">We found <%= @actors.count %> Actors</h3>
-    
-    <% @actors.each do |a| %>
-      <p><%= link_to "#{a.name}", actor_path(a) %></p>
-    <% end %>
-    
-  <% end %>
+  <div class="list">
+    <%= display_actors_search_results(@actors) %>
+  </div>
 </div>
