@@ -1,19 +1,16 @@
-<div >
-  <h3>LogIn to AI-Flix</h3>
+<div id="login">
+  <h3>Login</h3>
 
-  <%= form_for @user, url: login_path do |f| %>
+  <%= form_with @user, url: login_path do |f| %>
     <p><%= f.label :username %><br>
     <%= f.text_field :username %></p>
 
     <p><%= f.label :password %><br>
     <%= f.password_field :password %></p>
 
-    <%= f.submit "Log In" %>
+    <%= f.submit "Login" %>
   <% end %>
 
   <p>Don't have an account?
   <%= link_to "Sign Up", new_user_path %></p>
-
-  <p>Have a GitHub?
-  <%= link_to "Sign in with Github", "/auth/github" %></p>
 </div>
