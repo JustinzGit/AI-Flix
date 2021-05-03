@@ -20,4 +20,19 @@ module MoviesHelper
             raw(count + movies.join) 
         end
     end 
+
+    def display_movie_reviews(reviews)
+        if !reviews.empty?
+            reviews = reviews.map do |r|
+                review = "<p>#{r.user.username} Says: #{r.user_review}</p>"
+                if r.user_id == current_user.id
+                    button = button_to("Remove Review", review_path(r), method: :delete)
+                    review + button
+                else 
+                    review
+                end 
+            end
+            raw(reviews.join) 
+        end 
+    end 
 end
