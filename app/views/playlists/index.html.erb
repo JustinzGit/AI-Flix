@@ -1,14 +1,14 @@
-<div>
+<div id="playlist_index">
   <h3><%= current_user.username %>'s Playlists</h3>
-  <p><%= link_to "Create New Playlist", new_user_playlist_path %></p>
-</div>
+  <p><%= link_to "Create New Playlist", new_playlist_path %></p>
 
-<div class="list">
-  <% if @playlists.empty? %>
-    <p>You Don't Have Any Playlists!</p>
-  <% else %>
-    <% @playlists.each do |p| %>
-      <p><%= link_to p.name, user_playlist_path(current_user, p) %></p>
+  <div class="list">
+    <% if @playlists.empty? %>
+      <p>You Don't Have Any Playlists!</p>
+    <% else %>
+      <% @playlists.each do |p| %>
+        <p><%= link_to p.name, playlist_path(p) %></p>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
