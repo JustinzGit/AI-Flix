@@ -1,6 +1,6 @@
 <div id="edit_playlist">
     <%= form_with model: @playlist do |f| %>
-        <p><%= f.label :name, "Name" %>
+        <p><%= f.label :name, "Playlist Name" %>
         <%= f.text_field :name %></p>
         <%= f.hidden_field :user_id, value: current_user.id %>
     
