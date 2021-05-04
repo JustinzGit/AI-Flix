@@ -1,1 +1,9 @@
-<%= render 'layouts/form' %>
+<div id="edit_playlist">
+    <%= form_with model: @playlist do |f| %>
+        <p><%= f.label :name, "Playlist Name" %></p>
+        <p><%= f.text_field :name %></p>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit "Edit Playlist Name" %>
+    <% end %>
+    <%= display_movies_in_playlist(@playlist) %>
+</div>
