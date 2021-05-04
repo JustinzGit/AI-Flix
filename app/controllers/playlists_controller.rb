@@ -5,6 +5,11 @@ class PlaylistsController < ApplicationController
     @playlists = current_user.playlists
   end
 
+  # GET /playlists/:id
+  def show
+    @playlist = Playlist.find(params[:id])
+  end
+
   # GET /playlists/new
   def new
     @playlist = Playlist.new
@@ -16,11 +21,6 @@ class PlaylistsController < ApplicationController
     redirect_to playlist_path(@playlist)
   end
 
-  # GET /playlists/:id
-  def show
-    @playlist = Playlist.find(params[:id])
-  end
-
   # GET /playlists/:id/edit
   def edit
     @playlist = Playlist.find(params[:id])
@@ -28,17 +28,17 @@ class PlaylistsController < ApplicationController
 
   # PATCH/PUT /playlists/:id
   def update
+    binding.pry
     @playlist = Playlist.find(params[:id])
     @playlist.update(playlist_params)
     redirect_to playlist_path(@playlist)
   end 
 
+  # DELETE /playlists/:id
   def destroy
-    playlist = Playlist.find(params[:id])
-    redirect_if_not_authorized(current_user.playlists, playlist)
-
-    playlist.destroy
-    redirect_to user_playlists_path(current_user)
+    @playlist = Playlist.find(params[:id])
+    @playlist.destroy
+    redirect_to playlists_path(@playlist)
   end
 
   def playlist_params
@@ -49,20 +49,17 @@ class PlaylistsController < ApplicationController
 
 
 
-  def select_playlist
-    @movie = Movie.find(params[:movie_id])
-    @playlists = current_user.playlists
-  end
+  
 
-  def add_movie
-    playlist = Playlist.find(params[:playlist_id])
-    movie = Movie.find(params[:movie_id])
+  # def add_movie
+  #   playlist = Playlist.find(params[:playlist_id])
+  #   movie = Movie.find(params[:movie_id])
 
-    redirect_if_not_authorized(current_user.playlists, playlist)
+  #   redirect_if_not_authorized(current_user.playlists, playlist)
 
-    playlist.movies << movie
-    redirect_to playlist_path(playlist)
-  end
+  #   playlist.movies << movie
+  #   redirect_to playlist_path(playlist)
+  # end
 
   # def edit
   #   @playlist = Playlist.find(params[:id])
