@@ -91,33 +91,33 @@ class Search < ApplicationRecord
       # Check if node neighbors contain target
       neighbors = self.neighbors_for_actor(node.state)
 
-      # neighbors.each do |actor, movie|
+      neighbors.each do |actor, movie|
 
-      #   # If actor is not in explored set or fronteir
-      #   if !explored.include?(actor) && !fronteir.contains_state(actor)
+        # If actor is not in explored set or fronteir
+        if !explored.include?(actor) && !fronteir.contains_state(actor)
 
-      #     child = Node.new(actor, node, movie)
+          child = Node.new(actor, node, movie)
 
-      #     # Check if child node is goal
-      #     if child.state == target
-      #       path = {movies: [], actors: []}
+          # Check if child node is goal
+          if child.state == target
+            movie_path = {movies: [], actors: []}
 
-      #       while child.parent
-      #         path[:movies].unshift(Movie.find(child.action))
-      #         path[:actors].unshift(Actor.find(child.state))
-      #         child = child.parent
-      #       end
-      #       path[:actors].unshift(Actor.find(source))
-      #       return path
-      #     end
+            while child.parent
+              movie_path[:movies].unshift(Movie.find(child.action))
+              movie_path[:actors].unshift(Actor.find(child.state))
+              child = child.parent
+            end
+            movie_path[:actors].unshift(Actor.find(source))
+            return movie_path
+          end
 
-      #     # Add actor to explored set
-      #     explored << child.state
+          # Add actor to explored set
+          explored << child.state
 
-      #     # Add child node to fronteir
-      #     fronteir.add(child)
-      #   end
-      # end
+          # Add child node to fronteir
+          fronteir.add(child)
+        end
+      end
     end
   end
 end
