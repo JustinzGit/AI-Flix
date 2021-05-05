@@ -3,6 +3,12 @@ class ActorsController < ApplicationController
   # GET /actors/search
   def search
     @actors = Actor.search_by_name(params[:query])
+
+    if params[:render] 
+      render params[:render] 
+    else 
+      render :search
+    end 
   end
 
   # GET /actors/:id (tmdb id)
