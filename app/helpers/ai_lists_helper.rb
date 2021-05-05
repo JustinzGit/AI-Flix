@@ -34,5 +34,15 @@ module AiListsHelper
       end
       raw(lists.join) 
     end 
-  end 
+  end
+  
+  def display_actor_selection(results)
+    if results
+        count = "<h3 class='list-title'>We found #{results.count} Actors</h3>"
+        actors = results.map do |a|
+            "<p><div id='actor_selection' value='#{a.id}'>#{a.name}</div></p>"
+        end
+        raw(count + actors.join) 
+    end
+end 
 end
