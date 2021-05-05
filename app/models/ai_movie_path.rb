@@ -1,4 +1,4 @@
-class Path < ApplicationRecord
+class AiMoviePath < ApplicationRecord
   belongs_to :user
 
   has_many :path_movies
