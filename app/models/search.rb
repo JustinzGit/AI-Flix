@@ -59,7 +59,7 @@ class Search < ApplicationRecord
     return neighbors
   end 
 
-  def self.shortest_path(source, target)
+  def self.find_movie_path(source, target)
 
     # Define the first node
     root_node = Node.new(source, nil, nil)
