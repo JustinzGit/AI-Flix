@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :paths
+  has_many :ai_lists
   has_many :playlists
 
   has_many :reviews
