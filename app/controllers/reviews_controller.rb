@@ -1,11 +1,12 @@
 class ReviewsController < ApplicationController
 
+  # POST /reviews
   def create
-    @review = Review.new(review_params)
-    @review.save
+    @review = Review.create(review_params)
     redirect_to movie_path(@review.movie_id)
   end
 
+  # DELETE /reviews/:id
   def destroy
     review = Review.find(params[:id])
     movie = review.movie_id
