@@ -3,10 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
 
-  def logged_in?
-    !!current_user
-  end 
-
   def require_login
     if !logged_in?
       flash[:alert] = "You must be logged in."
