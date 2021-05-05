@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     @user = User.new
   end
 
+  # POST /login
   def create
     @user = User.find_by(email: params[:user][:email])
 
