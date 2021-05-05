@@ -1,6 +1,49 @@
 class Search < ApplicationRecord
   include SearchUtilities
   require 'set'
+  require 'csv'
+
+  @@names = {}
+  @@actors = {}
+  @@movies = {}
+
+  # load data from CSV files into memory
+  def self.load_data
+    actors = CSV.parse(File.read("tmdb_dataset/actors.csv"), headers: true)
+    actors.each do |a|
+        id = a['id']
+        name = a['name']
+
+        @@actors[id] = {
+            name: name,
+            movies: Set.new
+        }
+
+        if !@@names.has_key?(name)
+            @@names[name] = id       
+        end 
+    end 
+
+    movies = CSV.parse(File.read("tmdb_dataset/movies.csv"), headers: true)
+    movies.each do |m|
+        id = m['id']
+        title = m['title']
+
+        @@movies[id] = {
+            title: title,
+            actors: Set.new
+        }
+    end 
+
+    movie_actors = CSV.parse(File.read("tmdb_dataset/movie_actors.csv"), headers: true)
+    movie_actors.each do |ma|
+        actor_id = ma['person_id']
+        movie_id = ma['movie_id']
+
+        @@actors[actor_id][:movies] << movie_id
+        @@movies[movie_id][:actors] << actor_id
+    end 
+  end 
 
   def self.shortest_path(source, target)
 
