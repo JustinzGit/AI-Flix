@@ -43,6 +43,21 @@ class Search < ApplicationRecord
         @@actors[actor_id][:movies] << movie_id
         @@movies[movie_id][:actors] << actor_id
     end 
+  end
+  
+  def self.neighbors_for_actor(actor_id)
+    neighbors = Set.new
+
+    # movies actor has starred in
+    movie_ids = @@actors[actor_id][:movies]
+
+    movie_ids.each do |movie_id|
+        @@movies[movie_id][:actors].each do |actor_id|
+          neighbors.add([movie_id, actor_id])
+        end 
+    end
+
+    return neighbors
   end 
 
   def self.shortest_path(source, target)
@@ -74,48 +89,35 @@ class Search < ApplicationRecord
       node = fronteir.remove
 
       # Check if node neighbors contain target
-      # neighbors = self.neighbors_for_actor(node.state)
+      neighbors = self.neighbors_for_actor(node.state)
 
-      movies = Actor.find(node.state).movies.pluck(:tmdb_id)
-      neighbors = Set.new
+      # neighbors.each do |actor, movie|
 
-      movies.each do |movie|
-        actors = MovieActor.where("movie_id == #{movie}").pluck(:actor_id)
+      #   # If actor is not in explored set or fronteir
+      #   if !explored.include?(actor) && !fronteir.contains_state(actor)
 
-        actors.each do |actor|
-          if !explored.include?(actor) && !fronteir.contains_state(actor)
-            neighbors.add([actor, movie])
-          end
-        end
-      end
+      #     child = Node.new(actor, node, movie)
 
-      neighbors.each do |actor, movie|
+      #     # Check if child node is goal
+      #     if child.state == target
+      #       path = {movies: [], actors: []}
 
-        # If actor is not in explored set or fronteir
-        if !explored.include?(actor) && !fronteir.contains_state(actor)
+      #       while child.parent
+      #         path[:movies].unshift(Movie.find(child.action))
+      #         path[:actors].unshift(Actor.find(child.state))
+      #         child = child.parent
+      #       end
+      #       path[:actors].unshift(Actor.find(source))
+      #       return path
+      #     end
 
-          child = Node.new(actor, node, movie)
+      #     # Add actor to explored set
+      #     explored << child.state
 
-          # Check if child node is goal
-          if child.state == target
-            path = {movies: [], actors: []}
-
-            while child.parent
-              path[:movies].unshift(Movie.find(child.action))
-              path[:actors].unshift(Actor.find(child.state))
-              child = child.parent
-            end
-            path[:actors].unshift(Actor.find(source))
-            return path
-          end
-
-          # Add actor to explored set
-          explored << child.state
-
-          # Add child node to fronteir
-          fronteir.add(child)
-        end
-      end
+      #     # Add child node to fronteir
+      #     fronteir.add(child)
+      #   end
+      # end
     end
   end
 end
