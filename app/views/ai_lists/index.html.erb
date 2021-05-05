@@ -1,9 +1,7 @@
-<div id="ai_movie_paths">
-  <p><%= link_to("Create Movie Path", new_ai_movie_path_path) %></p>
+<div id="ai_lists">
+  <p><%= link_to("Create Movie Path", new_ai_list_path) %></p>
 
   <div class="list">
-    <% @paths.each.with_index(1) do |p, i| %>
-      <p><%= "#{i}. " %><%= link_to p.name, user_path_path(current_user, p) %></p>
-    <% end %>
+    <%= display_users_list(@ai_lists) %>
   </div>
 </div>
