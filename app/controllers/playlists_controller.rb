@@ -28,7 +28,6 @@ class PlaylistsController < ApplicationController
 
   # PATCH/PUT /playlists/:id
   def update
-    binding.pry
     @playlist = Playlist.find(params[:id])
     @playlist.update(playlist_params)
     redirect_to playlist_path(@playlist)
