@@ -1,4 +1,4 @@
-module AiMoviePathsHelper
+module AiListsHelper
 
   def reveal_path(path)
     movies = path.movies
