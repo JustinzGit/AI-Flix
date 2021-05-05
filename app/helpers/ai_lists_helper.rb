@@ -26,4 +26,13 @@ module AiListsHelper
       actor_2_path(actor)
     end
   end
+
+  def display_users_lists(ai_lists)
+    if ai_lists
+      lists = ai_lists.map do |list|
+        "<p>#{link_to(list.name, ai_list_path(list))}</p>"
+      end
+      raw(lists.join) 
+    end 
+  end 
 end
