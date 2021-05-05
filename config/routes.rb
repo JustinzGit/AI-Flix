@@ -10,15 +10,12 @@ Rails.application.routes.draw do
   get '/homepage', to: 'users#homepage'
 
   resources :users, only: [:new, :create] do
-    resources :playlists, only: [:new, :index, :show]
     resources :paths, only: [:new, :index, :show]
   end
 
   # Playlist Routes
-  resources :playlists, only: [:create, :edit, :update, :destroy]
-  get '/select_playlist/movie/:movie_id', to: 'playlists#select_playlist', as: 'select_playlist'
-  get '/playlist/:playlist_id/add_movie/:movie_id', to: 'playlists#add_movie', as: 'add_movie'
-  get '/playlist/:playlist_id/remove_movie/:movie_id', to: 'playlists#remove_movie', as: 'remove_movie'
+  resources :playlists
+  resources :playlist_movies
 
   # Actor Routes
   resources :actors, only: [:show] do
