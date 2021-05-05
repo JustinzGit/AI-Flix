@@ -1,8 +1,8 @@
 class AiListsController < ApplicationController
 
-  # GET /ai_movie_paths
+  # GET /ai_lists
   def index
-    @ai_movie_paths = current_user.ai_movie_paths
+    @ai_lists = current_user.ai_lists
   end
 
   def new
