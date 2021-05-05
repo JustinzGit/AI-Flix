@@ -1,10 +1,17 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, except: [:homepage]
 
+  # GET /homepage
+  def homepage
+    @user = current_user
+  end
+  
+  # GET /users/new (Signup Page)
   def new
     @user = User.new
   end
 
+  # POST /users
   def create
     @user = User.new(user_params)
 
@@ -15,10 +22,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to homepage_path
     end
-  end
-
-  def homepage
-    @user = User.find_by(id: session[:user_id])
   end
 
   private
