@@ -5,10 +5,8 @@ class AiListsController < ApplicationController
     @ai_lists = current_user.ai_lists
   end
 
+  # GET /ai_lists/new
   def new
-    if params[:name] && !params[:name].blank?
-      @actors = Actor.search(params[:name])
-    end
   end
 
   # def actor_1
