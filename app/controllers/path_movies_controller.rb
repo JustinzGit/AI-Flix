@@ -1,2 +1,0 @@
-class PathMoviesController < ApplicationController
-end

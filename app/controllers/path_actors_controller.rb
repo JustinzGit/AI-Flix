@@ -1,2 +1,0 @@
-class PathActorsController < ApplicationController
-end
