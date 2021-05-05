@@ -1,9 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login
 
-  before_action :redirect_home_if_logged_in
-  skip_before_action :redirect_home_if_logged_in, only: [:destroy]
-
   def new
     @user = User.new
   end
