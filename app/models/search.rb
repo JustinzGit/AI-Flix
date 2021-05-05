@@ -53,10 +53,9 @@ class Search < ApplicationRecord
 
     movie_ids.each do |movie_id|
         @@movies[movie_id][:actors].each do |actor_id|
-          neighbors.add([movie_id, actor_id])
+          neighbors.add([actor_id, movie_id])
         end 
     end
-
     return neighbors
   end 
 
