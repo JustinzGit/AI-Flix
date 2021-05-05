@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_023059) do
     t.boolean "data_collected", default: false
   end
 
-  create_table "ai_movie_paths", force: :cascade do |t|
+  create_table "ai_lists", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
   end
