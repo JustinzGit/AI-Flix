@@ -1,4 +1,4 @@
-class AiLists < ApplicationRecord
+class AiList < ApplicationRecord
   belongs_to :user
 
   has_many :path_movies
