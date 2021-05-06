@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end 
 
   # Path Routes
-  resources :ai_lists
+  resources :ai_routes
   # get '/path/actor_1/:actor_1', to: 'paths#actor_1', as: 'actor_1'
   # get '/path/actor_2/:actor_2', to: 'paths#actor_2', as: 'actor_2'
   # get '/path/clear_actor_names', to: 'paths#clear_actor_names', as: 'clear_actor_names'
