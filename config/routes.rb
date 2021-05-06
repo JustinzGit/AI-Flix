@@ -10,9 +10,6 @@ Rails.application.routes.draw do
   get '/homepage', to: 'users#homepage'
 
   resources :users
-  # resources :users, only: [:new, :create] do
-  #   resources :paths, only: [:new, :index, :show]
-  # end
 
   # Playlist Routes
   resources :playlists
@@ -28,11 +25,10 @@ Rails.application.routes.draw do
     get 'search', on: :collection
   end 
 
-  # Path Routes
-  resources :ai_routes
-  # get '/path/actor_1/:actor_1', to: 'paths#actor_1', as: 'actor_1'
-  # get '/path/actor_2/:actor_2', to: 'paths#actor_2', as: 'actor_2'
-  # get '/path/clear_actor_names', to: 'paths#clear_actor_names', as: 'clear_actor_names'
+  # AI Routes
+  resources :ai_routes, only: [:new] do 
+    get 'generate', on: :collection
+  end 
 
   # Review Routes
   resources :reviews, only: [:create, :destroy]
