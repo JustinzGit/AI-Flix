@@ -70,14 +70,10 @@ function submitActorsButton(){
     token = document.getElementsByName('csrf-token')[0].content
 
     submitButton.addEventListener('click', () => {
-        fetch(`http://localhost:3000/ai_lists`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json','X-CSRF-Token': token},
-            body: JSON.stringify({
-                actor_1: myStorage.actor_1,
-                actor_2: myStorage.actor_2,
-            })
-        })
+        fetch(`http://localhost:3000/ai_routes/generate?` + new URLSearchParams({
+            actor_1: myStorage.actor_1,
+            actor_2: myStorage.actor_2,
+        }))
     })
 
     actorSelections.after(submitButton)
