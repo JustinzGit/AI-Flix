@@ -1,10 +1,5 @@
 class AiListsController < ApplicationController
 
-  # GET /ai_lists
-  def index
-    @ai_lists = current_user.ai_lists
-  end
-
   # GET /ai_lists/new
   def new
   end
