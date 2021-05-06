@@ -4,6 +4,11 @@
 </div>
 
 <p>AI-Flix generates a movie path by finding the shortest path of movies that connect two actors.</p>
+<div id='actor_selections'>
+  <div id="actor_1">Actor 1: </div>
+  <div id="actor_2">Actor 2: </div>
+</div>
+
 
 <%= form_with url: '/actors/search', method: :get do |f| %>
     <p><%= f.label :query, "Actor Name" %><br>
@@ -12,6 +17,6 @@
     <p><%= f.submit "Search" %></p>
 <% end %>
 
-<div id="actors_selection">
+<div id="actor_list">
   <%= display_actor_selection(@actors) %>
 </div>
