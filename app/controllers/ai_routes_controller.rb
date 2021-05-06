@@ -4,8 +4,8 @@ class AiRoutesController < ApplicationController
   def new
   end
 
-  # POST /ai_routes
-  def create 
+  # GET /ai_routes/generate
+  def generate
     AiRoute.load_data
     @movie_path = AiRoute.find_movie_path(params[:actor_1], params[:actor_2])
   end 
