@@ -1,4 +1,5 @@
-<%= javascript_pack_tag 'ai_lists' %>
+<%= javascript_pack_tag 'ai_routes' %>
+
 <div class="title">
   <h3>Generate a Movie Path</h3>
 </div>
@@ -13,7 +14,7 @@
 <%= form_with url: '/actors/search', method: :get do |f| %>
     <p><%= f.label :query, "Actor Name" %><br>
     <%= f.text_field :query %>
-    <%= f.hidden_field :render, value: new_ai_list_path %>
+    <%= f.hidden_field :render, value: new_ai_route_path %>
     <p><%= f.submit "Search" %></p>
 <% end %>
 
