@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_05_023059) do
+ActiveRecord::Schema.define(version: 2021_05_06_205141) do
 
   create_table "actors", force: :cascade do |t|
     t.integer "tmdb_id"
@@ -24,11 +24,6 @@ ActiveRecord::Schema.define(version: 2021_05_05_023059) do
     t.string "image"
     t.string "imdb_id"
     t.boolean "data_collected", default: false
-  end
-
-  create_table "ai_lists", force: :cascade do |t|
-    t.string "name"
-    t.integer "user_id"
   end
 
   create_table "movie_actors", force: :cascade do |t|
