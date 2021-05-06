@@ -40,7 +40,7 @@ module AiListsHelper
     if results
         count = "<h3 class='list-title'>We found #{results.count} Actors</h3>"
         actors = results.map do |a|
-            "<p><div id='actor_selection' value='#{a.id}'>#{a.name}</div></p>"
+            "<div id='#{a.id}'>#{a.name}</div><br>"
         end
         raw(count + actors.join) 
     end
