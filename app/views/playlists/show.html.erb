@@ -1,10 +1,12 @@
 <div id="playlists_show">
-  <div class="title"><h3><%= @playlist.name %></h3></div>
+  <div class="title">
+    <h3><%= @playlist.name %></h3>
+  </div>
+
   <div class="list">
-    <%= display_movies_in_playlist(@playlist) %>
-    <br>
-    <p><%= link_to("Search Movies To Add", search_movies_path) %></p>
+    <%= display_movies_in_playlist(@playlist) %><br>
+    <p><%= link_to("Search Movies", search_movies_path) %></p>
+    <p><%= link_to("Edit Playlist", edit_playlist_path(@playlist)) %></p>
     <p><%= button_to("Delete Playlist", playlist_path(@playlist), method: :delete) %></p>
-    <p><%= button_to("Edit Playlist", edit_playlist_path(@playlist), method: :get) %></p>
   </div>
 </div>
