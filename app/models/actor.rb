@@ -2,9 +2,6 @@ class Actor < ApplicationRecord
   has_many :movie_actors
   has_many :movies, through: :movie_actors
 
-  has_many :path_actors
-  has_many :paths, through: :path_actors
-
   self.primary_key = "tmdb_id"
 
   # obtain TMDB actor id
