@@ -61,7 +61,7 @@ class AiRoute < ApplicationRecord
     return neighbors
   end 
 
-  def self.find_movie_path(source, target)
+  def self.generate_movie_path(source, target)
 
     # Define the first node
     root_node = Node.new(source, nil, nil)
