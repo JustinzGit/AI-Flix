@@ -11,9 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // display actors on page if in local storage
     displayActors()
 
-    if (myStorage.actor_1 !== undefined){
-        removeActorsButton()
-    }
+    // display buttons to remove actors or submit selections
+    addButtons()
 })
 
 function addEventsToActors(){
@@ -33,6 +32,7 @@ function addEventsToActors(){
                 // display actors on page that have been set
                 displayActors()
 
+                // display button to remove actors
                 removeActorsButton()
                 
             }
@@ -41,12 +41,11 @@ function addEventsToActors(){
             else {
                 myStorage.setItem('actor_2', event.target.id)
                 myStorage.setItem('actor_2_name', event.target.innerText)
-                actor2Div.innerText = `Actor 2: ${myStorage.actor_2_name}`
 
                 // display actors on page that have been set
                 displayActors()
 
-                // add button to submit actors
+                // display button to submit actors
                 submitActorsButton()
             }
         })
@@ -61,8 +60,7 @@ function displayActors(){
 
     if (myStorage.actor_2 !== undefined){
         actor2Div.innerText = `Actor 2: ${myStorage.actor_2_name}`
-    }
-
+    } 
 }
 
 // button to submit actors to generate ai movie list
@@ -74,15 +72,37 @@ function submitActorsButton(){
 
 // button to remove actors from DOM and clear local storage
 function removeActorsButton(){
-    removeButton = document.createElement('button')
-    removeButton.innerText = 'Remove Actors'
+    if (myStorage.actor_1 !== undefined || myStorage.actor_1 !== undefined){
+        removeButton = document.createElement('button')
+        removeButton.innerText = 'Remove Actors'
 
-    removeButton.addEventListener('click', () => {
-        myStorage.clear()
-        actor1Div.innerText = `Actor 1: `
-        actor2Div.innerText = `Actor 2: `
-        removeButton.remove()
-    })
+        removeButton.addEventListener('click', () => {
+            myStorage.clear()
+            actor1Div.innerText = `Actor 1: `
+            actor2Div.innerText = `Actor 2: `
+            removeButton.remove()
 
-    actorSelections.after(removeButton)
+            // remove submit button if it has been added
+            if (typeof(submitButton) !== 'undefined') submitButton.remove()
+        })
+
+        actorSelections.after(removeButton)
+    }
+}
+
+// adds buttons to remove actors or submit actors 
+function addButtons(){
+
+    // if both actors are present in storage
+    if (myStorage.length === 4){
+
+        // add button to remove actors 
+        removeActorsButton()
+
+        // add button to submit actors 
+        submitActorsButton()
+    }
+    else if (myStorage.length == 2){
+        removeActorsButton()
+    }
 }
