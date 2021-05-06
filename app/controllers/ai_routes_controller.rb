@@ -6,6 +6,6 @@ class AiRoutesController < ApplicationController
 
   # GET /ai_routes/generate
   def generate
-    @movie_path = AiRoute.generate_movie_path(params[:actor_1], params[:actor_2])
+    @movie_path = Ai.generate_movie_path(params[:actor_1], params[:actor_2])
   end 
 end
