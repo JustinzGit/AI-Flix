@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'ai_lists' %>
 <div class="title">
   <h3>Generate a Movie Path</h3>
 </div>
@@ -11,4 +12,6 @@
     <p><%= f.submit "Search" %></p>
 <% end %>
 
-<%= display_actor_selection(@actors) %>
+<div id="actors_selection">
+  <%= display_actor_selection(@actors) %>
+</div>
