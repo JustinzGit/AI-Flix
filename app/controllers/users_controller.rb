@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
 
       Thread.new do 
-        AiRoute.load_data
+        Ai.load_data
       end
       
       redirect_to homepage_path
