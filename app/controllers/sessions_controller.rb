@@ -13,6 +13,11 @@ class SessionsController < ApplicationController
     # Ensure user is located and password is correct
     if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
+
+        Thread.new do 
+          AiRoute.load_data
+        end 
+
         redirect_to homepage_path
     else
         flash[:alert] = "Invalid email or password"
