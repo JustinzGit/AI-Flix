@@ -20,11 +20,6 @@ class UsersController < ApplicationController
     else
       @user.save
       session[:user_id] = @user.id
-
-      Thread.new do 
-        Ai.load_data
-      end
-      
       redirect_to homepage_path
     end
   end
