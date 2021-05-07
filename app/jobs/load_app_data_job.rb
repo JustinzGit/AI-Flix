@@ -2,6 +2,6 @@ class LoadAppDataJob < ApplicationJob
     queue_as :default
 
     def perform
-        Ai.load_data
+        Search.load_data
     end 
 end 
