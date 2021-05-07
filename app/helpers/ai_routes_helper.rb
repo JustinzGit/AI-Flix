@@ -1,16 +1,20 @@
 module AiRoutesHelper
 
-  def reveal_path(path)
-    movies = path.movies
-    actors = path.actors
-    string = ""
+  def display_movie_path(movie_path)
+
+
+    movies = movie_path[:movies].map {|m| m.title}
+    actors = movie_path[:actors].map {|a| a.name}
+    path = []
+
+
 
     movies.length.times do |i|
-      string += "<p>#{actors[i].name} and #{actors[i + 1].name} starred in #{movies[i].title}</p>"
+      path << "<p>#{actors[i]} and #{actors[i + 1]} starred in #{movies[i]}</p>"
     end
-    string.html_safe
+    raw(path.join)
   end
-    
+
   def display_actor_selection(results)
     if results
         count = "<h3 class='list-title'>We found #{results.count} Actors</h3>"
