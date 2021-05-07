@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   end 
 
   # AI Routes
-  resources :ai_routes, only: [:new] do 
+  resources :ai_movie_routes, only: [:new] do 
     get 'generate', on: :collection
   end 
 
