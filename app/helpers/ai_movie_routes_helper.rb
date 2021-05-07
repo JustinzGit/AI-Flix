@@ -1,4 +1,4 @@
-module AiRoutesHelper
+module AiMovieRoutesHelper
 
   def display_movie_path(movie_path)
 
