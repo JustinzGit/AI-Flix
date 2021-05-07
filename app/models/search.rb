@@ -1,4 +1,4 @@
-class Ai < ApplicationRecord
+class Search < ApplicationRecord
   include SearchUtilities
   require 'set'
   require 'csv'
