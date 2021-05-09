@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_06_205141) do
+ActiveRecord::Schema.define(version: 2021_05_09_150309) do
 
   create_table "actors", force: :cascade do |t|
     t.integer "tmdb_id"
@@ -41,11 +41,13 @@ ActiveRecord::Schema.define(version: 2021_05_06_205141) do
     t.string "budget"
     t.string "revenue"
     t.string "overview"
-    t.string "image"
+    t.string "poster_path"
     t.string "release_date"
     t.string "tagline"
     t.string "imdb_id"
     t.boolean "data_collected", default: false
+    t.float "popularity"
+    t.string "backdrop_path"
   end
 
   create_table "playlist_movies", force: :cascade do |t|
