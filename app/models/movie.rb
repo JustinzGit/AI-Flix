@@ -57,6 +57,7 @@ class Movie < ApplicationRecord
       end
       movie
     end
+    popular_movies.sort_by(&:popularity).reverse
   end 
 
   # find movie titles that begin with provided input
