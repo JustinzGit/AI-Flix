@@ -41,6 +41,22 @@ class Movie < ApplicationRecord
     end 
   end
 
+  def self.fetch_popular_movies
+    api_key = ENV['tmdb_api_key']
+    response = Faraday.get "https://api.themoviedb.org/3/movie/popular?api_key=#{api_key}"
+    response = JSON.parse response.body
+
+    popular_movies = response['results'].map do |m|
+      movie = Movie.find_by(tmdb_id: m['id'])
+      if !movie
+        movie = Movie.new
+        movie.id = m['id']
+        movie.fetch_tmdb_data
+      end
+      movie
+    end
+  end 
+
   # find movie titles that begin with provided input
   def self.search_by_title(title)
     where("title LIKE (?)", "#{title}%") if title
