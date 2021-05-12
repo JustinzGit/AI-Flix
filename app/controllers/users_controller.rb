@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   # GET /homepage
   def homepage
-    @user = current_user
+    @popular_movies = Movie.fetch_popular_movies
   end
   
   # GET /users/new (Signup Page)
