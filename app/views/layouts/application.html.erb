@@ -16,14 +16,24 @@
   </head>
 
   <body>
+
+    <%# display navbar if logged in %>
     <% if logged_in? %>
-      <div id="navbar">
-        <%= link_to "Home", homepage_path %>
-        <%= link_to "Actors", search_actors_path %>
-        <%= link_to "Movies", search_movies_path %>
-        <%= link_to "Playlists", playlists_path %>
-        <%= link_to "AI-Path", new_ai_route_path %>
-        <%= link_to "Log Out", logout_path %>
+      <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navbar w-nav">
+        <div class="navbar-container w-container">
+          <%= link_to(raw('<h1 class="logo">AI-FLIX</h1>'), homepage_path, class: 'brand w-nav-brand') %>
+          <nav role="navigation" class="navmenu w-nav-menu">
+            <%= link_to('Home', homepage_path, class: 'nav-link w-nav-link') %>
+            <%= link_to('Movies', search_movies_path, class: 'nav-link w-nav-link') %>
+            <%= link_to('Actors', search_actors_path, class: 'nav-link w-nav-link') %>
+            <%= link_to('Playlists', playlists_path, class: 'nav-link w-nav-link') %>
+            <%= link_to('AI-Search', new_ai_movie_route_path, class: 'nav-link w-nav-link') %>
+            <%= link_to('Logout', logout_path, class: 'nav-link red w-nav-link') %>
+          </nav>
+          <div class="menu-button w-nav-button">
+            <div class="icon w-icon-nav-menu"></div>
+          </div>
+        </div>
       </div>
     <% end %>
 
