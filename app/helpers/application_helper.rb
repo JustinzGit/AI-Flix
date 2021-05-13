@@ -16,11 +16,11 @@ module ApplicationHelper
 
     if errors.any?
         messages = errors.each.map do |message|
-            content_tag(:p, message)
+            "<div class='text-block-error'>#{message}</div>"
         end 
 
         # raw helper - to_s + html_safe
-        raw(messages.join)
+        raw("<div class='error-message w-form-fail'>#{messages.join}</div>")
     end
   end 
 end
