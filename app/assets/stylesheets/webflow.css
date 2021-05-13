@@ -312,7 +312,7 @@ input[type="reset"] {
   background-color: #dddddd;
 }
 .w-form-fail {
-  display: none;
+  display: block;
   margin-top: 10px;
   padding: 10px;
   background-color: #ffdede;
