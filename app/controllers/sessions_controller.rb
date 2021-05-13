@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   # POST /login
   def create
-    @user = User.find_by(username: params[:user][:username])
+    @user = User.find_by(email: params[:user][:email])
 
     # Ensure user is located and password is correct
     if @user && @user.authenticate(params[:user][:password])
