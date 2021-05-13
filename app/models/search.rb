@@ -104,8 +104,14 @@ class Search < ApplicationRecord
             movie_path = {movies: [], actors: []}
 
             while child.parent
-              movie_path[:movies].unshift(Movie.find(child.action))
-              movie_path[:actors].unshift(Actor.find(child.state))
+              movie = Movie.find(child.action)
+              movie.fetch_tmdb_data if !movie.data_collected
+              movie_path[:movies].unshift(movie)
+
+              actor = Actor.find(child.state)
+              actor.fetch_tmdb_data if !actor.data_collected
+              movie_path[:actors].unshift(actor)
+              
               child = child.parent
             end
             movie_path[:actors].unshift(Actor.find(source))
