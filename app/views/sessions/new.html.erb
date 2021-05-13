@@ -2,9 +2,8 @@
   <h1 class="logo">AI-FLIX</h1>
   <div class="black-background">
     <div class="form w-form">
-
-      <%= form_with model: @user, url: login_path, id: "email-form", 
-        name: "email-form", class: "form" do |f| %>
+    
+      <%= form_with model: @user, url: login_path, class: "form" do |f| %>
         <h1 class="heading">Sign In</h1>
 
         <%= f.label :email, "Email", class: "form-label" %>
@@ -14,13 +13,18 @@
         <%= f.password_field :password, class: "text-field w-input" %>
 
         <%= f.submit "Login", class: "submit-button w-button" %>
+      <% end %>
 
-        <div class="bottom-form-text">
-          <div class="grey-text">New to AI-Flix?</div>
-          <%= link_to("Sign up now", new_user_path, class: "form-link") %>
+      <div class="bottom-form-text">
+        <div class="grey-text">New to AI-Flix?</div>
+        <%= link_to("Sign up now", new_user_path, class: "form-link") %>
+      </div>
+
+      <% if flash[:alert] %>
+        <div class="error-message w-form-fail">
+          <div class="text-block-error"><%= flash[:alert] %></div>
         </div>
       <% end %>
-      
    </div>
   </div>
 </div>
