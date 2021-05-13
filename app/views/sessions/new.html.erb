@@ -1,16 +1,26 @@
-<div id="login">
-  <h3>Login</h3>
+<div class="theater-background">
+  <h1 class="logo">AI-FLIX</h1>
+  <div class="black-background">
+    <div class="form w-form">
 
-  <%= form_with model: @user, url: login_path do |f| %>
-    <p><%= f.label :username %><br>
-    <%= f.text_field :username %></p>
+      <%= form_with model: @user, url: login_path, id: "email-form", 
+        name: "email-form", class: "form" do |f| %>
+        <h1 class="heading">Sign In</h1>
 
-    <p><%= f.label :password %><br>
-    <%= f.password_field :password %></p>
+        <%= f.label :email, "Email", class: "form-label" %>
+        <%= f.text_field :email, class: "text-field w-input" %>
 
-    <%= f.submit "Login" %>
-  <% end %>
+        <%= f.label :password, "Password", class: "form-label" %>
+        <%= f.password_field :password, class: "text-field w-input" %>
 
-  <p>Don't have an account?
-  <%= link_to "Sign Up", new_user_path %></p>
+        <%= f.submit "Login", class: "submit-button w-button" %>
+
+        <div class="bottom-form-text">
+          <div class="grey-text">New to AI-Flix?</div>
+          <%= link_to("Sign up now", new_user_path, class: "form-link") %>
+        </div>
+      <% end %>
+      
+   </div>
+  </div>
 </div>
