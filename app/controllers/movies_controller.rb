@@ -1,5 +1,10 @@
 class MoviesController < ApplicationController
 
+  # GET /homepage
+  def homepage
+    @popular_movies = Movie.fetch_popular_movies
+  end 
+
   # GET /movies/search
   def search
       @movies = Movie.search_by_title(params[:query])

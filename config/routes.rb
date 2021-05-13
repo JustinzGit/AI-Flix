@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
   # User Routes
-  get '/homepage', to: 'users#homepage'
-
   resources :users
 
   # Playlist Routes
@@ -21,6 +19,7 @@ Rails.application.routes.draw do
   end 
   
   # Movie Routes
+  get '/homepage', to: 'movies#homepage'
   resources :movies, only: [:show] do 
     get 'search', on: :collection
   end 

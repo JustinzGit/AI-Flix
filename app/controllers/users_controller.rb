@@ -1,11 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, except: [:homepage]
-
-  # GET /homepage
-  def homepage
-    @popular_movies = Movie.fetch_popular_movies
-  end
-  
+ 
   # GET /users/new (Signup Page)
   def new
     @user = User.new
