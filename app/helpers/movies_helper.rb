@@ -23,9 +23,9 @@ module MoviesHelper
     def display_movie_reviews(reviews)
         if !reviews.empty?
             reviews = reviews.map do |r|
-                review = "<p>#{r.user.username} Says: #{r.user_review}</p>"
+                review = "<blockquote class='block-quote'>#{r.user.username} Says: #{r.user_review}</blockquote>"
                 if r.user_id == current_user.id
-                    button = button_to("Remove Review", review_path(r), method: :delete)
+                    button = button_to("Remove Review", review_path(r), method: :delete, class: "small-submit-button w-button")
                     review + button
                 else 
                     review
@@ -76,10 +76,10 @@ module MoviesHelper
         actor_list =  
         """
         <div class='w-col w-col-6'>
-            #{first_column}
+            #{first_column.join}
         </div>
         <div class='w-col w-col-6'>
-            #{second_column}
+            #{second_column.join}
         </div>
         """
 
