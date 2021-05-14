@@ -5,15 +5,19 @@
     <div class="div">
       <%= image_tag("https://image.tmdb.org/t/p/original#{@popular_movies.first.backdrop_path}", 
             sizes: "100vw", loading: "lazy", class: "large-movie-image") %>
-
+            
       <div class="movie-info">
-        <h2 class="movie-title"><%= @popular_movies.first.title %></h2>
-        <h3 class="tagline"><%= @popular_movies.first.tagline %></h3>
-        <%= display_top_movie_stats(@popular_movies.first) %>
-      
-        <%= link_to("Learn More", movie_path(@popular_movies.first), class: "link") %>
+        <%= display_most_popular(@popular_movies.first) %>
       </div>
-
     </div>
+  </div>
+</div>
+
+<div class="w-layout-grid bottom-grid">
+  <%= display_movies(@popular_movies) %>
+
+  <div id="w-node-f0f549d3-5bc0-daf6-0fa9-6ddc643b6668-6216a644" class="div-block">
+    <p class="tmdb-text">Data Brought To You By</p>
+    <%= image_tag("tmdb.svg", width: "356", class: "tmdb-logo") %>
   </div>
 </div>
