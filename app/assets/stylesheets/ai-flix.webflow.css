@@ -471,6 +471,10 @@ label {
   text-decoration: none;
 }
 
+h3 {
+ color: #e20813;
+}
+
 .movie-info {
   position: static;
   left: 0%;
@@ -478,8 +482,8 @@ label {
   right: auto;
   bottom: 0%;
   display: block;
-  max-width: 300px;
   min-width: 300px;
+  min-height: 300px;
   margin-left: -150px;
   border-style: solid;
   border-width: 2px;
@@ -1331,9 +1335,9 @@ label {
   }
 
   .movie-info {
-    max-height: 250px;
     max-width: 250px;
     min-width: 250px;
+    min-height: 300px;
   }
 
   .movie-title {
@@ -1745,10 +1749,6 @@ label {
 
   .curved-text-field {
     min-width: 300px;
-  }
-
-  .movie-stats {
-    display: none;
   }
 
   .actor-wrapper {
