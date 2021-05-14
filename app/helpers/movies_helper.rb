@@ -48,5 +48,19 @@ module MoviesHelper
         end 
 
         raw(stats.join)
+    end
+    
+    def display_movies(movies)
+        movies = movies[1...-1].map do |m|
+            """
+            <div class='movie-card'>
+                #{image_tag("https://image.tmdb.org/t/p/original#{m.poster_path}", 
+                sizes: "100vw", loading: "lazy", class: "small-movie-image")}
+              
+                <div class='small-movie-text'>Popularity Score <br> #{m.popularity}</div>
+            </div>
+            """
+        end
+        raw(movies.join)
     end 
 end
