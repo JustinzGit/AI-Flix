@@ -1,3 +1,19 @@
-<div id="homepage">
-  
+<div class="section">
+  <div class="container w-container">
+    
+    <%# Change this class name %>
+    <div class="div">
+      <%= image_tag("https://image.tmdb.org/t/p/original#{@popular_movies.first.backdrop_path}", 
+            sizes: "100vw", loading: "lazy", class: "large-movie-image") %>
+
+      <div class="movie-info">
+        <h2 class="movie-title"><%= @popular_movies.first.title %></h2>
+        <h3 class="tagline"><%= @popular_movies.first.tagline %></h3>
+        <%= display_top_movie_stats(@popular_movies.first) %>
+      
+        <%= link_to("Learn More", movie_path(@popular_movies.first), class: "link") %>
+      </div>
+
+    </div>
+  </div>
 </div>
