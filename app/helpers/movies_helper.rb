@@ -10,7 +10,7 @@ module MoviesHelper
     def movie_profit(movie)
         number_to_currency(movie[:revenue])
     end
-    
+
     def display_movies_search_results(results)
         if results
             count = "<h3 class='list-title'>We found #{results.count} Movies</h3>"
@@ -34,5 +34,19 @@ module MoviesHelper
             end
             raw(reviews.join) 
         end 
+    end 
+
+    def display_top_movie_stats(movie)
+        stats = ["<p>Popularity Score<br>#{movie.popularity}</p>"]
+
+        if movie.budget != "0"
+            stats << "<p>Budget<br>#{movie.budget}</p>"
+        end 
+
+        if movie.revenue != "0"
+            stats << "<p>Revenue<br>#{movie.revenue}</p>"
+        end 
+
+        raw(stats.join)
     end 
 end
