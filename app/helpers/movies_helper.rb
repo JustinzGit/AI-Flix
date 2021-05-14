@@ -36,18 +36,17 @@ module MoviesHelper
         end 
     end 
 
-    def display_top_movie_stats(movie)
-        stats = ["<p>Popularity Score<br>#{movie.popularity}</p>"]
-
-        if movie.budget != "0"
-            stats << "<p>Budget<br>#{movie.budget}</p>"
-        end 
-
-        if movie.revenue != "0"
-            stats << "<p>Revenue<br>#{movie.revenue}</p>"
-        end 
-
-        raw(stats.join)
+    def display_most_popular(movie)
+        top_movie_stats =
+            """
+            <h2 class='movie-title'>#{movie.title}</h2>
+            #{"<h3 class='tagline'>#{movie.tagline}</h3>" if movie.tagline != ""}
+            <p>Popularity Score<br>#{movie.popularity}</p>
+            #{"<p>Budget<br>#{movie.budget}</p>" if movie.budget != "0"}
+            #{"<p>Revenue<br>#{movie.revenue}</p>" if movie.budget != "0"}
+            #{link_to("Learn More", movie_path(movie), class: "link")}
+            """
+        raw(top_movie_stats)
     end
     
     def display_movies(movies)
