@@ -1,14 +1,16 @@
-<div id="movies_search">
-  <h3>AI-Flix Contains 45,466 Movies</h3>
-  <h3>Search Movie By Title</h3>
+<div class="container w-container">
+  <div class="small-form">
+    <h1 class="white-heading">Search Our Movies</h1>
+    <div class="form w-form">
+      <%= form_with url: '/movies/search', method: :get, class: 'form' do |f| %>
+        <%= f.text_field :query, class: "curved-text-field w-input" %>
+        <%= f.submit "Search", class: "small-submit-button w-button" %>
+      <% end %>
+    </div>
 
-  <%= form_with url: '/movies/search', method: :get do |f| %>
-    <p><%= f.label :query, "Movie Title" %><br>
-    <%= f.text_field :query %>
-    <p><%= f.submit "Search" %></p>
-  <% end %>
-</div>
-
-<div class="movies_list">
-  <%= display_movies_search_results(@movies) %>
+    <div class="search-results">
+        <%= display_movies_search_results(@movies) %>
+    </div>
+    
+  </div>
 </div>

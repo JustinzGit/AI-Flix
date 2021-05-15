@@ -1,58 +1,65 @@
-<div class="title">
-  <h3><%= @movie.title %></h3>
+<div class="section">
+  <div class="container-columns w-container">
+    <div class="div-block">
+
+      <h3 class="title-heading"><%= @movie.title %></h3>
+      <%= image_tag("https://image.tmdb.org/t/p/original#{@movie.poster_path}", 
+      class: "show-image", loading: "lazy", sizes: "300px") %>
+
+      <p class="tagline-large"><%= @movie.tagline %></p>
+    </div>
+
+    <div class="data">
+      <h2 class="red-heading small">Budget</h2>
+      <p class="data-info-large"><%= @movie.budget %></p>
+      <h2 class="red-heading small">Revenue</h2>
+      <p class="data-info-large"><%= @movie.revenue %></p>
+      <h2 class="red-heading small">Release Date</h2>
+      <p class="data-info-large"><%= @movie.release_date %></p>
+      <h2 class="red-heading small">Overview</h2>
+      <p class="data-info-large"><%= @movie.overview %></p>
+    </div>
+  </div>
 </div>
 
-<p id="tagline"><%= @movie.tagline %></p>
-
-<div class="image">
-  <%= image_tag "https://image.tmdb.org/t/p/w300/#{@movie.image}" %>
+<div class="section">
+  <div class="playlist-dropdown w-container">
+    <h1 class="red-heading">Add to Playlist</h1>
+    <div class="w-form">
+      <%= form_with scope: 'playlist_movie', url: playlist_movies_path, class: "dropdown-form" do |f| %>
+        <%= f.hidden_field :movie_id, value: @movie.id %>
+        <%= f.collection_select :playlist_id, current_user.playlists, :id, :name, {}, {class: "select-field w-select"} %>
+        <%= f.submit "Add to playlist", class: "small-submit-button w-button" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<div>
-  <h3>Movie Facts</h3>
-    <p><b>Released On:</b> <%= movie_date(@movie) %></p>
-    <p><b>Movie Budget:</b> <%= movie_budget(@movie) %></p>
-    <p><b>Movie Profit:</b> <%= movie_profit(@movie) %></p>
-
-  <h3>Overview</h3>
-    <p class="main-paragraph"><%= @movie.overview %></p>
+<div class="section">
+  <div class="columns w-row">
+    <div class="column-1 w-col w-col-6">
+      <h1 class="red-heading">Cast</h1>
+      <div class="w-row">
+        <%= display_movie_actor_list(@movie.actors) %>
+      </div>
+    </div>
+    <div class="column-2 w-col w-col-6">
+      <h1 class="red-heading">Reviews</h1>
+        <%= display_movie_reviews(@movie.reviews) %>
+      
+      <div class="review-form w-form">
+        <%= form_with url: reviews_path, class: "small-form" do |f| %>
+          <%= f.text_area :user_review, maxlength: "5000", class: "textarea w-input", placeholder: "Leave a Review" %></p>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :movie_id, value: @movie.id %>
+          <%= f.submit "Submit", class: "small-submit-button w-button" %>
+        <% end %> 
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="list">
-  <h3 class="list-title">Actors</h3>
-    <% @movie.actors.each do |a| %>
-      <p><%= link_to a.name, actor_path(a) %></p>
-    <% end %><br>
-
-  <h3 class="list-title">Learn More</h3>
-  <p><%= link_to "IMDB Profile", "https://imdb.com/title/#{@movie.imdb_id}", target: :_blank %></p>
-</div>
-
-
-<div class="list">
-  <p class="list-title">Movie Reviews</p>
-  <%= display_movie_reviews(@movie.reviews) %>
-</div>
-
-<div>
-  <p>Leave A Movie Review</p>
-  <%= form_with url: reviews_path do |f| %>
-    <p><%= f.text_field :user_review %></p>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :movie_id, value: @movie.id %>
-    <%= f.submit "Submit Review" %>
-  <% end %> <br>
-
-  <p>Add Movie to Playlist</p>
-  <%= form_with scope: 'playlist_movie', url: playlist_movies_path do |f| %>
-    <%= f.hidden_field :movie_id, value: @movie.id %>
-    <%= f.collection_select(:playlist_id, current_user.playlists, :id, :name) %>
-    <%= f.submit "Add to playlist" %>
-  <% end %>
-
-  
-  
-  <br>
-  <p>This data was provided by <%= link_to 'TMDB', 'https://themoviedb.org', target: :blank %></p>
-  <p><%= image_tag 'tmdb.png', style: 'width: 50%;' %></p>
+<div class="tmdb-section">
+  <p class="tmdb-text">Data Brought To You By</p>
+  <%= image_tag("tmdb.svg", width: "356", class: "tmdb-logo") %>
 </div>
