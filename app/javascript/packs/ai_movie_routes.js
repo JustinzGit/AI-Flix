@@ -26,8 +26,8 @@ function addEventsToActors(){
 
             // if actor 1 is not in local storage
             if (myStorage.actor_1 === undefined){
-                myStorage.setItem('actor-1', event.target.id)
-                myStorage.setItem('actor-1-name', event.target.innerText)
+                myStorage.setItem('actor_1', event.target.id)
+                myStorage.setItem('actor_1_name', event.target.innerText)
                 
                 // display actors on page that have been set
                 displayActors()
@@ -39,8 +39,8 @@ function addEventsToActors(){
 
             // if actor 2 is not in local storage
             else {
-                myStorage.setItem('actor-2', event.target.id)
-                myStorage.setItem('actor-2-name', event.target.innerText)
+                myStorage.setItem('actor_2', event.target.id)
+                myStorage.setItem('actor_2_name', event.target.innerText)
 
                 // display actors on page that have been set
                 displayActors()
@@ -55,11 +55,26 @@ function addEventsToActors(){
 // display actors on page if in local storage
 function displayActors(){
     if (myStorage.actor_1 !== undefined){
-        actor1Div.innerText = `Actor 1: ${myStorage.actor_1_name}`
+        redTextDiv = document.createElement('div')
+        redTextDiv.setAttribute('class', 'red-text-block')
+        redTextDiv.innerText = 'Actor 1: '
+        
+        whiteTextDiv = document.createElement('div')
+        whiteTextDiv.setAttribute('class', 'white-text-block')
+        whiteTextDiv.innerText = `${myStorage.actor_1_name}`
+
+        actor1Div.appendChild(redTextDiv)
+        redTextDiv.appendChild(whiteTextDiv)
     }
 
     if (myStorage.actor_2 !== undefined){
-        actor2Div.innerText = `Actor 2: ${myStorage.actor_2_name}`
+        redTextDiv = document.createElement('div')
+        redTextDiv.setAttribute('class', 'red-text-block')
+        redTextDiv.innerText = 'Actor 2: '
+        
+        whiteTextDiv = document.createElement('div')
+        whiteTextDiv.setAttribute('class', 'white-text-block')
+        whiteTextDiv.innerText = `${myStorage.actor_2_name}`
     } 
 }
 
