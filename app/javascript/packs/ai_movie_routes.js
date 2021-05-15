@@ -105,6 +105,8 @@ function removeActorsButton(){
 
         removeButton.addEventListener('click', () => {
             myStorage.clear()
+            actor1Div.textContent = ''
+            actor2Div.textContent = ''
             removeButton.remove()
 
             // remove submit button if it has been added
