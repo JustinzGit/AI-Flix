@@ -55,30 +55,26 @@ function addEventsToActors(){
 
 // display actors on page if in local storage
 function displayActors(){
-    if (myStorage.actor_1 !== undefined){
-        redTextDiv = document.createElement('div')
-        redTextDiv.setAttribute('class', 'red-text-block')
+    redTextDiv = document.createElement('div')
+    redTextDiv.setAttribute('class', 'red-text-block')
+
+    whiteTextDiv = document.createElement('div')
+    whiteTextDiv.setAttribute('class', 'white-text-block')
+    
+    if (myStorage.actor_1 !== undefined && actor1Div.childElementCount === 0){
         redTextDiv.innerText = 'Actor 1: '
-        
-        whiteTextDiv = document.createElement('div')
-        whiteTextDiv.setAttribute('class', 'white-text-block')
         whiteTextDiv.innerText = `${myStorage.actor_1_name}`
 
         actor1Div.appendChild(redTextDiv)
-        redTextDiv.appendChild(whiteTextDiv)
+        redTextDiv.after(whiteTextDiv)
     }
 
-    if (myStorage.actor_2 !== undefined){
-        redTextDiv = document.createElement('div')
-        redTextDiv.setAttribute('class', 'red-text-block')
+    if (myStorage.actor_2 !== undefined && actor2Div.childElementCount === 0){
         redTextDiv.innerText = 'Actor 2: '
-        
-        whiteTextDiv = document.createElement('div')
-        whiteTextDiv.setAttribute('class', 'white-text-block')
         whiteTextDiv.innerText = `${myStorage.actor_2_name}`
 
         actor2Div.appendChild(redTextDiv)
-        redTextDiv.appendChild(whiteTextDiv)
+        redTextDiv.after(whiteTextDiv)
     } 
 }
 
@@ -109,8 +105,6 @@ function removeActorsButton(){
 
         removeButton.addEventListener('click', () => {
             myStorage.clear()
-            actor1Div.innerText = `Actor 1: `
-            actor2Div.innerText = `Actor 2: `
             removeButton.remove()
 
             // remove submit button if it has been added
