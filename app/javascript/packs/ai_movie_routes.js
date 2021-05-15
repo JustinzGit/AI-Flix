@@ -1,9 +1,9 @@
 myStorage = window.localStorage
 
 document.addEventListener("DOMContentLoaded", () => {
-    actor1Div = document.getElementById('actor_1')
-    actor2Div = document.getElementById('actor_2')
-    actorSelections = document.getElementById('actor_selections')
+    actor1Div = document.getElementById('actor-1')
+    actor2Div = document.getElementById('actor-2')
+    actorSelections = document.getElementById('actor-selections')
 
     // add onclick events to actors in search resutls
     addEventsToActors()
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function addEventsToActors(){
 
     // grab list of actors from search results
-    actorList = document.getElementById('actor_list').querySelectorAll('div')
+    actorList = document.getElementById('search-results').querySelectorAll('div')
 
     // add on click event to each actor
     actorList.forEach(actor => {
@@ -26,8 +26,8 @@ function addEventsToActors(){
 
             // if actor 1 is not in local storage
             if (myStorage.actor_1 === undefined){
-                myStorage.setItem('actor_1', event.target.id)
-                myStorage.setItem('actor_1_name', event.target.innerText)
+                myStorage.setItem('actor-1', event.target.id)
+                myStorage.setItem('actor-1-name', event.target.innerText)
                 
                 // display actors on page that have been set
                 displayActors()
@@ -39,8 +39,8 @@ function addEventsToActors(){
 
             // if actor 2 is not in local storage
             else {
-                myStorage.setItem('actor_2', event.target.id)
-                myStorage.setItem('actor_2_name', event.target.innerText)
+                myStorage.setItem('actor-2', event.target.id)
+                myStorage.setItem('actor-2-name', event.target.innerText)
 
                 // display actors on page that have been set
                 displayActors()
