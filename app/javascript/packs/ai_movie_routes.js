@@ -75,6 +75,9 @@ function displayActors(){
         whiteTextDiv = document.createElement('div')
         whiteTextDiv.setAttribute('class', 'white-text-block')
         whiteTextDiv.innerText = `${myStorage.actor_2_name}`
+
+        actor2Div.appendChild(redTextDiv)
+        redTextDiv.appendChild(whiteTextDiv)
     } 
 }
 
