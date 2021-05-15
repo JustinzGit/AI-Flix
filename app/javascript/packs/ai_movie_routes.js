@@ -18,10 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
 function addEventsToActors(){
 
     // grab list of actors from search results
-    actorList = document.getElementById('search-results').querySelectorAll('div')
+    actorList = document.getElementsByClassName('search-results')
+
 
     // add on click event to each actor
-    actorList.forEach(actor => {
+    Array.from(actorList).forEach(actor => {
         actor.addEventListener('click', event => {
 
             // if actor 1 is not in local storage
