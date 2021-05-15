@@ -84,7 +84,9 @@ function displayActors(){
 // button to submit actors to generate ai movie list
 function submitActorsButton(){
     submitButton = document.createElement('button')
-    submitButton.innerText = 'Submit Actors'
+    submitButton.innerText = 'Find Movie Path'
+    submitButton.setAttribute('class', 'small-submit-button small-top-margin w-button')
+
     token = document.getElementsByName('csrf-token')[0].content
 
     submitButton.addEventListener('click', () => {
@@ -102,6 +104,7 @@ function removeActorsButton(){
     if (myStorage.actor_1 !== undefined || myStorage.actor_1 !== undefined){
         removeButton = document.createElement('button')
         removeButton.innerText = 'Remove Actors'
+        removeButton.setAttribute('class', 'delete-button small-top-margin w-button')
 
         removeButton.addEventListener('click', () => {
             myStorage.clear()
