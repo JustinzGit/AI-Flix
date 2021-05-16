@@ -886,6 +886,14 @@ h3 {
   align-items: center;
 }
 
+.container.flex{
+  display: flex;
+}
+
+.small-submit-button.new-connection {
+  margin-top: 20px;
+}
+
 .curved-text-field {
   height: 55px;
   min-width: 400px;
