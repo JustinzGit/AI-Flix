@@ -1087,6 +1087,7 @@ h3 {
   margin-bottom: 15px;
   color: #a29e9e;
   font-size: 25px;
+  cursor: pointer;
 }
 
 .grey-text-block:hover {
