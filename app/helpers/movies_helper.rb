@@ -52,8 +52,8 @@ module MoviesHelper
         movies = movies[1...-1].map do |m|
             """
             <div class='movie-card'>
-                #{image_tag("https://image.tmdb.org/t/p/original#{m.poster_path}", 
-                sizes: "100vw", loading: "lazy", class: "small-movie-image")}
+                #{link_to(image_tag("https://image.tmdb.org/t/p/original#{m.poster_path}", 
+                sizes: "100vw", loading: "lazy", class: "small-movie-image"), movie_path(m))}
               
                 <div class='small-movie-text'>Popularity Score <br> #{m.popularity}</div>
             </div>
