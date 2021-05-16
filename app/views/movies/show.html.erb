@@ -15,7 +15,7 @@
       <h2 class="red-heading small">Revenue</h2>
       <p class="data-info-large"><%= format_currency(@movie.revenue) %></p>
       <h2 class="red-heading small">Release Date</h2>
-      <p class="data-info-large"><%= @movie.release_date %></p>
+      <p class="data-info-large"><%= format_date(@movie.release_date) %></p>
       <h2 class="red-heading small">Overview</h2>
       <p class="data-info-large"><%= @movie.overview %></p>
     </div>
