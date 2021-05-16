@@ -10,6 +10,8 @@ class Movie < ApplicationRecord
 
   self.primary_key = "tmdb_id"
 
+  @@api_key = ENV['tmdb_api_key']
+
   # Requirement, to be deleted
   scope :oldest, -> { order('year ASC').where("year != 'nil'").second }
 
@@ -24,9 +26,9 @@ class Movie < ApplicationRecord
   # fetch data from TMDB
   # if data has not been collected
   def fetch_tmdb_data
+    
     if !self.data_collected
-      api_key = ENV['tmdb_api_key']
-      response = Faraday.get "https://api.themoviedb.org/3/movie/#{self.id}?api_key=#{api_key}"
+      response = Faraday.get "https://api.themoviedb.org/3/movie/#{self.id}?api_key=#{@@api_key}"
       response = JSON.parse response.body
       self.title = response['title']
       self.budget = response['budget']
@@ -40,12 +42,21 @@ class Movie < ApplicationRecord
       self.imdb_id = response['imdb_id']
       self.data_collected = true
       self.save
-    end 
+    end
+
+    if self.actors.empty?
+      response = Faraday.get "https://api.themoviedb.org/3/movie/#{self.id}/credits?api_key=#{@@api_key}"
+      response = JSON.parse response.body
+      response['cast'].each do |a|
+        actor = Actor.find_by(tmdb_id: a['id'])
+        self.actors << actor if actor
+      end
+    end  
   end
 
   def self.fetch_popular_movies
     api_key = ENV['tmdb_api_key']
-    response = Faraday.get "https://api.themoviedb.org/3/movie/popular?api_key=#{api_key}"
+    response = Faraday.get "https://api.themoviedb.org/3/movie/popular?api_key=#{@@api_key}"
     response = JSON.parse response.body
 
     popular_movies = response['results'].map do |m|
