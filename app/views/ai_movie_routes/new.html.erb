@@ -24,7 +24,7 @@
     <h1 class="white-heading">Search Actors</h1>
     <div class="form w-form">
       <%= form_with url: '/actors/search', method: :get, class: "form" do |f| %>
-        <%= f.text_field :query, class: "curved-text-field w-input"%>
+        <%= f.text_field :query, class: "curved-text-field w-input", required: true %>
         <%= f.hidden_field :render, value: new_ai_movie_route_path %>
         <%= f.submit "Search", class: "small-submit-button w-button" %>
       <% end %>
