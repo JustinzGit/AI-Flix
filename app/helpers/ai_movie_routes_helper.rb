@@ -15,11 +15,11 @@ module AiMovieRoutesHelper
     raw(path.join)
   end
 
-  def display_actor_selection(results)
+  def display_actor_search_results(results)
     if results
-        count = "<h3 class='list-title'>We found #{results.count} Actors</h3>"
+        count = "<h1 class='red-heading small'>We found #{results.count} Actors</h1>"
         actors = results.map do |a|
-            "<div id='#{a.id}'>#{a.name}</div><br>"
+            "<div id='#{a.id}' class='grey-text-block'>#{a.name}</div>"
         end
         raw(count + actors.join) 
     end
