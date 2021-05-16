@@ -1,23 +1,39 @@
 <%= javascript_pack_tag 'ai_movie_routes' %>
 
-<div class="title">
-  <h3>Generate a Movie Path</h3>
+<div data-w-id="02ff14d7-240d-bc19-0eb3-44418700514b" id="preloader">
+  <h1 class="red-heading">AI-Flix is searching the database</h1>
+  <div class="div-block-2">
+    <div class="red-text-block">Actors: </div>
+    <div class="white-text-block"><div id="actor-count"></div></div>
+  </div>
+  <div class="div-block-2">
+    <div class="red-text-block">Movies: </div>
+    <div class="white-text-block"><div id="movie-count"></div></div>
+  </div>
 </div>
 
-<p>AI-Flix generates a movie path by finding the shortest path of movies that connect two actors.</p>
-<div id='actor_selections'>
-  <div id="actor_1">Actor 1: </div>
-  <div id="actor_2">Actor 2: </div>
+<div class="container w-container">
+  <div class="small-form">
+    <h1 class="white-heading">AI-Flix can find the shortest path of movies that connect two actors</h1>
+    
+    <div id="actor-selections">
+      <div id="actor-1"></div>
+      <div id="actor-2"></div>
+    </div>
+
+    <h1 class="white-heading">Search Actors</h1>
+    <div class="form w-form">
+      <%= form_with url: '/actors/search', method: :get, class: "form" do |f| %>
+        <%= f.text_field :query, class: "curved-text-field w-input"%>
+        <%= f.hidden_field :render, value: new_ai_movie_route_path %>
+        <%= f.submit "Search", class: "small-submit-button w-button" %>
+      <% end %>
+    </div>
+
+    <div class="search-results">
+      <%= display_actor_search_results(@actors) %>
+    </div>
+  </div>
 </div>
 
 
-<%= form_with url: '/actors/search', method: :get do |f| %>
-    <p><%= f.label :query, "Actor Name" %><br>
-    <%= f.text_field :query %>
-    <%= f.hidden_field :render, value: new_ai_route_path %>
-    <p><%= f.submit "Search" %></p>
-<% end %>
-
-<div id="actor_list">
-  <%= display_actor_selection(@actors) %>
-</div>
