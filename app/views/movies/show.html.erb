@@ -6,7 +6,7 @@
       <%= image_tag("https://image.tmdb.org/t/p/original#{@movie.poster_path}", 
       class: "show-image", loading: "lazy", sizes: "300px") %>
 
-      <p class="tagline-large">"<%= @movie.tagline %>"</p>
+      <p class="tagline-large"><%= %Q{"#{@movie.tagline}"} if !@movie.tagline.blank? %></p>
       <%= link_to("IMDb Profile", "https://imdb.com/title/#{@movie.imdb_id}", class: "yellow-link", target: :blank) %>
     </div>
 
