@@ -1,8 +1,10 @@
-<div id="new_playlist">
-    <%= form_with model: @playlist do |f| %>
-        <p><%= f.label :name, "Playlist Name" %></p>
-        <p><%= f.text_field :name %></p>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <p><%= f.submit %></p>
-    <% end %>
+<div class="small-form">
+    <h1 class="white-heading">Create A Playlist</h1>
+    <div class="form w-form">
+        <%= form_with model: @playlist, class: "form" do |f| %>
+            <%= f.text_field :name, class: "curved-text-field w-input" %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.submit "Create", class: "small-submit-button w-button" %>
+        <% end %>
+    </div>
 </div>

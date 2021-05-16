@@ -1,32 +1,33 @@
-<div class="title">
-  <h3><%= @actor.name %></h3>
+<div class="section">
+  <div class="container-columns w-container">
+
+    <div class="div-block">
+      <h3 class="title-heading"><%= @actor.name %></h3>
+      <%= image_tag("https://image.tmdb.org/t/p/original#{@actor.image}", class: "show-image") %>
+      <%= link_to("IMDb Profile", "https://imdb.com/name/#{@actor.imdb_id}", class: "yellow-link") %>
+    </div>
+
+    <div class="data">
+      <h2 class="red-heading small">Birthday</h2>
+      <p class="data-info-large"><%= actor_birthday(@actor) %></p>
+      <h2 class="red-heading small">Deathday</h2>
+      <p class="data-info-large"><%= actor_deathday(@actor) %></p>
+      <h2 class="red-heading small">Home Town</h2>
+      <p class="data-info-large"><%= actor_birthplace(@actor) %></p>
+      <h2 class="red-heading small">Biography</h2>
+      <p class="data-info-large biography"><%= @actor.biography %></p>
+    </div>
+  </div>
 </div>
 
-<div class="image">
-  <p><%= image_tag "https://image.tmdb.org/t/p/w300/#{@actor.image}" %></p>
+<div class="movies w-container">
+  <h2 class="red-heading small">Movies</h2>
+  <div class="w-row">
+    <%= display_movies_starred_in(@actor.movies) %>
+  </div>
 </div>
 
-<div>
-  <p><b>Birthday:</b> <%= actor_birthday(@actor) %></p>
-  <p><b>Hometown:</b> <%= actor_birthplace(@actor) %></p>
-  <p><b>Deathday</b> <%= actor_deathday(@actor) %></p>
-
-  <h3>Biography </h3>
-  <p class="main-paragraph"><%= @actor.biography %></p>
-</div>
-
-<div class="list">
-  <h3 class="list-title">Movies</h3>
-    <% @actor.movies.each do |m| %>
-      <p><%= link_to m.title, movie_path(m) %></p>
-    <% end %><br>
-
-  <h3 class="list-title">Learn More</h3>
-  <p><%= link_to "IMDB Profile", "https://imdb.com/name/#{@actor.imdb_id}", target: :_blank %></p>
-</div>
-
-<div>
-  <br>
-  <p>This data was provided by <%= link_to 'TMDB', 'https://themoviedb.org', target: :blank %></p>
-  <p><%= image_tag 'tmdb.png', style: 'width: 50%;' %></p>
+<div class="tmdb-section">
+  <p class="tmdb-text">Data Brought To You By</p>
+  <%= image_tag("tmdb.svg", width: "356", class: "tmdb-logo") %>
 </div>

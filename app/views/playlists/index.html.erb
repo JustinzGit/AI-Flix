@@ -1,11 +1,13 @@
-<div id="playlist_index">
-  <h3>Playlists</h3>
-  <div class="list">
+<div class="section">
+  <div class="vertically-centered w-container">
+    <h1 class="white-heading">User Playlists</h1>
+
     <% if !@playlists.empty? %>
       <% @playlists.each do |p| %>
-        <p><%= link_to(p.name, playlist_path(p)) %></p>
+        <%= link_to(p.name, playlist_path(p), class: "grey-link") %>
       <% end %>
     <% end %>
+    
+    <%= link_to("Create Playlist", new_playlist_path, class: "red-link") %>
   </div>
-  <p><%= link_to("Add Playlist", new_playlist_path) %></p>
 </div>

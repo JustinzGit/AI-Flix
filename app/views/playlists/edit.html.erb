@@ -1,13 +1,22 @@
-<div id="edit_playlist">
-    <%= form_with model: @playlist do |f| %>
-        <p><%= f.label :name, "Playlist Name" %>
-        <%= f.text_field :name %></p>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-    
-        <%= f.collection_check_boxes(:movie_ids, @playlist.movies, :id, :title) do |b| %>
-            <%= b.check_box + " " + b.label %><br>
+<div class="small-form checkboxes">
+    <h1 class="white-heading">Edit Playlist</h1>
+    <div class="form w-form">
+
+        <%= form_with model: @playlist, class: "form" do |f| %>
+            <%= f.text_field :name, class: "curved-text-field w-input" %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+        
+            <%= f.collection_check_boxes(:movie_ids, @playlist.movies, :id, :title, class: "w-checkbox checkbox-field") do |b| %>
+                <label class="w-checkbox checkbox-field">
+                    <%= b.check_box(class: "w-checkbox-input checkbox") %>
+                    <span class="checkbox-label w-form-label">
+                        <%= b.label(class: "checkbox-label w-form-label") %>
+                    </span>
+                </label>
+            <% end %>
+
+            <%= f.submit "Edit Playlist", class: "small-submit-button w-button" %>
         <% end %>
 
-        <p><%= f.submit "Edit Playlist" %></p>
-    <% end %>
+    </div>
 </div>
