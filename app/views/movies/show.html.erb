@@ -54,7 +54,7 @@
         <%= display_movie_reviews(@movie.reviews) %>
       
       <div class="review-form w-form">
-        <%= form_with url: reviews_path, class: "small-form" do |f| %>
+        <%= form_with scope: 'review', url: reviews_path, class: "small-form" do |f| %>
           <%= f.text_area :user_review, maxlength: "5000", class: "textarea w-input", placeholder: "Leave a Review" %></p>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.hidden_field :movie_id, value: @movie.id %>
