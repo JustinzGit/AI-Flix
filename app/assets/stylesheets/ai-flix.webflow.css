@@ -1270,7 +1270,7 @@ h3 {
   margin-top: 0px;
 }
 
-.preloader {
+#preloader {
   position: fixed;
   left: 0%;
   top: 0%;
