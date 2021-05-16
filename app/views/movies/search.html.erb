@@ -3,7 +3,7 @@
     <h1 class="white-heading">Search Our Movies</h1>
     <div class="form w-form">
       <%= form_with url: '/movies/search', method: :get, class: 'form' do |f| %>
-        <%= f.text_field :query, class: "curved-text-field w-input" %>
+        <%= f.text_field :query, class: "curved-text-field w-input", required: true %>
         <%= f.submit "Search", class: "small-submit-button w-button" %>
       <% end %>
     </div>
