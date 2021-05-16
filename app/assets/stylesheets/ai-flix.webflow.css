@@ -417,6 +417,7 @@ label {
 .small-movie-image {
   max-width: 150px;
   border-radius: 14px;
+  cursor: pointer;
 }
 
 .small-movie-image:hover {
