@@ -8,11 +8,13 @@ module MoviesHelper
     end
 
     def display_movies_search_results(results)
-        if results
+        if results && !results.empty?
             movies = results.map do |m|
                 link_to(m.title, movie_path(m), class: "grey-link")
             end
-            raw(movies.join) 
+            raw(movies.join)
+        elsif results && results.empty?
+            raw("<h1 class='red-heading'>No Movies Found</h1>")
         end
     end 
 
