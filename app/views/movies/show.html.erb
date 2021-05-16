@@ -26,13 +26,18 @@
 <div class="section">
   <div class="playlist-dropdown w-container">
     <h1 class="red-heading">Add to Playlist</h1>
-    <div class="w-form">
-      <%= form_with scope: 'playlist_movie', url: playlist_movies_path, class: "dropdown-form" do |f| %>
-        <%= f.hidden_field :movie_id, value: @movie.id %>
-        <%= f.collection_select :playlist_id, current_user.playlists, :id, :name, {}, {class: "select-field w-select"} %>
-        <%= f.submit "Add to playlist", class: "small-submit-button w-button" %>
+      <% if current_user.playlists.empty? %>
+        <h1 class="white-heading smaller">You have no Playlists</h1>
+        <%= link_to("Add a Playlist", new_playlist_path, class: "red-link") %>
+      <% else %>
+        <div class="w-form">
+          <%= form_with scope: 'playlist_movie', url: playlist_movies_path, class: "dropdown-form" do |f| %>
+            <%= f.hidden_field :movie_id, value: @movie.id %>
+            <%= f.collection_select :playlist_id, current_user.playlists, :id, :name, {}, {class: "select-field w-select"} %>
+            <%= f.submit "Add to playlist", class: "small-submit-button w-button" %>
+          <% end %>
+        </div>
       <% end %>
-    </div>
   </div>
 </div>
 
