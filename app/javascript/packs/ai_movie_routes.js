@@ -83,17 +83,30 @@ function submitActorsButton(){
     submitButton = document.createElement('button')
     submitButton.innerText = 'Find Movie Path'
     submitButton.setAttribute('class', 'small-submit-button small-top-margin w-button')
+    actorSelections.after(submitButton)
 
     token = document.getElementsByName('csrf-token')[0].content
 
     submitButton.addEventListener('click', () => {
-       window.location = 'http://localhost:3000/ai_movie_routes/generate?' + new URLSearchParams({
+        preLoader = document.getElementById('preloader')
+        preLoader.setAttribute('style', 'display:flex')
+
+        counter = 0
+        actorCount = document.getElementById('actor-count')
+        movieCount = document.getElementById('movie-count')
+        interval = setInterval(increment, 10)
+
+        function increment(){
+            actorCount.innerText = counter
+            movieCount.innerText = counter
+            counter ++
+        }
+        
+        window.location = 'http://localhost:3000/ai_movie_routes/generate?' + new URLSearchParams({
             actor_1: myStorage.actor_1,
             actor_2: myStorage.actor_2,
         })
     })
-
-    actorSelections.after(submitButton)
 }
 
 // button to remove actors from DOM and clear local storage
