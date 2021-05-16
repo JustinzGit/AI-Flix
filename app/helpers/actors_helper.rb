@@ -13,11 +13,34 @@ module ActorsHelper
 
     def display_actors_search_results(results)
         if results
-            count = "<h3 class='list-title'>We found #{results.count} Actors</h3>"
             actors = results.map do |a|
-                "<p>#{link_to(a.name, actor_path(a))}</p>"
+                "#{link_to(a.name, actor_path(a), class: "grey-link")}"
             end
-            raw(count + actors.join) 
+            raw(actors.join) 
         end
     end 
+
+    def display_movies_starred_in(movies)
+        movie_count = movies.length
+
+        first_column = movies[0..(movie_count/2)-1].map do |a|
+            link_to(a.title, movie_path(a), class: "grey-link centered")
+        end
+        
+        second_column = movies[(movie_count/2)+1..movie_count].map do |a|
+            link_to(a.title, movie_path(a), class: "grey-link centered")
+        end
+
+        movie_list =  
+        """
+        <div class='w-col w-col-6'>
+            #{first_column.join}
+        </div>
+        <div class='w-col w-col-6'>
+            #{second_column.join}
+        </div>
+        """
+
+        raw(movie_list)
+    end  
 end
