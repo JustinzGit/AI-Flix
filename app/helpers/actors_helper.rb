@@ -12,11 +12,13 @@ module ActorsHelper
     end 
 
     def display_actors_search_results(results)
-        if results
+        if results && !results.empty?
             actors = results.map do |a|
                 "#{link_to(a.name, actor_path(a), class: "grey-link")}"
             end
-            raw(actors.join) 
+            raw(actors.join)
+        elsif results && results.empty?
+            raw("<h1 class='red-heading'>No Actors Found</h1>")
         end
     end 
 
