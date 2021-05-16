@@ -55,13 +55,13 @@ function addEventsToActors(){
 
 // display actors on page if in local storage
 function displayActors(){
-    redTextDiv = document.createElement('div')
-    redTextDiv.setAttribute('class', 'red-text-block')
-
-    whiteTextDiv = document.createElement('div')
-    whiteTextDiv.setAttribute('class', 'white-text-block')
-    
     if (myStorage.actor_1 !== undefined && actor1Div.childElementCount === 0){
+        redTextDiv = document.createElement('div')
+        redTextDiv.setAttribute('class', 'red-text-block')
+
+        whiteTextDiv = document.createElement('div')
+        whiteTextDiv.setAttribute('class', 'white-text-block')
+
         redTextDiv.innerText = 'Actor 1: '
         whiteTextDiv.innerText = `${myStorage.actor_1_name}`
 
@@ -70,6 +70,12 @@ function displayActors(){
     }
 
     if (myStorage.actor_2 !== undefined && actor2Div.childElementCount === 0){
+        redTextDiv = document.createElement('div')
+        redTextDiv.setAttribute('class', 'red-text-block')
+
+        whiteTextDiv = document.createElement('div')
+        whiteTextDiv.setAttribute('class', 'white-text-block')
+
         redTextDiv.innerText = 'Actor 2: '
         whiteTextDiv.innerText = `${myStorage.actor_2_name}`
 
