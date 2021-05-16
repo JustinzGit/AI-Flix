@@ -1,8 +1,4 @@
 module MoviesHelper
-    def movie_date(movie)
-        format_date(movie[:release_date])
-    end
-
     def format_currency(currency)
         if currency != "0"
             number_to_currency(currency)
