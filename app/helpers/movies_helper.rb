@@ -2,13 +2,13 @@ module MoviesHelper
     def movie_date(movie)
         format_date(movie[:release_date])
     end
-    
-    def movie_budget(movie)
-        number_to_currency(movie[:budget])
-    end 
 
-    def movie_profit(movie)
-        number_to_currency(movie[:revenue])
+    def format_currency(currency)
+        if currency != "0"
+            number_to_currency(currency)
+        else
+            "N/A"
+        end 
     end
 
     def display_movies_search_results(results)
