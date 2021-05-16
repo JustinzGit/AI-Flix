@@ -609,6 +609,10 @@ h3 {
   display: none;
 }
 
+.white-heading.smaller {
+  font-size: 25px;
+}
+
 .grey-link {
   margin-bottom: 15px;
   background-color: transparent;
