@@ -65,24 +65,26 @@ module MoviesHelper
     def display_movie_actor_list(actors)
         actor_count = actors.length
 
-        first_column = actors[0..(actor_count/2)-1].map do |a|
-            link_to(a.name, actor_path(a), class: "grey-link centered")
-        end
-        
-        second_column = actors[(actor_count/2)+1..actor_count].map do |a|
-            link_to(a.name, actor_path(a), class: "grey-link centered")
-        end
-
-        actor_list =  
-        """
-        <div class='w-col w-col-6'>
-            #{first_column.join}
-        </div>
-        <div class='w-col w-col-6'>
-            #{second_column.join}
-        </div>
-        """
-
-        raw(actor_list)
+        if actor_count > 0
+            first_column = actors[0..(actor_count/2)-1].map do |a|
+                link_to(a.name, actor_path(a), class: "grey-link centered")
+            end
+            
+            second_column = actors[(actor_count/2)+1..actor_count].map do |a|
+                link_to(a.name, actor_path(a), class: "grey-link centered")
+            end
+    
+            actor_list =  
+            """
+            <div class='w-col w-col-6'>
+                #{first_column.join}
+            </div>
+            <div class='w-col w-col-6'>
+                #{second_column.join}
+            </div>
+            """
+    
+            raw(actor_list)
+        end 
     end  
 end
