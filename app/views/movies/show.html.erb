@@ -6,7 +6,7 @@
       <%= image_tag("https://image.tmdb.org/t/p/original#{@movie.poster_path}", 
       class: "show-image", loading: "lazy", sizes: "300px") %>
 
-      <p class="tagline-large"><%= @movie.tagline %></p>
+      <p class="tagline-large">"<%= @movie.tagline %>"</p>
     </div>
 
     <div class="data">
