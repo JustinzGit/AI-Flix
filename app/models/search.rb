@@ -114,7 +114,10 @@ class Search < ApplicationRecord
               
               child = child.parent
             end
-            movie_path[:actors].unshift(Actor.find(source))
+            actor = Actor.find(source)
+            actor.fetch_tmdb_data
+
+            movie_path[:actors].unshift(actor)
             return movie_path
           end
 
