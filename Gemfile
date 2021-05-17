@@ -28,6 +28,8 @@ gem 'pry'
 # Required by rails
 gem 'sassc', '~> 2.1.0'
 
+gem 'sidekiq'
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 
