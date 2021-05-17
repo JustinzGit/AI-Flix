@@ -14,11 +14,13 @@ module AiMovieRoutesHelper
                 if orientation == "right"
                   "<div class='actor-wrapper'>
                    <h3 class='title-heading'>#{path[:actors][index][:name]}</h3>
-                   #{image_tag("https://image.tmdb.org/t/p/original#{path[:actors][index][:image]}", class: "show-image small")}"
+                   #{link_to(image_tag("https://image.tmdb.org/t/p/original#{path[:actors][index][:image]}", class: "show-image small"), 
+                      actor_path(path[:actors][index][:id]), target: :blank, class: "ai-route-link")}"
                 else 
                   "<div class='actor-wrapper left with-connection'>
                    <h3 class='title-heading'>#{path[:actors][index + 1][:name]}</h3>
-                   #{image_tag("https://image.tmdb.org/t/p/original#{path[:actors][index + 1][:image]}", class: "show-image small")}"
+                   #{link_to(image_tag("https://image.tmdb.org/t/p/original#{path[:actors][index + 1][:image]}", class: "show-image small"), 
+                      actor_path(path[:actors][index + 1][:id]), target: :blank, class: "ai-route-link")}"
                 end 
               }
             
@@ -48,11 +50,13 @@ module AiMovieRoutesHelper
               if orientation == "right"
                 "<div class='actor-wrapper right with-connection'>
                  <h3 class='title-heading'>#{path[:actors][index + 1][:name]}</h3>
-                 #{image_tag("https://image.tmdb.org/t/p/original#{path[:actors][index + 1][:image]}", class: "show-image small")}"
+                 #{link_to(image_tag("https://image.tmdb.org/t/p/original#{path[:actors][index + 1][:image]}", class: "show-image small"), 
+                    actor_path(path[:actors][index + 1][:id]), target: :blank, class: "ai-route-link")}"
               else 
                 "<div class='actor-wrapper'>
                 <h3 class='title-heading'>#{path[:actors][index][:name]}</h3>
-                #{image_tag("https://image.tmdb.org/t/p/original#{path[:actors][index][:image]}", class: "show-image small")}"
+                #{link_to(image_tag("https://image.tmdb.org/t/p/original#{path[:actors][index][:image]}", class: "show-image small"), 
+                    actor_path(path[:actors][index][:id]), target: :blank, class: "ai-route-link")}"
               end 
               }
               #{
@@ -69,7 +73,8 @@ module AiMovieRoutesHelper
           <div class='movie-wrapper'>
             <div class='circle margin-bottom'></div>
             <h3 class='title-heading'>#{path[:movies][index][:title]}</h3>
-            #{image_tag("https://image.tmdb.org/t/p/original#{path[:movies][index][:poster_path]}", class: "show-image small")}
+            #{link_to(image_tag("https://image.tmdb.org/t/p/original#{path[:movies][index][:poster_path]}", class: "show-image small"), 
+                movie_path(path[:movies][index]), target: :blank, class: "ai-route-link")}
           </div>
         </div>
       """
