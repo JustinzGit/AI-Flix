@@ -64,15 +64,4 @@ class Movie < ApplicationRecord
   def self.search_by_title(title)
     where("title LIKE (?)", "#{title}%") if title
   end
-
-  # Find movies released in a provided year 
-  def self.released_in(year)
-    where("year == (?)", year)
-  end
-
-  # Find movies with provided title released in a provided year
-  def self.find_movies(title, year)
-    movies = self.begins_with(title)
-    movies = movies.where("year == (?)", year)
-  end
 end
