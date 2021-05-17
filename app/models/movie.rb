@@ -12,9 +12,6 @@ class Movie < ApplicationRecord
 
   @@api_key = ENV['tmdb_api_key']
 
-  # Requirement, to be deleted
-  scope :oldest, -> { order('year ASC').where("year != 'nil'").second }
-
   # fetch data from TMDB
   # if data has not been collected
   def fetch_tmdb_data
