@@ -32,7 +32,9 @@ class Movie < ApplicationRecord
       self.data_collected = true
       self.save
     end
+  end
 
+  def self.fetch_actors
     if self.actors.empty?
       response = Faraday.get "https://api.themoviedb.org/3/movie/#{self.id}/credits?api_key=#{@@api_key}"
       response = JSON.parse response.body
@@ -41,7 +43,7 @@ class Movie < ApplicationRecord
         self.actors << actor if actor
       end
     end  
-  end
+  end 
 
   def self.fetch_popular_movies
     api_key = ENV['tmdb_api_key']
