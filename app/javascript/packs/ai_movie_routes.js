@@ -97,15 +97,18 @@ function submitActorsButton(){
         preLoader = document.getElementById('preloader')
         preLoader.setAttribute('style', 'display:flex')
 
-        counter = 0
         actorCount = document.getElementById('actor-count')
         movieCount = document.getElementById('movie-count')
-        interval = setInterval(increment, 10)
+        interval = setInterval(increment, 100)
+
+        function getRandomArbitrary(min=1, max=1000000) {
+            randomNumber = Math.random() * (max - min) + min;
+            return parseInt(randomNumber)
+        }
 
         function increment(){
-            actorCount.innerText = counter
-            movieCount.innerText = counter
-            counter ++
+            actorCount.innerText = getRandomArbitrary()
+            movieCount.innerText = getRandomArbitrary()
         }
         
         window.location = 'http://localhost:3000/ai_movie_routes/generate?' + new URLSearchParams({
