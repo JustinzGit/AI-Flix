@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, except: [:homepage]
+  before_action :redirect_home_if_logged_in
  
   # GET /users/new (Signup Page)
   def new

@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login
+  before_action :redirect_home_if_logged_in, except: [:destroy]
 
   # GET /login
   def new
