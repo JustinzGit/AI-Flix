@@ -45,7 +45,7 @@ function addEventsToActors(){
 
                 // display actors on page that have been set
                 displayActors()
-
+                
                 // display button to submit actors
                 submitActorsButton()
             }
@@ -86,36 +86,39 @@ function displayActors(){
 
 // button to submit actors to generate ai movie list
 function submitActorsButton(){
-    submitButton = document.createElement('button')
-    submitButton.innerText = 'Find Movie Path'
-    submitButton.setAttribute('class', 'small-submit-button small-top-margin w-button')
-    actorSelections.after(submitButton)
+    // Ensure only one submit button is inserted into DOM
+    if (document.getElementsByTagName('button').length === 1){
+        submitButton = document.createElement('button')
+        submitButton.innerText = 'Find Movie Path'
+        submitButton.setAttribute('class', 'small-submit-button small-top-margin w-button')
+        actorSelections.after(submitButton)
 
-    token = document.getElementsByName('csrf-token')[0].content
+        token = document.getElementsByName('csrf-token')[0].content
 
-    submitButton.addEventListener('click', () => {
-        preLoader = document.getElementById('preloader')
-        preLoader.setAttribute('style', 'display:flex')
+        submitButton.addEventListener('click', () => {
+            preLoader = document.getElementById('preloader')
+            preLoader.setAttribute('style', 'display:flex')
 
-        actorCount = document.getElementById('actor-count')
-        movieCount = document.getElementById('movie-count')
-        interval = setInterval(increment, 100)
+            actorCount = document.getElementById('actor-count')
+            movieCount = document.getElementById('movie-count')
+            interval = setInterval(increment, 100)
 
-        function getRandomArbitrary(min=1, max=1000000) {
-            randomNumber = Math.random() * (max - min) + min;
-            return parseInt(randomNumber)
-        }
+            function getRandomArbitrary(min=1, max=1000000) {
+                randomNumber = Math.random() * (max - min) + min;
+                return parseInt(randomNumber)
+            }
 
-        function increment(){
-            actorCount.innerText = getRandomArbitrary()
-            movieCount.innerText = getRandomArbitrary()
-        }
-        
-        window.location = 'http://localhost:3000/ai_movie_routes/generate?' + new URLSearchParams({
-            actor_1: myStorage.actor_1,
-            actor_2: myStorage.actor_2,
+            function increment(){
+                actorCount.innerText = getRandomArbitrary()
+                movieCount.innerText = getRandomArbitrary()
+            }
+            
+            window.location = 'http://localhost:3000/ai_movie_routes/generate?' + new URLSearchParams({
+                actor_1: myStorage.actor_1,
+                actor_2: myStorage.actor_2,
+            })
         })
-    })
+    }
 }
 
 // button to remove actors from DOM and clear local storage
