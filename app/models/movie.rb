@@ -64,6 +64,6 @@ class Movie < ApplicationRecord
 
   # find movie titles that begin with provided input
   def self.search_by_title(title)
-    where("title LIKE (?)", "#{title}%") if title
+    where("title ILIKE (?)", "#{title}%") if title
   end
 end

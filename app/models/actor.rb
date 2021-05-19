@@ -34,7 +34,7 @@ class Actor < ApplicationRecord
 
   # find actors with a similar name
   def self.search_by_name(name)
-    where("name LIKE (?)", "%#{name}%") if name
+    where("name ILIKE (?)", "%#{name}%") if name
   end
 
   # Find actors born in a provided year
