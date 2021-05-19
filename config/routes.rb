@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   # User Routes
   resources :users
 
+  get '/signup', to: 'users#new', as: 'signup'
+  post '/signup', to: 'users#create'
+
   # Playlist Routes
   resources :playlists
   resources :playlist_movies
