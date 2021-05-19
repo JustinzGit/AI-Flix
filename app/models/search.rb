@@ -1,9 +1,7 @@
-class Search < ApplicationRecord
+class Search 
   include SearchUtilities
   require 'set'
   require 'csv'
-
-  belongs_to :user
   
   @@names = {}
   @@actors = {}
@@ -11,6 +9,7 @@ class Search < ApplicationRecord
 
   # load data from CSV files into memory
   def self.load_data
+    
     actors = CSV.parse(File.read("tmdb_dataset/actors.csv"), headers: true)
     actors.each do |a|
         id = a['id']
