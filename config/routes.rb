@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # Playlist Routes
   resources :playlists
-  resources :playlist_movies
+  resources :playlist_movies, only: [:create]
 
   # Actor Routes
   resources :actors, only: [:show] do
