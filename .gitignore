@@ -7,9 +7,6 @@
 # Ignore my spec.md file
 /spec.md
 
-# Ignore CSV files
-/tmdb_dataset
-
 # Ignore my CHANGELOG.md
 /CHANGELOG.md
 
