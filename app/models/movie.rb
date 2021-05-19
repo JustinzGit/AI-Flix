@@ -34,7 +34,7 @@ class Movie < ApplicationRecord
     end
   end
 
-  def self.fetch_actors
+  def fetch_actors
     if self.actors.empty?
       response = Faraday.get "https://api.themoviedb.org/3/movie/#{self.id}/credits?api_key=#{@@api_key}"
       response = JSON.parse response.body
