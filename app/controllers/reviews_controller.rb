@@ -8,10 +8,15 @@ class ReviewsController < ApplicationController
 
   # DELETE /reviews/:id
   def destroy
-    review = Review.find(params[:id])
-    movie = review.movie_id
-    review.destroy
-    redirect_to movie_path(movie)
+    @review = Review.find(params[:id])
+
+    if !current_user.reviews.include?(@review)
+      redirect_to homepage_path
+    else
+      movie = @review.movie_id
+      @review.destroy
+      redirect_to movie_path(movie) 
+    end 
   end
 
   private

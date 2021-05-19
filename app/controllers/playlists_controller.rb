@@ -1,4 +1,6 @@
 class PlaylistsController < ApplicationController
+  before_action :set_playlist, only: [:show, :edit, :update, :destroy]
+  before_action :check_playlist_ownership, only: [:show, :edit, :update, :destroy]
 
   # GET /playlists
   def index
@@ -7,7 +9,6 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/:id
   def show
-    @playlist = Playlist.find(params[:id])
   end
 
   # GET /playlists/new
@@ -23,24 +24,33 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/:id/edit
   def edit
-    @playlist = Playlist.find(params[:id])
   end 
 
   # PATCH/PUT /playlists/:id
   def update
-    @playlist = Playlist.find(params[:id])
     @playlist.update(playlist_params)
     redirect_to playlist_path(@playlist)
   end 
 
   # DELETE /playlists/:id
   def destroy
-    @playlist = Playlist.find(params[:id])
     @playlist.destroy
     redirect_to playlists_path(@playlist)
   end
 
+  private
+
   def playlist_params
     params.require(:playlist).permit(:name, :user_id, movie_ids: [])
   end
+
+  def set_playlist
+    @playlist = Playlist.find(params[:id])
+  end
+  
+  def check_playlist_ownership
+    if !current_user.playlists.include?(@playlist)
+        redirect_to playlists_path
+    end 
+  end 
 end
