@@ -10,7 +10,7 @@ class Movie < ApplicationRecord
 
   self.primary_key = "tmdb_id"
 
-  @@api_key = ENV['tmdb_api_key']
+  @@api_key = ENV['TMDB_KEY']
 
   # fetch data from TMDB
   # if data has not been collected
