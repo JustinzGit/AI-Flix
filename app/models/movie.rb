@@ -55,7 +55,11 @@ class Movie < ApplicationRecord
       if !movie
         movie = Movie.new
         movie.id = m['id']
-        movie.fetch_tmdb_data
+
+        movie_data = Faraday.get "https://api.themoviedb.org/3/movie/#{movie.id}?api_key=#{@@api_key}"
+        movie_data = JSON.parse movie_data.body
+        movie.title = movie_data['title']
+        movie.popularity = movie_data['popularity']
       end
       movie
     end
