@@ -57,6 +57,7 @@ class Movie < ApplicationRecord
 
         movie_data = Faraday.get "https://api.themoviedb.org/3/movie/#{movie.id}?api_key=#{@@api_key}"
         movie_data = JSON.parse movie_data.body
+        movie.backdrop_path = movie_data['backdrop_path']
         movie.poster_path = movie_data['poster_path']
         movie.popularity = movie_data['popularity']
       end
