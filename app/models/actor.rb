@@ -4,12 +4,13 @@ class Actor < ApplicationRecord
 
   self.primary_key = "tmdb_id"
 
+  @@api_key = ENV['TMDB_KEY']
+
   # fetch data from TMDB
   # if data has not been collected
   def fetch_tmdb_data
       if !self.data_collected
-        api_key = ENV['tmdb_api_key']
-        response = Faraday.get "https://api.themoviedb.org/3/person/#{self.id}?api_key=#{api_key}&language=en-US"
+        response = Faraday.get "https://api.themoviedb.org/3/person/#{self.id}?api_key=#{@@api_key}&language=en-US"
         response = JSON.parse response.body
         self.birthday = response['birthday']
         self.deathday = response['deathday']
