@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
         redirect_to homepage_path
-        LoadAppDataJob.perform_later
+        # LoadAppDataJob.perform_later
     else
         flash[:alert] = "Invalid email or password"
         redirect_to login_path
