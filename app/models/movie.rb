@@ -46,7 +46,6 @@ class Movie < ApplicationRecord
   end 
 
   def self.fetch_popular_movies
-    api_key = ENV['tmdb_api_key']
     response = Faraday.get "https://api.themoviedb.org/3/movie/popular?api_key=#{@@api_key}"
     response = JSON.parse response.body
 
