@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       @user.save
       session[:user_id] = @user.id
       redirect_to homepage_path
-      # Search.load_data
+      LoadAppDataJob.perform_later
     end
   end
 
