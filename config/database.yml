@@ -16,11 +16,8 @@ test:
   database: <%= ENV['POSTGRES_TEST_DB'] %>
   
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  timeout: 5000
-  username: <%= ENV['CLOUD_SQL_POSTGRES_USER'] %>
-  password: <%= ENV['CLOUD_SQL_POSTGRES_PASSWORD'] %>
-  database: "ai-flix-db"
-  host:   "/cloudsql/#{ENV['INSTANCE_CONNECTION_NAME']}"
+  <<: *default
+  host: <%= ENV['DB_HOST'] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
