@@ -6,9 +6,6 @@ ruby '2.6.7'
 # Password hashing function
 gem 'bcrypt'
 
-# Use figaro to store sensitive information
-gem 'figaro'
-
 # Use faraday to process API requests
 gem 'faraday'
 
