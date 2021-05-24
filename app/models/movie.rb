@@ -10,7 +10,7 @@ class Movie < ApplicationRecord
 
   self.primary_key = "tmdb_id"
 
-  @@api_key = ENV['TMDB_KEY']
+  @@api_key = Rails.application.credentials.tmdb_key
 
   # fetch data from TMDB
   # if data has not been collected
