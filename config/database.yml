@@ -1,20 +1,16 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  username: <%= Rails.application.credentials.postgres_user %>
+  password: <%= Rails.application.credentials.postgres_password %>
   pool: 5
   timeout: 5000
-  host: <%= ENV['POSTGRES_HOST'] %>
+  host: <%= Rails.application.credentials.postgres_host %>
 
 development:
   <<: *default
-  database: <%= ENV['POSTGRES_DB'] %>
+  database: <%= Rails.application.credentials.postgres_db %>
 
 test:
   <<: *default
-  database: <%= ENV['POSTGRES_TEST_DB'] %>
-  
-production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: <%= Rails.application.credentials.postgres_test_db %>
