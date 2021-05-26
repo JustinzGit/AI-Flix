@@ -6,6 +6,7 @@ class Search
   @@names = {}
   @@actors = {}
   @@movies = {}
+  @@load_complete = false
 
   # load data from CSV files into memory
   def self.load_data
@@ -44,6 +45,8 @@ class Search
         @@actors[actor_id][:movies] << movie_id
         @@movies[movie_id][:actors] << actor_id
     end 
+
+    @@load_complete = true
   end
   
   def self.neighbors_for_actor(actor_id)
@@ -61,6 +64,10 @@ class Search
   end 
 
   def self.generate_movie_path(source, target)
+
+    while !@@load_complete
+      sleep(1)
+    end 
 
     # Define the first node
     root_node = Node.new(source, nil, nil)
