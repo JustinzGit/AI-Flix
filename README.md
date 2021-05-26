@@ -1,7 +1,7 @@
 # AI-Flix
-AI-Flix at its core is a repository of movies and actors who have starred in those movies. Users can browse this repository to obtain detailed information, leave movie reviews, and create movie playlists. 
+AI-Flix is a repository of movies and actors who have starred in those movies. Users can browse this repository to obtain detailed information, leave movie reviews, and create movie playlists. 
 
-A function of AI-Flix is to generate the shortest path of movies that connect two provided actors within the database. To accomplish this, AI-Flix uses the Breadth-First Search (BFS) algorithm to traverse a tree of actors and movies until a path is found. Users can leverage these paths to create playlists based upon the alogirthm's output.
+AI-Flix can also find the shortest path of movies that connect two provided actors within the database. To accomplish this, AI-Flix uses the Breadth-First Search (BFS) algorithm to traverse a tree of actors and movies until a path is found. Users can leverage these paths to create playlists based upon the alogirthm's output.
 
 Inspiration was drawn from "Bacon's Law" or the Six Degrees of Kevin Bacon, a game based on the concept that any two actors can be linked to Kevin Bacon through their film roles within six degrees of separation. [Bacon's Law](https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon#:~:text=Six%20Degrees%20of%20Kevin%20Bacon%20or%20%22Bacon's%20Law%22%20is%20a,and%20prolific%20actor%20Kevin%20Bacon.)
 
@@ -9,14 +9,8 @@ Kevin has even started his own charity called [Six Degrees](https://www.sixdegre
 
 All data obtain and displayed in AI-Flix was obtained with permission from [The Movie Database](https://themoviedb.org)
 
-# Installation
-- Fork and clone this repository
-- Be sure to have RubyGems installed (Ruby version 1.9+ comes with RubyGems by default)
-- Be sure to have Rails installed (Rails 6.0.3.1+) [Rails Guide](https://guides.rubyonrails.org/v5.0/getting_started.html)
-- Install the ruby gem `bundler` by running `gem install bundler` from the command line
-- Install application dependencies by running `bundle install` from the applications main directory
-- Run `rails server` from the terminal to start a Rack supported server
-- By typing `localhost:3000` into your browser you will access the login page of the application
+# Usage
+- AI-Flix can be found here https://ai-flix.azurewebsites.net
 
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/JustinzGit/AI-Flix. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
