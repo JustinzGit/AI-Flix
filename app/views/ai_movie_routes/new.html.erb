@@ -30,6 +30,10 @@
       <% end %>
     </div>
 
+    <% if flash[:alert] %>
+      <h1 class="white-heading" style="color: #e87c03"><%= flash[:alert] %></h1>
+    <% end %>
+
     <div class="search-results">
       <%= display_actor_search_results(@actors) %>
     </div>
