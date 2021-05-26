@@ -113,7 +113,7 @@ function submitActorsButton(){
                 movieCount.innerText = getRandomArbitrary()
             }
             
-            window.location = 'http://localhost:3000/ai_movie_routes/generate?' + new URLSearchParams({
+            window.location = 'https://ai-flix.azurewebsites.net/ai_movie_routes/generate?' + new URLSearchParams({
                 actor_1: myStorage.actor_1,
                 actor_2: myStorage.actor_2,
             })
