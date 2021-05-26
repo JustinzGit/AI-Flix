@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
 
   # GET /logout
   def destroy
+    Search.unload_data
     session.clear
     redirect_to login_path
   end
