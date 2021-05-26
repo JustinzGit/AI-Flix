@@ -7,8 +7,9 @@ class AiMovieRoutesController < ApplicationController
   # GET /ai_movie_routes/generate
   def generate
     if !Search.load_complete?
-      flash[:alert] = "Still Loading Data. Try again in a few seconds"
+      flash[:alert] = "Still Loading Data. Try again in a few seconds."
       render :new
+      flash.discard
     else 
       @movie_path = Search.generate_movie_path(params[:actor_1], params[:actor_2])
     end 
