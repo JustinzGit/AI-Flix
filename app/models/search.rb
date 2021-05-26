@@ -55,6 +55,10 @@ class Search
     @@movies = {}
     @@load_complete = false
   end 
+
+  def self.load_complete?
+    @@load_complete
+  end 
   
   def self.neighbors_for_actor(actor_id)
     neighbors = Set.new
@@ -71,10 +75,6 @@ class Search
   end 
 
   def self.generate_movie_path(source, target)
-
-    while !@@load_complete
-      p("Loading Data...")
-    end 
 
     # Define the first node
     root_node = Node.new(source, nil, nil)
