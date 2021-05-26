@@ -73,7 +73,7 @@ class Search
   def self.generate_movie_path(source, target)
 
     while !@@load_complete
-      sleep(1)
+      p("Loading Data...")
     end 
 
     # Define the first node
