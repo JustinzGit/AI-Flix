@@ -48,6 +48,13 @@ class Search
 
     @@load_complete = true
   end
+
+  def self.unload_data
+    @@names = {}
+    @@actors = {}
+    @@movies = {}
+    @@load_complete = false
+  end 
   
   def self.neighbors_for_actor(actor_id)
     neighbors = Set.new
