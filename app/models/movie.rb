@@ -15,23 +15,20 @@ class Movie < ApplicationRecord
   # fetch data from TMDB
   # if data has not been collected
   def fetch_tmdb_data
-    
-    if !self.data_collected
-      response = Faraday.get "https://api.themoviedb.org/3/movie/#{self.id}?api_key=#{@@api_key}"
-      response = JSON.parse response.body
-      self.title = response['title']
-      self.budget = response['budget']
-      self.revenue = response['revenue']
-      self.overview = response['overview']
-      self.poster_path = response['poster_path']
-      self.backdrop_path = response['backdrop_path']
-      self.popularity = response['popularity']
-      self.release_date = response['release_date']
-      self.tagline = response['tagline']
-      self.imdb_id = response['imdb_id']
-      self.data_collected = true
-      self.save
-    end
+    response = Faraday.get "https://api.themoviedb.org/3/movie/#{self.id}?api_key=#{@@api_key}"
+    response = JSON.parse response.body
+    self.title = response['title']
+    self.budget = response['budget']
+    self.revenue = response['revenue']
+    self.overview = response['overview']
+    self.poster_path = response['poster_path']
+    self.backdrop_path = response['backdrop_path']
+    self.popularity = response['popularity']
+    self.release_date = response['release_date']
+    self.tagline = response['tagline']
+    self.imdb_id = response['imdb_id']
+    self.data_collected = true
+    self.save
   end
 
   def fetch_actors
@@ -51,13 +48,19 @@ class Movie < ApplicationRecord
 
     popular_movies = response['results'].map do |m|
       movie = Movie.find_by(tmdb_id: m['id'])
+
+      # If movie doesn't exist in database 
       if !movie
         movie = Movie.new
         movie.id = m['id']
         movie.fetch_tmdb_data
-      elsif !movie.data_collected
+      
+      # if data hasn't been collected
+      # or popularity value of movie has changed
+      elsif !movie.data_collected || movie.popularity != m['popularity']
         movie.fetch_tmdb_data
       end
+  
       movie
     end
     popular_movies.sort_by(&:popularity).reverse
