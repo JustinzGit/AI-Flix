@@ -39,8 +39,8 @@ module MoviesHelper
             <h2 class='movie-title'>#{movie.title}</h2>
             #{"<h3 class='tagline'>#{movie.tagline}</h3>" if movie.tagline != ""}
             <p>Popularity Score<br>#{movie.popularity}</p>
-            #{"<p>Budget<br>#{movie.budget}</p>" if movie.budget != "0"}
-            #{"<p>Revenue<br>#{movie.revenue}</p>" if movie.budget != "0"}
+            #{"<p>Budget<br>#{format_currency(movie.budget)}</p>" if movie.budget != "0"}
+            #{"<p>Revenue<br>#{format_currency(movie.revenue)}</p>" if movie.budget != "0"}
             #{link_to("Learn More", movie_path(movie), class: "link")}
             """
         raw(top_movie_stats)
