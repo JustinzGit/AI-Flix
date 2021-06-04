@@ -55,6 +55,8 @@ class Movie < ApplicationRecord
         movie = Movie.new
         movie.id = m['id']
         movie.fetch_tmdb_data
+      elsif !movie.data_collected
+        movie.fetch_tmdb_data
       end
       movie
     end
